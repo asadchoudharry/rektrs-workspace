@@ -1,0 +1,121 @@
+id,wave,owner_role,title,depends_on,acceptance_evidence,risk,status
+ENG-001,W0,Technical lead,Source baseline,baseline,"Repo commit, release ZIP and deployment digests compared; drift log approved",high,proposed
+ENG-002,W0,Technical lead,Environment inventory,baseline,"DB engines, app versions, queues and routes recorded without secrets",high,proposed
+ENG-003,W0,Technical lead,Restore rehearsal,baseline,"Staging restore passes ledger, stock, files and SSO smoke checks",high,proposed
+ENG-004,W0,Technical lead,R3 lifecycle contract,baseline,Canonical states mapped; tracker adds no unsupported enum,high,proposed
+ENG-005,W0,Technical lead,Deployment regression,baseline,"Permissions, config paths, readiness and container-only syntax checks execute",high,proposed
+ENG-006,W0,Technical lead,License inventory,baseline,SBOM and upstream/custom distribution review decision recorded,high,proposed
+ENG-007,W0,Technical lead,Tenant topology ADR,baseline,Shared bench and dedicated-cell trust boundaries approved,high,proposed
+ENG-008,W0,Technical lead,API contract capture,baseline,Existing provider responses and error fixtures versioned,high,proposed
+ENG-009,W0,Technical lead,State-policy ADR,baseline,Observe/enforce and grace/suspension behavior reconciled with existing policy,high,proposed
+ENG-010,W0,Technical lead,Release artifact lock,baseline,"Images, app commits, migrations and pack lock reproduced",high,proposed
+ENG-011,W0,Technical lead,Pilot protection,baseline,Preflight rejects wrong tenant/region and forbidden environment target,high,proposed
+ENG-012,W0,Technical lead,Baseline acceptance,baseline,Owner signs reproducible baseline with explicit unverified items,high,proposed
+ENG-013,W1,Platform engineer,OIDC session security,W0,PKCE state nonce audience issuer and logout adversarial tests pass,critical,proposed
+ENG-014,W1,Platform engineer,Identity linking,W0,Verified account linking blocks matching-email privilege takeover,critical,proposed
+ENG-015,W1,Platform engineer,Tenant membership,W0,User with two tenants sees scoped switch and no cross-tenant cache,critical,proposed
+ENG-016,W1,Platform engineer,Role and branch policy,W0,Backend denies disallowed role/company/branch combinations,critical,proposed
+ENG-017,W1,Platform engineer,Operator MFA,W0,Privileged login requires configured second factor and recovery process,critical,proposed
+ENG-018,W1,Platform engineer,Support access,W0,Consent ticket duration and audit enforced on support session,critical,proposed
+ENG-019,W1,Platform engineer,Private attachment,W0,Guessing another tenant object ID returns no file or metadata,critical,proposed
+ENG-020,W1,Platform engineer,Job tenant context,W0,Reused worker cleans prior site state; cross-tenant fixture passes,critical,proposed
+ENG-021,W1,Platform engineer,Search isolation,W0,Search counts snippets and aggregations remain tenant scoped,critical,proposed
+ENG-022,W1,Platform engineer,Export authorization,W0,Queued export and download recheck current permission,critical,proposed
+ENG-023,W1,Platform engineer,Security audit trail,W0,Privileged changes retain actor old/new value and reason,critical,proposed
+ENG-024,W1,Platform engineer,Secret vault references,W0,Credentials never returned in API export or ordinary logs,critical,proposed
+ENG-025,W1,Finance engineer,Company and fiscal setup,W0,Registration currency periods dimensions and approval recorded,critical,proposed
+ENG-026,W1,Finance engineer,Chart of accounts,W0,Approved opening template imports with balanced trial balance,critical,proposed
+ENG-027,W1,Finance engineer,Decimal and rounding,W0,Approved half-cent discounts currency precision fixtures reconcile,critical,proposed
+ENG-028,W1,Finance engineer,Sales posting,W0,Invoice GL AR revenue tax and stock COGS match expected fixtures,critical,proposed
+ENG-029,W1,Finance engineer,Purchase matching,W0,Receipt invoice and purchase order variances enter approval queue,critical,proposed
+ENG-030,W1,Finance engineer,Payments allocation,W0,Concurrent allocations cannot exceed available payment or invoice,critical,proposed
+ENG-031,W1,Finance engineer,Credit and return,W0,Partial return reverses supported quantity tax and settlement,critical,proposed
+ENG-032,W1,Finance engineer,Bank reconciliation,W0,Statement duplicates and ambiguous matches require controlled resolution,critical,proposed
+ENG-033,W1,Finance engineer,Period close,W0,Unauthorized backdated entry blocked; approved correction audited,critical,proposed
+ENG-034,W1,Finance engineer,Fixed assets,W0,Capitalization depreciation disposal and GL reconcile,critical,proposed
+ENG-035,W1,Finance engineer,Multi-currency,W0,Realized and unrealized FX scenarios reconcile with currency policy,critical,proposed
+ENG-036,W1,Finance engineer,Financial close report,W0,AR AP inventory trial balance and tax reconciliation signed,critical,proposed
+ENG-037,W1,Supply engineer,Item and unit model,Finance setup,Unit conversions cannot silently alter posted quantities,high,proposed
+ENG-038,W1,Supply engineer,Warehouse scoping,Finance setup,Company ownership and branch access enforced on movements,high,proposed
+ENG-039,W1,Supply engineer,Serial reservation,Finance setup,Twenty concurrent submissions sell one unique serial once,high,proposed
+ENG-040,W1,Supply engineer,Batch expiry,Finance setup,Expired or quarantined batch blocked by approved policy,high,proposed
+ENG-041,W1,Supply engineer,Stock valuation,Finance setup,Receipt delivery return and backdated repost reconcile to GL,high,proposed
+ENG-042,W1,Supply engineer,Replenishment draft,Finance setup,Approved reorder points produce one deduplicated requisition,high,proposed
+ENG-043,W1,Supply engineer,Landed costs,Finance setup,Freight duties and allocations reconcile to received inventory,high,proposed
+ENG-044,W1,Supply engineer,Picking and delivery,Finance setup,Partial pick backorder and proof-of-delivery states preserved,high,proposed
+ENG-045,W1,Supply engineer,Stock count,Finance setup,Count freeze variance approval and adjustment audit verified,high,proposed
+ENG-046,W1,Supply engineer,Supplier returns,Finance setup,Returned quantity cost and payable adjustment stay linked,high,proposed
+ENG-047,W1,Supply engineer,Transfer in transit,Finance setup,Source transit destination and loss exception balances reconcile,high,proposed
+ENG-048,W1,Supply engineer,Inventory reporting,Finance setup,As-of availability reservations and valuation are explainable,high,proposed
+ENG-049,W1,Commerce engineer,CRM qualification,Finance and supply,Lead owner source next task and quote conversion audited,high,proposed
+ENG-050,W1,Commerce engineer,Quotation revision,Finance and supply,Accepted revision and order price snapshot preserved,high,proposed
+ENG-051,W1,Commerce engineer,Pricing engine,Finance and supply,Effective date UOM customer tier and currency precedence deterministic,high,proposed
+ENG-052,W1,Commerce engineer,Promotion conflicts,Finance and supply,Stacking exclusions and approval threshold tested,high,proposed
+ENG-053,W1,Commerce engineer,Credit limits,Finance and supply,Concurrent order exposure obeys limit or authorized override,high,proposed
+ENG-054,W1,Commerce engineer,POS shift,Finance and supply,Opening sale refund payout and cash close reconcile,high,proposed
+ENG-055,W1,Commerce engineer,POS device pairing,Finance and supply,Device revocation removes permitted online actions,high,proposed
+ENG-056,W1,Commerce engineer,Sales return policy,Finance and supply,Original sale and refund ceiling enforced across outlets,high,proposed
+ENG-057,W1,Commerce engineer,Customer portal,Finance and supply,Only authorized customer statements orders and documents visible,high,proposed
+ENG-058,W1,Commerce engineer,Sales approvals,Finance and supply,Discount and credit exception maker cannot self-approve where required,high,proposed
+ENG-059,W1,Commerce engineer,Commission calculation,Finance and supply,Returned sale reverses eligible commission by approved rule,high,proposed
+ENG-060,W1,Commerce engineer,Commerce UAT,Finance and supply,Sales warehouse cashier and accountant complete same order lifecycle,high,proposed
+ENG-061,W2,Pack platform engineer,Pack manifest schema,Core modules,Missing compatibility owner migration or digest fails validation,high,proposed
+ENG-062,W2,Pack platform engineer,Dependency resolver,Core modules,Cycles incompatible versions and conflicts rejected deterministically,high,proposed
+ENG-063,W2,Pack platform engineer,Pack artifact trust,Core modules,Unsigned or mismatched artifact cannot install,high,proposed
+ENG-064,W2,Pack platform engineer,Entitlement contract,Core modules,Purchased capability and user permission independently enforced,high,proposed
+ENG-065,W2,Pack platform engineer,Configuration precedence,Core modules,Tenant override cannot disable mandatory legal security rule,high,proposed
+ENG-066,W2,Pack platform engineer,Workflow versions,Core modules,In-flight record retains old version or explicit migration approval,high,proposed
+ENG-067,W2,Pack platform engineer,Installation checkpoint,Core modules,Worker crash resumes without duplicated schema or seed records,high,proposed
+ENG-068,W2,Pack platform engineer,Pack compatibility matrix,Core modules,Supported engine-country-industry combinations published,high,proposed
+ENG-069,W2,Pack platform engineer,Pack migration rehearsal,Core modules,Backup migrate reconcile and recovery demonstrated,high,proposed
+ENG-070,W2,Pack platform engineer,Pack retirement,Core modules,Historical documents readable after feature retirement,high,proposed
+ENG-071,W2,Pack platform engineer,Tenant extension review,Core modules,Bespoke request accepted as config reusable app or explicit exception,high,proposed
+ENG-072,W2,Pack platform engineer,Capability status registry,Core modules,Marketing can show only evidence-supported capability status,high,proposed
+ENG-073,W2,Integration engineer,Transactional outbox,API and pack contracts,Crash after commit eventually delivers one business effect,high,proposed
+ENG-074,W2,Integration engineer,Consumer inbox,API and pack contracts,Repeated event delivery produces no duplicate posting,high,proposed
+ENG-075,W2,Integration engineer,API idempotency,API and pack contracts,Same key same body returns result; changed body conflicts,high,proposed
+ENG-076,W2,Integration engineer,Webhook security,API and pack contracts,Invalid signature timestamp and replay rejected,high,proposed
+ENG-077,W2,Integration engineer,Connector installation,API and pack contracts,OAuth scope credential test and revoke flow audited,high,proposed
+ENG-078,W2,Integration engineer,Sync ownership,API and pack contracts,Field ownership and conflict resolution prevent sync loops,high,proposed
+ENG-079,W2,Integration engineer,Backfill checkpoint,API and pack contracts,Resumed historical import creates no duplicate source record,high,proposed
+ENG-080,W2,Integration engineer,Gateway settlement,API and pack contracts,Sale fee payout refund and settlement reconcile,high,proposed
+ENG-081,W2,Integration engineer,Manual bank approval,API and pack contracts,Proof upload stays pending until authorized verification,high,proposed
+ENG-082,W2,Integration engineer,Messaging delivery,API and pack contracts,Consent template bounce and recipient scope respected,high,proposed
+ENG-083,W2,Integration engineer,Hardware adapter,API and pack contracts,Approved barcode scale printer model matrix tested,high,proposed
+ENG-084,W2,Integration engineer,Integration health,API and pack contracts,Failed count last success queue age and next action visible,high,proposed
+ENG-085,W2,Country compliance engineer,Country profile schema,Finance and integration,Effective date registration scheme and source evidence validated,critical,proposed
+ENG-086,W2,Country compliance engineer,Pakistan sandbox,Finance and integration,Applicable FBR integration fixtures approved by local specialist,critical,proposed
+ENG-087,W2,Country compliance engineer,Pakistan invoice cases,Finance and integration,Taxable exempt discount return and cancellation cases validated,critical,proposed
+ENG-088,W2,Country compliance engineer,Pakistan service scope,Finance and integration,Federal/provincial applicability mapped without false universal claim,critical,proposed
+ENG-089,W2,Country compliance engineer,Country tax rule version,Finance and integration,Past invoice retains original rule and calculation evidence,critical,proposed
+ENG-090,W2,Country compliance engineer,Authority transport,Finance and integration,Timeout query retry and acknowledgement states avoid duplicate fiscal document,critical,proposed
+ENG-091,W2,Country compliance engineer,Fiscal correction,Finance and integration,Credit/debit and correction references preserve required audit chain,critical,proposed
+ENG-092,W2,Country compliance engineer,Certificate rotation,Finance and integration,Expiry alerts and safe credential rotation rehearsal pass,critical,proposed
+ENG-093,W2,Country compliance engineer,Regulatory source review,Finance and integration,Owner records official change effective date and impacted versions,critical,proposed
+ENG-094,W2,Country compliance engineer,Compliance reporting,Finance and integration,Accountant validates reports against approved sample books,critical,proposed
+ENG-095,W2,Country compliance engineer,Regulatory outage,Finance and integration,Pending queue age escalation and legal fallback policy demonstrated,critical,proposed
+ENG-096,W2,Country compliance engineer,Country release gate,Finance and integration,Supported scope evidence and public claim signed by accountable owner,critical,proposed
+ENG-097,W3,Industry product engineer,Distribution route sales,Released core and pack platform,Route load delivery return cash and vehicle stock reconcile,high,proposed
+ENG-098,W3,Industry product engineer,Beverage containers,Released core and pack platform,Issue return lost bottle crate and deposit ledger reconcile,high,proposed
+ENG-099,W3,Industry product engineer,FMCG claims,Released core and pack platform,Scheme accrual return rebate and supplier claim traceable,high,proposed
+ENG-100,W3,Industry product engineer,Service jobs,Released core and pack platform,Quote parts time report invoice and AMC renewal end-to-end,high,proposed
+ENG-101,W3,Industry product engineer,EV battery records,Released core and pack platform,Vehicle battery serial ownership warranty swap history linked,high,proposed
+ENG-102,W3,Industry product engineer,Dealership allocation,Released core and pack platform,VIN booking deposit cancellation handover and OEM claim audited,high,proposed
+ENG-103,W3,Industry product engineer,Motorcycle service,Released core and pack platform,Job card parts warranty and customer approval demonstrated,high,proposed
+ENG-104,W3,Industry product engineer,Bakery batch,Released core and pack platform,Recipe yield allergens expiry waste and batch traceability verified,high,proposed
+ENG-105,W3,Industry product engineer,Restaurant KDS,Released core and pack platform,Table split modifiers cancellation kitchen delivery and shift close work,high,proposed
+ENG-106,W3,Industry product engineer,Manufacturing pilot,Released core and pack platform,BOM MRP issue WIP completion variance and QA reconcile,high,proposed
+ENG-107,W3,Industry product engineer,Pharmacy pilot,Released core and pack platform,Prescription scope batch FEFO recall privacy and controlled exception validated,high,proposed
+ENG-108,W3,Industry product engineer,Industry certification gate,Released core and pack platform,Real operator completes normal exception and close scenarios,high,proposed
+ENG-109,W4,SRE and QA lead,Observability,Working pilots,Correlated safe traces metrics logs and runbook-backed alerts active,critical,proposed
+ENG-110,W4,SRE and QA lead,Representative load,Working pilots,Target workload SLO measured and capacity limits published,critical,proposed
+ENG-111,W4,SRE and QA lead,Noisy neighbor,Working pilots,Large tenant report cannot starve another tenant critical queue,critical,proposed
+ENG-112,W4,SRE and QA lead,Automated backup,Working pilots,Failed or stale backup triggers accountable alert,critical,proposed
+ENG-113,W4,SRE and QA lead,Disaster restore,Working pilots,Full service recovery meets measured target and reconciles external events,critical,proposed
+ENG-114,W4,SRE and QA lead,Regional cell,Working pilots,Compute backup logs keys and subprocessors match region commitment,critical,proposed
+ENG-115,W4,SRE and QA lead,Release canary,Working pilots,Pilot acceptance blocks failing wave before wider rollout,critical,proposed
+ENG-116,W4,SRE and QA lead,Accessibility and RTL,Working pilots,Keyboard focus target size RTL and error states pass agreed WCAG scope,critical,proposed
+ENG-117,W4,SRE and QA lead,AI safety evaluation,Working pilots,Tenant leakage prompt injection and false fiscal actions blocked,critical,proposed
+ENG-118,W4,SRE and QA lead,Security review closure,Working pilots,Critical/high exploitable issues closed or formally accepted before release,critical,proposed
+ENG-119,W4,SRE and QA lead,Customer exit,Working pilots,Authorized full export with attachments and retained fiscal records verified,critical,proposed
+ENG-120,W4,SRE and QA lead,Operational launch,Working pilots,Support ownership SLO terms incident drills renewal and upgrade proven,critical,proposed

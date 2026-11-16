@@ -1,0 +1,112 @@
+[
+  {
+    "id": "ENG-01",
+    "title": "Frappe Framework installation",
+    "url": "https://docs.frappe.io/framework/user/en/installation",
+    "accessed": "2026-11-06",
+    "supports": "Current installation dependency table; moving docs do not prove existing pinned release compatibility",
+    "source_type": "official",
+    "status": "researched",
+    "note": "Proposed Operqon designs are recommendations, not upstream feature or implemented-status claims"
+  },
+  {
+    "id": "ENG-02",
+    "title": "Frappe license and trademark",
+    "url": "https://docs.frappe.io/legal/others/license-and-trademark",
+    "accessed": "2026-11-06",
+    "supports": "Frappe MIT and ERPNext GPLv3; trademarks separate",
+    "source_type": "official",
+    "status": "researched",
+    "note": "Proposed Operqon designs are recommendations, not upstream feature or implemented-status claims"
+  },
+  {
+    "id": "ENG-03",
+    "title": "Frappe sites",
+    "url": "https://docs.frappe.io/framework/user/en/basics/sites",
+    "accessed": "2026-11-06",
+    "supports": "Site has its own database; shared compute remains a separate trust consideration",
+    "source_type": "official",
+    "status": "researched",
+    "note": "Proposed Operqon designs are recommendations, not upstream feature or implemented-status claims"
+  },
+  {
+    "id": "ENG-04",
+    "title": "Frappe REST API",
+    "url": "https://docs.frappe.io/framework/user/en/api/rest",
+    "accessed": "2026-11-06",
+    "supports": "Framework exposes documented REST and method APIs; Operqon commands need scoped authorization",
+    "source_type": "official",
+    "status": "researched",
+    "note": "Proposed Operqon designs are recommendations, not upstream feature or implemented-status claims"
+  },
+  {
+    "id": "ENG-05",
+    "title": "Frappe hooks",
+    "url": "https://docs.frappe.io/framework/user/en/python-api/hooks",
+    "accessed": "2026-11-06",
+    "supports": "Extension hooks including v16 extend_doctype_class available; avoid unrestricted overrides",
+    "source_type": "official",
+    "status": "researched",
+    "note": "Proposed Operqon designs are recommendations, not upstream feature or implemented-status claims"
+  },
+  {
+    "id": "ENG-06",
+    "title": "Keycloak server administration",
+    "url": "https://www.keycloak.org/docs/latest/server_admin/",
+    "accessed": "2026-11-06",
+    "supports": "Identity brokering account linking and first-login flow configuration",
+    "source_type": "official",
+    "status": "researched",
+    "note": "Proposed Operqon designs are recommendations, not upstream feature or implemented-status claims"
+  },
+  {
+    "id": "ENG-07",
+    "title": "ERPNext immutable ledger",
+    "url": "https://docs.frappe.io/erpnext/immutable-ledger-in-erpnext",
+    "accessed": "2026-11-06",
+    "supports": "Supported reversals preserve audit trail and corrections require supported source workflows",
+    "source_type": "official",
+    "status": "researched",
+    "note": "Proposed Operqon designs are recommendations, not upstream feature or implemented-status claims"
+  },
+  {
+    "id": "ENG-08",
+    "title": "OWASP ASVS",
+    "url": "https://asvs.owasp.org/",
+    "accessed": "2026-11-06",
+    "supports": "ASVS 5.0.0 published 30 May 2025; version-pin verification requirements",
+    "source_type": "official",
+    "status": "researched",
+    "note": "Proposed Operqon designs are recommendations, not upstream feature or implemented-status claims"
+  },
+  {
+    "id": "ENG-09",
+    "title": "OpenTelemetry signals",
+    "url": "https://opentelemetry.io/docs/concepts/signals/",
+    "accessed": "2026-11-06",
+    "supports": "Telemetry categories traces metrics logs and baggage",
+    "source_type": "official",
+    "status": "researched",
+    "note": "Proposed Operqon designs are recommendations, not upstream feature or implemented-status claims"
+  },
+  {
+    "id": "ENG-10",
+    "title": "WCAG 2.2 target size minimum",
+    "url": "https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum",
+    "accessed": "2026-11-06",
+    "supports": "24 CSS pixel target minimum or stated spacing/exceptions at AA",
+    "source_type": "official",
+    "status": "researched",
+    "note": "Proposed Operqon designs are recommendations, not upstream feature or implemented-status claims"
+  },
+  {
+    "id": "ENG-11",
+    "title": "WCAG 2.2 focus not obscured minimum",
+    "url": "https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-minimum",
+    "accessed": "2026-11-06",
+    "supports": "Focus should not be fully hidden by author-created content under criterion",
+    "source_type": "official",
+    "status": "researched",
+    "note": "Proposed Operqon designs are recommendations, not upstream feature or implemented-status claims"
+  }
+]

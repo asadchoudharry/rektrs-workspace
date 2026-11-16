@@ -1,0 +1,29 @@
+{
+  "organization_brand": "IQRS",
+  "developer_legal_name": "Rektrs Private Limited",
+  "developer_display_name": "REKTRS PRIVATE LIMITED",
+  "developer_credit": "Developed by REKTRS PRIVATE LIMITED",
+  "applications": [
+    {
+      "name": "IQRS Connect",
+      "audience": "For Students & Parents",
+      "flutter_flavor": "connect",
+      "proposed_android_application_id": "com.rektrs.iqrs.connect"
+    },
+    {
+      "name": "IQRS Workspace",
+      "audience": "For Teachers & Administrators",
+      "flutter_flavor": "workspace",
+      "proposed_android_application_id": "com.rektrs.iqrs.workspace",
+      "planned_use_cases": [
+        "class management",
+        "live class attendance",
+        "assignments",
+        "examinations",
+        "approvals",
+        "administrative operations"
+      ]
+    }
+  ],
+  "publication_status": "DRAFT_NOT_PUBLISHED"
+}

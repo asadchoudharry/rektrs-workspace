@@ -1,0 +1,201 @@
+id,family,use_case,base_pack,distinct_extension,risk,industry_sequence,acceptance_requirement,readiness
+UC-001,Automotive dealership,New car franchise,IP-02,OEM allocation and VIN reservations,High,IW2,Ek VIN ki do confirmed allocations reject hon,Discovery / proposed
+UC-002,Automotive dealership,Used car dealership,IP-02,"Appraisal, ownership documents and reconditioning cost",High,IW2,Trade-in purchase aur resale margin reconcile hon,Discovery / proposed
+UC-003,Automotive dealership,Vehicle consignment,IP-02,Owner custody and commission settlement,High,IW2,Consignor liability customer sale se reconcile ho,Discovery / proposed
+UC-004,Automotive dealership,Commercial truck dealer,IP-02,Body configuration and payload specification,High,IW2,Approved chassis-body combination delivery checklist mein aaye,Discovery / proposed
+UC-005,Automotive dealership,Bus and coach dealer,IP-02,Seat/layout configuration and staged delivery,High,IW2,Final configuration signed delivery record se match ho,Discovery / proposed
+UC-006,Automotive dealership,Auto parts wholesale,IP-02,Vehicle fitment and OEM supersession,High,IW2,Unsupported fitment substitution approval mangay,Discovery / proposed
+UC-007,Automotive dealership,Tyre distributor,IP-02,Size/load rating and production-age tracking,High,IW2,Wrong rating sale warning policy apply ho,Discovery / proposed
+UC-008,Automotive dealership,Automotive lubricants dealer,IP-02,Grade/pack compatibility and batch control,High,IW2,Pack-to-litre conversion exact reconcile ho,Discovery / proposed
+UC-009,Automotive dealership,Vehicle import brokerage,IP-02,Shipment landed cost and customs documents,High,IW2,Landed cost each VIN par allocated total se match ho,Discovery / proposed
+UC-010,Automotive dealership,Dealer service network,IP-02,Franchise service history and OEM claims,High,IW2,Branch-specific access aur claim retry deduplicate hon,Discovery / proposed
+UC-011,EV and mobility,EV bike showroom,IP-01,Chassis-motor-battery pairing,High,IW2,Incompatible voltage battery handover block ho,Discovery / proposed
+UC-012,EV and mobility,Electric scooter fleet sales,IP-01,Fleet batch handover and serial assignment,High,IW2,Fleet customer ko sirf own serials nazar aayen,Discovery / proposed
+UC-013,EV and mobility,Battery swap operator,IP-01,"Battery custody, subscription and deposits",High,IW2,Swap mein returned aur issued battery links preserve hon,Discovery / proposed
+UC-014,EV and mobility,Battery repair centre,IP-01,Cell/module diagnosis and safe quarantine,High,IW2,Rejected battery repair se saleable stock na bane,Discovery / proposed
+UC-015,EV and mobility,EV charging installer,IP-01,"Site survey, installation and commissioning",High,IW2,Acceptance ke baghair installation complete na ho,Discovery / proposed
+UC-016,EV and mobility,EV charger reseller,IP-01,Charger serial and warranty entitlement,High,IW2,Warranty start invoice/handover policy se derive ho,Discovery / proposed
+UC-017,EV and mobility,E-rickshaw assembler,IP-01,Kit assembly and battery genealogy,High,IW2,Every finished chassis input kit se trace ho,Discovery / proposed
+UC-018,EV and mobility,Micromobility rental,IP-01,"Short booking, damage and return inspection",High,IW2,Overlapping confirmed asset booking reject ho,Discovery / proposed
+UC-019,EV and mobility,EV battery leasing,IP-01,Asset ownership and usage billing,High,IW2,Customer deposit revenue mein auto-post na ho,Discovery / proposed
+UC-020,EV and mobility,EV fleet service,IP-01,Periodic battery/vehicle maintenance,High,IW2,Due service fleet serial cohort ke mutabiq schedule ho,Discovery / proposed
+UC-021,Bakery and food retail,Retail bakery,IP-04,"Daily bake, batch expiry and closing waste",High,IW3,Expired display batch POS se block ho,Discovery / proposed
+UC-022,Bakery and food retail,Bakery commissary,IP-04,Central production and outlet transfer,High,IW3,In-transit shortage outlet reconciliation mein aaye,Discovery / proposed
+UC-023,Bakery and food retail,Custom cake studio,IP-04,"Design approvals, deposits and production slots",High,IW3,Unapproved design version production ko na jaye,Discovery / proposed
+UC-024,Bakery and food retail,Bread wholesaler,IP-04,Delivery routes and unsold returns,High,IW3,Returned bread quality decision ke baghair restock na ho,Discovery / proposed
+UC-025,Bakery and food retail,Frozen bakery supplier,IP-04,Frozen lots and cold-chain exceptions,High,IW3,Temperature-excursion lot quarantine ho,Discovery / proposed
+UC-026,Bakery and food retail,Confectionery shop,IP-04,Assorted boxes and allergen labels,High,IW3,Assortment constituent traceability retain ho,Discovery / proposed
+UC-027,Bakery and food retail,Dessert kitchen,IP-04,Recipe yield and chilled shelf life,High,IW3,Actual output recipe yield variance report kare,Discovery / proposed
+UC-028,Bakery and food retail,Sandwich commissary,IP-04,Daily ingredient lots and short shelf life,High,IW3,Recall affected finished sandwiches identify kare,Discovery / proposed
+UC-029,Bakery and food retail,Meat retail and butchery,IP-04,Cut yield and variable-weight sale,High,IW3,Input carcass aur cuts/scrap weight balance ho,Discovery / proposed
+UC-030,Bakery and food retail,Fresh produce retail,IP-04,"Grade, shrink and variable weight",High,IW3,Scale weight aur billed UOM reconcile hon,Discovery / proposed
+UC-031,Restaurant and hospitality food,Dine-in restaurant,IP-06,"Tables, courses and split bills",High,IW3,Split bills original amount se exact match hon,Discovery / proposed
+UC-032,Restaurant and hospitality food,Quick-service restaurant,IP-06,Combo modifiers and rapid kitchen queue,High,IW3,Unavailable component combo order block kare,Discovery / proposed
+UC-033,Restaurant and hospitality food,Cafe chain,IP-06,Drink modifiers and branch recipes,High,IW3,Recipe version branch effective date follow kare,Discovery / proposed
+UC-034,Restaurant and hospitality food,Cloud kitchen,IP-06,Brand/channel menus and aggregator orders,High,IW3,Webhook repeat ek hi order create kare,Discovery / proposed
+UC-035,Restaurant and hospitality food,Food truck,IP-06,Limited stock and intermittent connectivity,High,IW3,Offline sold stock sync par reconcile ho,Discovery / proposed
+UC-036,Restaurant and hospitality food,Catering company,IP-06,"Event covers, deposit and dispatch kit",High,IW3,Event leftovers aur rental returns reconcile hon,Discovery / proposed
+UC-037,Restaurant and hospitality food,Institutional canteen,IP-06,Meal entitlement and employee subsidy,High,IW3,Same entitlement double redeem na ho,Discovery / proposed
+UC-038,Restaurant and hospitality food,Meal subscription kitchen,IP-06,Calendar pauses and dietary preferences,High,IW3,Paused date ko meal dispatch na bane,Discovery / proposed
+UC-039,Restaurant and hospitality food,Hotel restaurant outlet,IP-06,Room charge interface and outlet settlement,High,IW3,Failed room-charge retry duplicate posting na kare,Discovery / proposed
+UC-040,Restaurant and hospitality food,Banquet operation,IP-06,"Venue slot, package and event billing",High,IW3,Overlapping confirmed hall booking block ho,Discovery / proposed
+UC-041,Beverages distribution,Carbonated drink distributor,IP-07,"Bottles, crates and deposits",High,IW2,Outlet-wise bottle balance route total se mile,Discovery / proposed
+UC-042,Beverages distribution,Bottled water distributor,IP-07,Container returns and recurring routes,High,IW2,Returned jar condition custody ledger mein aaye,Discovery / proposed
+UC-043,Beverages distribution,Juice distributor,IP-07,Batch freshness and channel shelf-life minimum,High,IW2,Insufficient remaining shelf life pick block ho,Discovery / proposed
+UC-044,Beverages distribution,Dairy drinks distributor,IP-07,Chilled delivery and excursion quarantine,High,IW2,Excursion case approved release tak blocked rahe,Discovery / proposed
+UC-045,Beverages distribution,Energy drink distributor,IP-07,Channel promotions and principal rebates,High,IW2,Free goods return original scheme policy follow kare,Discovery / proposed
+UC-046,Beverages distribution,Tea wholesale,IP-07,Grade/pack conversion and principal prices,High,IW2,Approved grade price customer channel se resolve ho,Discovery / proposed
+UC-047,Beverages distribution,Coffee wholesale,IP-07,Roast batch and equipment placement,High,IW2,Placed machine customer custody mein trace ho,Discovery / proposed
+UC-048,Beverages distribution,Fountain syrup supplier,IP-07,Bag-in-box packs and dispenser service,High,IW2,Syrup UOM aur dispenser service separately bill hon,Discovery / proposed
+UC-049,Beverages distribution,Returnable glass beverage network,IP-07,Container pool and breakage claims,High,IW2,Foreign-brand empties automatic refund na banen,Discovery / proposed
+UC-050,Beverages distribution,Beverage van sales,IP-07,Load-sale-return-cash route closing,High,IW2,Unexplained cash/stock variance route close na kare,Discovery / proposed
+UC-051,FMCG and general distribution,Multi-principal FMCG distributor,IP-08,Principal-specific claims and schemes,Medium,IW2,Claim principal ledger sahi counterparty se link ho,Discovery / proposed
+UC-052,FMCG and general distribution,Household cleaning distributor,IP-08,Pack variants and trade promotions,Medium,IW2,Case-to-piece promotion rounding exact ho,Discovery / proposed
+UC-053,FMCG and general distribution,Personal care distributor,IP-08,"Expiry, assortment and retailer targets",Medium,IW2,Expiry lot channel eligibility enforce ho,Discovery / proposed
+UC-054,FMCG and general distribution,Baby care distributor,IP-08,Size assortment and outlet replenishment,Medium,IW2,Replacement size customer approval ke saath ho,Discovery / proposed
+UC-055,FMCG and general distribution,Pet food distributor,IP-08,Batch expiry and channel allocation,Medium,IW2,Recalled batch all routes par blocked ho,Discovery / proposed
+UC-056,FMCG and general distribution,Stationery distributor,IP-08,School-season bundles and institutional credit,Medium,IW2,Bundle constituent stock correctly consume ho,Discovery / proposed
+UC-057,FMCG and general distribution,Packaging materials distributor,IP-08,"Dimensions, roll UOM and customer specs",Medium,IW2,Roll-to-length conversion approved precision rakhe,Discovery / proposed
+UC-058,FMCG and general distribution,Electrical goods wholesaler,IP-08,Brand/part equivalence and dealer credit,Medium,IW2,Unapproved equivalent automatic substitute na ho,Discovery / proposed
+UC-059,FMCG and general distribution,Building materials distributor,IP-08,Bulk UOM and delivered freight,Medium,IW2,Dispatch quantity weighbridge/source se reconcile ho,Discovery / proposed
+UC-060,FMCG and general distribution,Cash-and-carry wholesaler,IP-08,Tiered quantity pricing and counter collection,Medium,IW2,Quantity threshold price reproducible ho,Discovery / proposed
+UC-061,Pharmacy and medical supply,Community pharmacy,IP-05,"Prescription, expiry and pharmacist release",Very high,IW4,Restricted item unapproved cashier release na kare,Discovery / proposed
+UC-062,Pharmacy and medical supply,Pharmacy chain,IP-05,Branch transfers and patient-data boundaries,Very high,IW4,Patient record cross-branch access policy enforce ho,Discovery / proposed
+UC-063,Pharmacy and medical supply,Medicine wholesaler,IP-05,Batch provenance and licensed-customer eligibility,Very high,IW4,Blocked customer order dispatch na ho,Discovery / proposed
+UC-064,Pharmacy and medical supply,Hospital pharmacy,IP-05,Ward issues and patient-linked dispensing,Very high,IW4,Authorized ward issue audit retain ho,Discovery / proposed
+UC-065,Pharmacy and medical supply,Cold-chain medicine distributor,IP-05,Temperature evidence and quarantine,Very high,IW4,Excursion lot release expert approval mangay,Discovery / proposed
+UC-066,Pharmacy and medical supply,Medical devices distributor,IP-05,UDI/serial and installed asset warranty,Very high,IW4,Serial recall recipient list trace ho,Discovery / proposed
+UC-067,Pharmacy and medical supply,Surgical consumables distributor,IP-05,Sterile lot and expiry control,Very high,IW4,Damaged sterile pack saleable return na ho,Discovery / proposed
+UC-068,Pharmacy and medical supply,Veterinary pharmacy,IP-05,Species-specific catalogue and prescriber rules,Very high,IW4,Configured restricted category authorized approval mangay,Discovery / proposed
+UC-069,Pharmacy and medical supply,Compounding pharmacy,IP-05,"Formula, ingredient genealogy and pharmacist review",Very high,IW4,Released compound approved formula version rakhe,Discovery / proposed
+UC-070,Pharmacy and medical supply,Home medical equipment provider,IP-05,"Rental, consumables and service visits",Very high,IW4,Rental asset ownership sale invoice se na badle,Discovery / proposed
+UC-071,Discrete manufacturing,Metal fabrication,IP-09,Drawing revision and job routing,High,IW3,Released job drawing revision immutable ho,Discovery / proposed
+UC-072,Discrete manufacturing,Machine assembly,IP-09,Multi-level BOM and finished serial,High,IW3,Finished machine all component serials trace kare,Discovery / proposed
+UC-073,Discrete manufacturing,Electrical panel manufacturing,IP-09,Circuit BOM and FAT checklist,High,IW3,Failed FAT final dispatch block kare,Discovery / proposed
+UC-074,Discrete manufacturing,Furniture manufacturing,IP-09,"Cut lists, upholstery variants and job cost",High,IW3,Approved fabric variant production order se match ho,Discovery / proposed
+UC-075,Discrete manufacturing,Apparel manufacturing,IP-09,Size-colour matrix and cutting yield,High,IW3,Cut input output/remnant balance reconcile ho,Discovery / proposed
+UC-076,Discrete manufacturing,Footwear manufacturing,IP-09,Size pairs and component BOM,High,IW3,Unpaired output finished sale stock na bane,Discovery / proposed
+UC-077,Discrete manufacturing,Electronics assembly,IP-09,Component lots and test results,High,IW3,Failed test unit quarantine ho,Discovery / proposed
+UC-078,Discrete manufacturing,Plastic injection moulding,IP-09,"Mould cycle, cavity and regrind",High,IW3,Regrind approved recipe limit exceed na kare,Discovery / proposed
+UC-079,Discrete manufacturing,Packaging carton manufacturing,IP-09,"Die, artwork and sheet yield",High,IW3,Artwork approval ke baghair production release na ho,Discovery / proposed
+UC-080,Discrete manufacturing,Jewellery workshop,IP-09,"Metal purity, weight and customer-owned material",High,IW3,Fine-metal weight custody ledger se reconcile ho,Discovery / proposed
+UC-081,Process manufacturing,Food sauce manufacturing,IP-10,"Formula batches, pH tests and packaging runs",High,IW3,QA-held bulk lot pack/ship na ho,Discovery / proposed
+UC-082,Process manufacturing,Spice blending,IP-10,Ingredient lots and allergen cross-contact,High,IW3,Blend all input lots se trace ho,Discovery / proposed
+UC-083,Process manufacturing,Dairy processing,IP-10,"Milk solids, yield and chilled batches",High,IW3,Mass balance tolerance exception raise kare,Discovery / proposed
+UC-084,Process manufacturing,Beverage bottling,IP-10,Syrup/water formulation and filling loss,High,IW3,Bulk-to-bottle output/variance reconcile ho,Discovery / proposed
+UC-085,Process manufacturing,Edible oil packing,IP-10,Bulk tank receipt and packaging yield,High,IW3,Tank issue and packed litres reconcile hon,Discovery / proposed
+UC-086,Process manufacturing,Cosmetics manufacturing,IP-10,Formula revision and batch quality,High,IW3,Unapproved formula change release na ho,Discovery / proposed
+UC-087,Process manufacturing,Detergent manufacturing,IP-10,Concentration and variable batch size,High,IW3,Scaled ingredients approved precision follow karen,Discovery / proposed
+UC-088,Process manufacturing,Paint manufacturing,IP-10,Colour formula and tint adjustments,High,IW3,Adjustment retained batch cost/genealogy preserve kare,Discovery / proposed
+UC-089,Process manufacturing,Chemical blending,IP-10,Hazard classifications and COA,High,IW3,COA approval ke baghair restricted dispatch na ho,Discovery / proposed
+UC-090,Process manufacturing,Pharmaceutical manufacturing,IP-10,Validated batch record and release controls,High,IW3,Qualified-person/local gate ke baghair production-ready label na mile,Discovery / proposed
+UC-091,Technical services,Instrumentation calibration,IP-11,"Reference standard, results and certificate revision",High,IW1,Expired reference instrument job release block kare,Discovery / proposed
+UC-092,Technical services,Industrial automation integrator,IP-11,"PLC project, commissioning and acceptance",High,IW1,Unaccepted commissioning milestone bill policy follow kare,Discovery / proposed
+UC-093,Technical services,HVAC service,IP-11,Installed asset and preventive maintenance,High,IW1,Missed visit exception owner ko assign ho,Discovery / proposed
+UC-094,Technical services,Fire safety maintenance,IP-11,Asset inspections and defect closure,High,IW1,Critical defect unapproved close na ho,Discovery / proposed
+UC-095,Technical services,Elevator maintenance,IP-11,Unit history and periodic service,High,IW1,Out-of-service asset alert workflow preserve ho,Discovery / proposed
+UC-096,Technical services,Solar installation and AMC,IP-11,"Site design, commissioning and generation evidence",High,IW1,Approved design installed equipment se reconcile ho,Discovery / proposed
+UC-097,Technical services,Water treatment service,IP-11,"Plant asset, consumables and lab readings",High,IW1,Out-of-range result escalation create kare,Discovery / proposed
+UC-098,Technical services,Generator service,IP-11,Runtime meter and parts consumption,High,IW1,Meter rollback exception flag ho,Discovery / proposed
+UC-099,Technical services,IT managed service provider,IP-11,"Contracts, tickets and service entitlement",High,IW1,Unauthorized customer asset access reject ho,Discovery / proposed
+UC-100,Technical services,Appliance repair network,IP-11,"Pickup serial, estimate and repair warranty",High,IW1,Customer-owned device inventory sale stock na bane,Discovery / proposed
+UC-101,Professional services,Management consultancy,IP-12,"SOW, milestones and approved timesheets",Medium,IW1,Unapproved hours invoice mein na aayen,Discovery / proposed
+UC-102,Professional services,Engineering consultancy,IP-12,Deliverable revisions and design review,Medium,IW1,Superseded drawing delivery clearly mark ho,Discovery / proposed
+UC-103,Professional services,Accounting practice,IP-12,"Engagements, client periods and workpapers",Medium,IW1,Client A workpaper client B se inaccessible ho,Discovery / proposed
+UC-104,Professional services,Legal practice,IP-12,Matter budgets and restricted document access,Medium,IW1,Confidential matter role check server par enforce ho,Discovery / proposed
+UC-105,Professional services,Marketing agency,IP-12,"Retainers, campaigns and reimbursable spend",Medium,IW1,Retainer drawdown amount reconcile ho,Discovery / proposed
+UC-106,Professional services,Software development agency,IP-12,"Sprints, change requests and project billing",Medium,IW1,Out-of-scope work approval evidence rakhe,Discovery / proposed
+UC-107,Professional services,Recruitment agency,IP-12,"Vacancies, placements and guarantee claims",Medium,IW1,Replacement guarantee duplicate fee na banaye,Discovery / proposed
+UC-108,Professional services,Training company,IP-12,"Sessions, attendance and trainer costs",Medium,IW1,Cancelled session revenue policy correct ho,Discovery / proposed
+UC-109,Professional services,Architectural studio,IP-12,Design stages and client acceptance,Medium,IW1,Stage invoice accepted deliverable se linked ho,Discovery / proposed
+UC-110,Professional services,Translation agency,IP-12,"Word counts, language pair and freelancer cost",Medium,IW1,Approved word-count version billing derive kare,Discovery / proposed
+UC-111,Retail chains,Grocery store,IP-13,"Expiry, scales and high-volume POS",Medium,IW1,Weighted barcode quantity correct decode ho,Discovery / proposed
+UC-112,Retail chains,Fashion retail,IP-13,Size-colour variants and exchanges,Medium,IW1,Exchange stock and price difference reconcile ho,Discovery / proposed
+UC-113,Retail chains,Electronics retail,IP-13,Serial warranty and bundles,Medium,IW1,Serial sale customer warranty se link ho,Discovery / proposed
+UC-114,Retail chains,Mobile phone retail,IP-13,IMEI tracking and trade-ins,Medium,IW1,Duplicate active IMEI sale reject ho,Discovery / proposed
+UC-115,Retail chains,Hardware retail,IP-13,Piece/box/length UOM and contractor credit,Medium,IW1,Fractional length stock precision retain ho,Discovery / proposed
+UC-116,Retail chains,Bookshop,IP-13,"ISBN, editions and publisher returns",Medium,IW1,Edition-specific return stock correct ho,Discovery / proposed
+UC-117,Retail chains,Beauty and cosmetics retail,IP-13,Shade variants and hygiene return policy,Medium,IW1,Opened-return stock saleable na ho,Discovery / proposed
+UC-118,Retail chains,Sports goods retail,IP-13,Size assortment and equipment serials,Medium,IW1,Variant reservation exact SKU consume kare,Discovery / proposed
+UC-119,Retail chains,Optical store,IP-13,Prescription order and lens workshop,Medium,IW1,Prescription data cashier export se protected ho,Discovery / proposed
+UC-120,Retail chains,Gift and toy retail,IP-13,"Kits, seasonal promotions and gift cards",Medium,IW1,Gift-card liability redemption se reconcile ho,Discovery / proposed
+UC-121,Rental and hire,Construction equipment hire,IP-14,"Meter hours, breakdown and site delivery",High,IW3,Off-hire date billing stop policy follow kare,Discovery / proposed
+UC-122,Rental and hire,Vehicle rental,IP-14,"Booking, inspection and fuel adjustment",High,IW3,Pre/post condition evidence linked ho,Discovery / proposed
+UC-123,Rental and hire,Event equipment hire,IP-14,Kit availability and missing returns,High,IW3,Kit component shortage final settlement mein aaye,Discovery / proposed
+UC-124,Rental and hire,Medical equipment rental,IP-14,"Sanitization, maintenance and patient delivery",High,IW3,Unsanitized returned unit available na ho,Discovery / proposed
+UC-125,Rental and hire,IT equipment rental,IP-14,Serial custody and data-wipe checklist,High,IW3,Data-wipe incomplete device dispatch block ho,Discovery / proposed
+UC-126,Rental and hire,Tool hire,IP-14,Short-duration booking and deposits,High,IW3,Late-return charge approved tariff use kare,Discovery / proposed
+UC-127,Rental and hire,Uniform and linen hire,IP-14,Laundry cycles and loss ledger,High,IW3,Customer custody count stock se reconcile ho,Discovery / proposed
+UC-128,Rental and hire,Scaffolding hire,IP-14,Component quantities and staged return,High,IW3,Partial return rental quantity correctly reduce kare,Discovery / proposed
+UC-129,Rental and hire,Storage unit rental,IP-14,Unit allocation and recurring billing,High,IW3,Same unit overlapping confirmed contract reject ho,Discovery / proposed
+UC-130,Rental and hire,Portable cabin hire,IP-14,"Site dispatch, installation and return",High,IW3,Site commissioning and hire start linked hon,Discovery / proposed
+UC-131,Construction and property projects,General contractor,IP-12,"BOQ, work certificates and retention",High,IW4,Certified quantity ceiling exceed na ho,Discovery / proposed
+UC-132,Construction and property projects,MEP contractor,IP-12,Material take-off and site progress,High,IW4,Issued material project budget se trace ho,Discovery / proposed
+UC-133,Construction and property projects,Civil subcontractor,IP-12,Measured work and variation orders,High,IW4,Unapproved variation certified bill mein na aaye,Discovery / proposed
+UC-134,Construction and property projects,Interior fit-out company,IP-12,Room/zone BOQ and snag closure,High,IW4,Unclosed critical snag handover block kare,Discovery / proposed
+UC-135,Construction and property projects,Road works contractor,IP-12,Chainage progress and equipment cost,High,IW4,Measured progress location evidence retain kare,Discovery / proposed
+UC-136,Construction and property projects,Real estate developer,IP-12,Unit booking and staged collections,High,IW4,Same unit dual confirmed sale reject ho,Discovery / proposed
+UC-137,Construction and property projects,Facilities management company,IP-12,Site SLA and multi-trade jobs,High,IW4,Job site entitlement sahi contract use kare,Discovery / proposed
+UC-138,Construction and property projects,Property maintenance contractor,IP-12,Tenant requests and landlord approvals,High,IW4,Expense approval payer mapping preserve ho,Discovery / proposed
+UC-139,Construction and property projects,Landscaping contractor,IP-12,Plant stock and recurring site work,High,IW4,Replacement plant job cost record kare,Discovery / proposed
+UC-140,Construction and property projects,Specialist commissioning contractor,IP-12,Test packs and system handover,High,IW4,Failed test closure authorized retest mangay,Discovery / proposed
+UC-141,Logistics and warehousing,Third-party warehouse,IP-08,Customer-owned stock and storage charges,High,IW4,Client stock ownership valuation se segregate ho,Discovery / proposed
+UC-142,Logistics and warehousing,Cold storage warehouse,IP-08,Temperature zones and pallet billing,High,IW4,Excursion stock quarantine owner ko visible ho,Discovery / proposed
+UC-143,Logistics and warehousing,Freight forwarder,IP-08,Shipment milestones and agent costs,High,IW4,House/master shipment charges reconcile hon,Discovery / proposed
+UC-144,Logistics and warehousing,Courier operator,IP-08,Parcel scans and cash-on-delivery,High,IW4,COD collected cash customer payable se reconcile ho,Discovery / proposed
+UC-145,Logistics and warehousing,Trucking fleet,IP-08,"Trip cost, dispatch and driver advances",High,IW4,Trip advance settlement balance explicit ho,Discovery / proposed
+UC-146,Logistics and warehousing,Last-mile delivery,IP-08,"Routes, failed attempts and proof of delivery",High,IW4,Duplicate POD webhook second delivery na banaye,Discovery / proposed
+UC-147,Logistics and warehousing,Container depot,IP-08,Container condition and detention dates,High,IW4,Gate-in/out chronology validated ho,Discovery / proposed
+UC-148,Logistics and warehousing,Customs clearance agency,IP-08,Declaration tasks and client disbursements,High,IW4,Client funds service revenue se separately track hon,Discovery / proposed
+UC-149,Logistics and warehousing,Cross-dock operator,IP-08,Inbound-to-outbound allocation,High,IW4,Unreceived quantity outbound available na ho,Discovery / proposed
+UC-150,Logistics and warehousing,Spare-parts fulfilment hub,IP-08,SLA pick/pack and serial dispatch,High,IW4,Scan mismatch shipment close block kare,Discovery / proposed
+UC-151,Agriculture and primary supply,Crop farm,IP-10,"Season fields, inputs and harvest cost",High,IW5,Field input issues season cost se link hon,Discovery / proposed
+UC-152,Agriculture and primary supply,Seed processor,IP-10,Germination tests and certified lots,High,IW5,Failed-quality lot commercial release na ho,Discovery / proposed
+UC-153,Agriculture and primary supply,Fertilizer distributor,IP-10,"Grade, lot and seasonal credit",High,IW5,Grade substitution approval required ho,Discovery / proposed
+UC-154,Agriculture and primary supply,Agrochemical distributor,IP-10,Restricted products and license checks,High,IW5,Ineligible buyer sale block ho,Discovery / proposed
+UC-155,Agriculture and primary supply,Dairy farm,IP-10,Animal cohort and milk collection,High,IW5,Milk volume quality and payment reconcile hon,Discovery / proposed
+UC-156,Agriculture and primary supply,Poultry operation,IP-10,"Flock feed, mortality and output",High,IW5,Flock input/output variance visible ho,Discovery / proposed
+UC-157,Agriculture and primary supply,Livestock trading,IP-10,"Animal identity, weight and health documents",High,IW5,Animal identity transfer audit retain ho,Discovery / proposed
+UC-158,Agriculture and primary supply,Fish processing,IP-10,"Catch lot, weight yield and cold chain",High,IW5,Processed output source catch se trace ho,Discovery / proposed
+UC-159,Agriculture and primary supply,Fruit packhouse,IP-10,"Grower intake, grade and pack-out",High,IW5,Grower settlement graded output se reconcile ho,Discovery / proposed
+UC-160,Agriculture and primary supply,Agricultural equipment dealer,IP-10,"Machine serial, seasonal service and spares",High,IW5,Warranty entitlement serial history se derive ho,Discovery / proposed
+UC-161,Healthcare and education operations,Outpatient clinic operations,IP-12,"Appointments, billing and consent-bound records",Very high,IW5,Clinical data role boundary enforce ho,Discovery / proposed
+UC-162,Healthcare and education operations,Diagnostic lab operations,IP-12,Sample chain and result approval,Very high,IW5,Unapproved result customer portal par na jaye,Discovery / proposed
+UC-163,Healthcare and education operations,Dental clinic operations,IP-12,Treatment estimates and staged billing,Very high,IW5,Consent/version treatment estimate se linked ho,Discovery / proposed
+UC-164,Healthcare and education operations,Physiotherapy practice,IP-12,Session packages and appointment entitlement,Very high,IW5,Same session double redeem na ho,Discovery / proposed
+UC-165,Healthcare and education operations,Private school operations,IP-12,"Admission, term fees and guardian accounts",Very high,IW5,Guardian sirf authorized child records dekhe,Discovery / proposed
+UC-166,Healthcare and education operations,Vocational institute,IP-12,"Course batches, lab assets and assessments",Very high,IW5,Batch fee entitlement correctly apply ho,Discovery / proposed
+UC-167,Healthcare and education operations,University continuing education,IP-12,Course enrolments and sponsored billing,Very high,IW5,Sponsor/learner payer allocations reconcile hon,Discovery / proposed
+UC-168,Healthcare and education operations,Coaching centre,IP-12,Class scheduling and fee arrears,Very high,IW5,Cancelled class make-up entitlement preserve ho,Discovery / proposed
+UC-169,Healthcare and education operations,Childcare centre,IP-12,"Attendance, pickup authorization and billing",Very high,IW5,Unauthorized pickup actor blocked/audited ho,Discovery / proposed
+UC-170,Healthcare and education operations,Home care agency,IP-12,"Care visits, clinician roster and service billing",Very high,IW5,Clinician credential/assignment gate enforce ho,Discovery / proposed
+UC-171,Digital commerce and subscriptions,Direct-to-consumer ecommerce,IP-13,Web catalogue and distributed stock reservation,High,IW4,Duplicate checkout request one order create kare,Discovery / proposed
+UC-172,Digital commerce and subscriptions,Marketplace seller,IP-13,"Channel fees, returns and payout settlement",High,IW4,Gross order fees and net payout reconcile hon,Discovery / proposed
+UC-173,Digital commerce and subscriptions,B2B wholesale portal,IP-13,Account-specific prices and credit approval,High,IW4,Anonymous user contracted price na dekhe,Discovery / proposed
+UC-174,Digital commerce and subscriptions,Subscription box merchant,IP-13,Recurring assortment and skipped cycles,High,IW4,Paused cycle stock dispatch na kare,Discovery / proposed
+UC-175,Digital commerce and subscriptions,Digital goods seller,IP-13,License entitlement and delivery evidence,High,IW4,Refund policy entitlement state update kare,Discovery / proposed
+UC-176,Digital commerce and subscriptions,SaaS subscription operator,IP-13,"Seats, metered usage and billing adjustments",High,IW4,Meter replay double usage charge na kare,Discovery / proposed
+UC-177,Digital commerce and subscriptions,Online course seller,IP-13,Course access and refund entitlement,High,IW4,Refunded purchase access policy reflect kare,Discovery / proposed
+UC-178,Digital commerce and subscriptions,Membership association,IP-13,"Renewal, dues and member categories",High,IW4,Lapsed member entitlement policy apply ho,Discovery / proposed
+UC-179,Digital commerce and subscriptions,Equipment-as-a-service provider,IP-13,Usage meter and minimum commitment,High,IW4,Counter reset billing exception raise kare,Discovery / proposed
+UC-180,Digital commerce and subscriptions,B2B procurement marketplace,IP-13,Principal/agent order and settlement roles,High,IW4,Commission and supplier payable reconcile hon,Discovery / proposed
+UC-181,Property and asset operations,Commercial property leasing,IP-14,"Unit leases, escalations and service charges",High,IW5,Escalation effective date contracted schedule follow kare,Discovery / proposed
+UC-182,Property and asset operations,Residential property management,IP-14,"Rent, deposits and repair approvals",High,IW5,Tenant deposit liability per lease reconcile ho,Discovery / proposed
+UC-183,Property and asset operations,Shopping mall management,IP-14,Unit rent and turnover-linked charges,High,IW5,Reported sales basis audited charge se link ho,Discovery / proposed
+UC-184,Property and asset operations,Coworking operator,IP-14,Desk/room booking and memberships,High,IW5,Room reservation overlap reject ho,Discovery / proposed
+UC-185,Property and asset operations,Parking operator,IP-14,Permit allocation and recurring billing,High,IW5,One permit entitlement configured vehicle policy follow kare,Discovery / proposed
+UC-186,Property and asset operations,Self-storage operator,IP-14,"Unit occupancy, access and overdue accounts",High,IW5,Occupied unit double allocate na ho,Discovery / proposed
+UC-187,Property and asset operations,Asset management company,IP-14,"Fixed assets, custody and verification",High,IW5,Physical count exception custodian ko assign ho,Discovery / proposed
+UC-188,Property and asset operations,Industrial estate management,IP-14,Unit services and shared-utility allocation,High,IW5,Shared expense allocation totals equal source hon,Discovery / proposed
+UC-189,Property and asset operations,HOA/community management,IP-14,Owner dues and common-area spending,High,IW5,Owner statement approved ledger se reconcile ho,Discovery / proposed
+UC-190,Property and asset operations,Serviced apartment operator,IP-14,"Stay booking, deposits and housekeeping",High,IW5,Dirty/unavailable unit check-in block kare,Discovery / proposed
+UC-191,Nonprofit and community services,Charitable foundation,IP-12,Restricted grants and programme budgets,High,IW5,Restricted funds unrelated project par spend na hon,Discovery / proposed
+UC-192,Nonprofit and community services,Relief distribution NGO,IP-12,Beneficiary entitlements and stock kits,High,IW5,Same entitlement duplicate distribution reject ho,Discovery / proposed
+UC-193,Nonprofit and community services,Donor-funded project office,IP-12,Grant milestones and expenditure claims,High,IW5,Claim expense evidence fund restriction follow kare,Discovery / proposed
+UC-194,Nonprofit and community services,Community welfare trust,IP-12,Member assistance approvals and audit,High,IW5,Applicant apni payment approval khud na de,Discovery / proposed
+UC-195,Nonprofit and community services,Religious institution administration,IP-12,"Donations, funds and facility expenses",High,IW5,Restricted donation purpose ledger retain ho,Discovery / proposed
+UC-196,Nonprofit and community services,Sports club,IP-12,"Membership, facilities and event fees",High,IW5,Member facility entitlement schedule respect kare,Discovery / proposed
+UC-197,Nonprofit and community services,Professional association,IP-12,"Dues, events and continuing education",High,IW5,Event certificate attendance evidence se issue ho,Discovery / proposed
+UC-198,Nonprofit and community services,Arts and cultural organisation,IP-12,Production budgets and ticket settlement,High,IW5,Ticket provider payout gross/fee reconcile ho,Discovery / proposed
+UC-199,Nonprofit and community services,Research foundation,IP-12,Grant cost centres and asset custody,High,IW5,Shared asset allocation approved basis use kare,Discovery / proposed
+UC-200,Nonprofit and community services,Volunteer service network,IP-12,"Volunteer skills, shifts and programme costs",High,IW5,Sensitive beneficiary data minimum role ko mile,Discovery / proposed

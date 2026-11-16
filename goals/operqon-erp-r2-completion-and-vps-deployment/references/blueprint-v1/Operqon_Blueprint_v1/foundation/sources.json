@@ -1,0 +1,18 @@
+[
+  {
+    "id": "CORE-S01",
+    "title": "IFRS for SMEs Accounting Standard",
+    "url": "https://www.ifrs.org/issued-standards/ifrs-for-smes/",
+    "accessed": "2026-11-06",
+    "supports": "2025 edition effective periods beginning1Jan2027; local adoption separate",
+    "status": "official foundational research"
+  },
+  {
+    "id": "CORE-S02",
+    "title": "ISO3166 Country Codes",
+    "url": "https://www.iso.org/iso-3166-country-codes.html",
+    "accessed": "2026-11-06",
+    "supports": "Country/subdivision code system; maintenance and OBP; not legal/tax readiness",
+    "status": "official foundational research"
+  }
+]

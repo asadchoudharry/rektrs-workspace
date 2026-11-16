@@ -1,0 +1,49 @@
+jurisdiction,priority,research_depth,planned_scope,regulatory_exchange_or_discovery,implementation_status
+Pakistan federal,P0,R,"PKR, NTN/STRN, goods tax, withholding, returns, audit","FBR digital invoice licensed integrator route; FBR IRIS filing ko alag capability [REG-01,02,03]",proposed_not_verified_built
+Pakistan Punjab,P0,R limited,"Service tax, restaurant classification, province mapping",PRA E-IMS notification/API aur current rate eligibility verify; old rule ko current full spec na samjhein [REG-04],proposed_not_verified_built
+Pakistan Sindh,P1,D,SRB service tax mappings,"Provincial registration, POS/API access, return rules confirm",proposed_not_verified_built
+Pakistan Khyber Pakhtunkhwa,P1,R limited,KP service tax,Restaurant IMRS/RIMS scope aur current official onboarding validate [REG-05],proposed_not_verified_built
+Pakistan Balochistan / ICT,P1,D,Service tax aur federal-territory split,Relevant authority aur taxable-service place-of-supply review,proposed_not_verified_built
+Saudi Arabia,P0,R,"SAR, Arabic invoice, VAT, notes, fiscal archives","ZATCA phase 1/2 taxpayer wave, standard clearance vs simplified reporting [REG-06,07]",proposed_not_verified_built
+United Arab Emirates,P1,R,"AED, VAT/CT mappings, Arabic/English documents","MoF/FTA Peppol 5-corner through accredited provider; amended deadlines [REG-08,09,10]",proposed_not_verified_built
+Oman,P1,R,"OMR precision, VAT, Arabic/English",Fawtara 5-corner; latest FAQ April/October 2027 eligibility states; conflicting older wording and legal confirmation pending [REG-11],proposed_not_verified_built
+Bahrain,P1,R limited,"BHD precision, VAT, inclusive pricing",NBR tax rules; e-invoice mandate/API must be separately researched [REG-12],proposed_not_verified_built
+Qatar,P1,R limited,"QAR, income/withholding/excise templates","GTA currently says VAT not applied; do not charge blanket GCC VAT [REG-13,14]",proposed_not_verified_built
+Kuwait,P1,D,"KWD precision, local accounting, tax profiles",Ministry of Finance current taxes/e-invoicing/mandates verify; no GCC-rate assumption,proposed_not_verified_built
+Egypt,P1,R,"EGP, Arabic, tax codes, B2B/B2C separation","ETA eInvoice + eReceipt separate APIs, document schemas, signatures and device registration [REG-15]",proposed_not_verified_built
+Jordan,P1,R foundational,"JOD precision, sales tax, Arabic",ISTD national e-invoicing / JoFotara linking and latest manuals [REG-16],proposed_not_verified_built
+Morocco,P2,R limited,"MAD, French/Arabic, local chart/report mappings",TGR public invoice deposit verified; broader DGI B2B mandate and current specs separate discovery [REG-19],proposed_not_verified_built
+Tunisia,P2,R historical,"TND precision, French/Arabic",Official historical VAT code gives e-invoice framework; 2026 expanded scope requires current law validation [REG-20],proposed_not_verified_built
+Algeria,P2,D,"DZD, French/Arabic, accounting scheme","DGI invoicing, fiscal reports and possible sector systems validate",proposed_not_verified_built
+Lebanon,P2,D,LBP + transaction/reporting currency policies,"FX/tax point, invoice language and local reporting require accountant review",proposed_not_verified_built
+Iraq federal,P2,D,"IQD precision, Arabic, withholding",Federal vs Kurdistan scope and official tax mechanisms validate,proposed_not_verified_built
+Iraq Kurdistan,P2,D,Region-specific entity and reporting,"Distinct administration, permitted language/currency and filings review",proposed_not_verified_built
+Palestine,P2,D,Local registrations and multi-currency,Authority access and jurisdiction/transaction mapping validate,proposed_not_verified_built
+Libya,P2,D,"LYD precision, Arabic and local reports",Tax/invoice/payment and transfer restrictions review,proposed_not_verified_built
+Mauritania,P2,D,"MRU, French/Arabic","Tax registrations, statutory invoice and returns review",proposed_not_verified_built
+Djibouti,P2,D,"DJF precision, French/Arabic",Tax and accounting requirements review,proposed_not_verified_built
+Sudan,P2,D,"SDG, Arabic","Tax, operating constraints, residency and payments review",proposed_not_verified_built
+Yemen,P2,D,"YER, Arabic","Operational jurisdiction, authority and payment constraints review",proposed_not_verified_built
+Syria,P2,D,"SYP, Arabic","Current legal/operating restrictions, supplier/provider availability review",proposed_not_verified_built
+Iran,P3,D,"IRR/toman display distinction, Persian RTL",Fiscal and transaction restrictions plus local connector feasibility review,proposed_not_verified_built
+Türkiye,P2,D,"TRY, Turkish statutory reports",GIB e-Fatura/e-Arşiv/e-Defter capability and integrator review,proposed_not_verified_built
+United States federal,P3,R,"USD, entity tax profile, W-9/vendor reporting","IRS authority; IRS IRIS information returns A2A/TCC/ATS is a real distinct integration [REG-21,22]",proposed_not_verified_built
+United States states/localities,P3,R sample,"Sales/use tax, nexus, exemptions, sourcing",State/local scope; California official nexus guidance illustrates complexity [REG-23],proposed_not_verified_built
+United Kingdom,P3,R,"GBP, VAT, statutory/accountant exports",HMRC MTD compatible software and scoped authority; income tax separate [REG-24],proposed_not_verified_built
+European Union framework,P3,R,"EUR/other currencies, VAT/OSS/IOSS",ViDA cross-border B2B reporting from July2030; member-state packs still required [REG-25],proposed_not_verified_built
+Germany,P3,D,"DE chart/reporting, VAT",EN16931 plus current domestic e-invoice and archive rules review,proposed_not_verified_built
+France,P3,D,"FR chart/reporting, VAT",Current approved platform/exchange and e-reporting scope validate,proposed_not_verified_built
+Italy,P3,D,"IT chart/reporting, VAT",SDI invoice exchange/current formats validate,proposed_not_verified_built
+Spain,P3,D,ES tax/reporting,"SII, VERI*FACTU and applicable regional differences validate",proposed_not_verified_built
+Poland,P3,D,"PLN, VAT and filings","KSeF taxpayer cohort, API/schema/security validate",proposed_not_verified_built
+India,P3,R limited,"INR, GST, GSTIN, HSN/SAC",IRP e-invoicing eligibility/reporting time limits and e-waybill separate [REG-26],proposed_not_verified_built
+Bangladesh,P3,D,"BDT, VAT/withholding",NBR EFD/SDC/e-invoice/returns and local requirements review,proposed_not_verified_built
+Malaysia,P3,D,"MYR, SST",LHDN MyInvois cohort and API/current exemptions review,proposed_not_verified_built
+Singapore,P3,D,"SGD, GST",IRAS + InvoiceNow / provider-specific scope validate,proposed_not_verified_built
+Indonesia,P3,D,"IDR, VAT",DJP/Coretax/e-Faktur current integration rules validate,proposed_not_verified_built
+Australia,P3,D,"AUD, GST/BAS",ATO/Peppol e-invoice and payroll STP separate review,proposed_not_verified_built
+New Zealand,P3,D,"NZD, GST",Inland Revenue + Peppol capability and privacy review,proposed_not_verified_built
+Canada,P3,D,"CAD, GST/HST/provincial tax",CRA plus provincial and Quebec separate requirements,proposed_not_verified_built
+South Africa,P3,D,"ZAR, VAT",SARS filings/invoice/archive and payroll separate,proposed_not_verified_built
+Kenya,P3,D,"KES, VAT",KRA eTIMS onboarding and operating model review,proposed_not_verified_built
+Nigeria,P3,D,"NGN, VAT/withholding",Current tax authority/e-invoice obligations and entity scope review,proposed_not_verified_built

@@ -1,0 +1,59 @@
+{
+  "status": "DRAFT_NOT_PUBLISHED",
+  "title": "IQRS Workspace",
+  "android": {
+    "application_id_proposed": "com.rektrs.iqrs.workspace",
+    "flutter_flavor": "workspace",
+    "version_name": null,
+    "version_code": null
+  },
+  "roles": [
+    "teacher",
+    "admin"
+  ],
+  "brand": "IQRS",
+  "school_website": "https://iqrs.edu.pk",
+  "developer": {
+    "legal_name": "Rektrs Private Limited",
+    "play_developer_name": "REKTRS PRIVATE LIMITED",
+    "credit": "Developed by REKTRS PRIVATE LIMITED",
+    "website": "https://rektrs.com",
+    "support_email": "support@rektrs.com",
+    "account_email_public": "asadchoudhary@rektrs.com",
+    "support_phone": "+92 318 0735877",
+    "address": "House No. 4, Street No. 1, Riaz Colony, Bahawalpur, Pakistan",
+    "registration": {
+      "SECP": "0168453",
+      "DUNS": "983893253"
+    },
+    "founder_ceo": "Asad Choudhary",
+    "sources": [
+      "https://rektrs.com/media-kit",
+      "https://play.google.com/store/apps/details?id=co.median.android.xllbara"
+    ]
+  },
+  "play_store": {
+    "category_proposed": "Education",
+    "title": "IQRS Workspace",
+    "short_description_draft": "Class operations, attendance, assignments and approvals for IQRS staff.",
+    "full_description_draft": "IQRS Workspace is the professional school workspace designed for authorized IQRS teachers and administrators. Planned role-based workflows include class management, live class attendance, assignments, examinations, approvals and administrative operations. Access and available capabilities depend on the IQRS school account, permissions and the features verified in each release. Developed by REKTRS PRIVATE LIMITED.",
+    "privacy_policy_url": null,
+    "content_rating": null,
+    "target_audience": null,
+    "data_safety": null,
+    "support_email": "support@rektrs.com",
+    "developer_website": "https://rektrs.com",
+    "audience_tagline": "For Teachers & Administrators"
+  },
+  "release_gate": "Require actual API, role and native-app verification; privacy, Play Console legal info, Families and signed AAB review before public submission",
+  "audience_tagline": "For Teachers & Administrators",
+  "planned_capabilities": [
+    "Class management",
+    "Live class attendance",
+    "Assignments",
+    "Examinations",
+    "Approvals",
+    "Administrative operations"
+  ],
+  "feature_verification_status": "PROPOSED_NOT_VERIFIED_IN_PRODUCTION_NATIVE_APP"
+}

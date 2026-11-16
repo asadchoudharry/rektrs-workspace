@@ -1,0 +1,1 @@
+Correction for report.md §3: the phrase "Newer/特殊 regions" contains stray non-English characters introduced in drafting; it should read "Newer or special-purpose regions (e.g. Chuncheon for A1, US Government/DoD realms, Serbia's OC20-realm Jovanovac region, the newest single-AD regions)". All other content in report.md is as intended.

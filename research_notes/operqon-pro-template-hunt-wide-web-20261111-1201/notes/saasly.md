@@ -1,0 +1,11 @@
+# Saasly — Wrapmarket
+- URL: https://wrapmarket.com/item/saasly-saas-business-admin-dashboard-template-W0D1617T5
+- Read: 2026-11-11, VERIFIED LIVE (research window) + index fetch
+- Seller: codeflicks; Marketplace: Wrapmarket (formerly WrapBootstrap)
+- Price: $24 Standard License (live purchase button); support extension +$6
+- Format: React Router 7 / React 18, TypeScript, Vite, Tailwind CSS 3, Recharts, Lucide. Download listed as 537.8 KB .zip — unusually small, flag.
+- Version 1.0.0, initial release May 21, 2026; Reviews tab live: "No customer reviews yet"; no sales count shown. 6-month support, 30-day refund eligibility, "Quality reviewed by Wrapmarket"
+- Included (product page text): 80+ pages. Portal: auth (login/social/SSO, register, forgot/reset, 2FA, email verification, lock), main dashboard (KPIs, MRR, plan distribution, system health), billing (current plan, usage meters, upgrade/downgrade, plan comparison, payment methods, invoice list + detail/PDF preview, payment history, coupons/credits), members/teams/RBAC, profile/account/settings (branding, custom domain, notifications, SSO/SCIM), support (help center, KB, submit ticket, my tickets, live chat), audit log. NO dedicated documents/files page evidenced (only AI search across documents, invoice PDF preview).
+- Console / Super Admin: all tenants table with impersonation, tenant detail, MRR dashboard for operator, subscription analytics funnel, plan manager, coupon manager, email template editor, feature flags, maintenance mode scheduler. Plus revenue reports MRR/ARR/ARPU/NRR, cohort retention, system health on main dashboard. Provisioning queue NOT named (closest: pending invitations, maintenance scheduler, feature flags).
+- Landing: only pricing page (monthly/annual toggle) + blog list/post — no hero/features/testimonials/FAQ landing evidenced.
+- Visual (live screenshot of preview): clean indigo/slate, Jakarta Sans/Inter, dense but tidy — polished generic SaaS, not distinctive. Dark mode tokens "ready to be activated" (not a finished dark theme claim).

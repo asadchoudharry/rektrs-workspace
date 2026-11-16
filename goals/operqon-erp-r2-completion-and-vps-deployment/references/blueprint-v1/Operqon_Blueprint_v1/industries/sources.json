@@ -1,0 +1,138 @@
+{
+  "research_date": "2026-11-06",
+  "scope": "Official product/standards research supporting proposed industry pack architecture; not evidence of Operqon production implementation",
+  "sources": [
+    {
+      "id": "IND-S01",
+      "title": "ERPNext — Serial and Batch",
+      "url": "https://docs.frappe.io/erpnext/serial-and-batch",
+      "publisher": "Frappe",
+      "accessed": "2026-11-06",
+      "evidence": "ERPNext documents serial and batch tracking and a version-16 enablement setting.",
+      "retrieval": "Full page opened; search content read",
+      "source_ref": "turn12view0",
+      "limitation": "Validate exact installed ERPNext v16 behavior and version pin before implementation."
+    },
+    {
+      "id": "IND-S02",
+      "title": "ERPNext — Serial and Batch Bundle",
+      "url": "https://docs.frappe.io/erpnext/serial-and-batch-bundle",
+      "publisher": "Frappe",
+      "accessed": "2026-11-06",
+      "evidence": "Per-transaction bundles and serial/batch stock constraints are documented.",
+      "retrieval": "Full page opened; search content read",
+      "source_ref": "turn12view1",
+      "limitation": "Operqon serial pairing, custody, recall and domain UX remain custom design scope."
+    },
+    {
+      "id": "IND-S03",
+      "title": "ERPNext — Bill Of Materials",
+      "url": "https://docs.frappe.io/erpnext/bill-of-materials",
+      "publisher": "Frappe",
+      "accessed": "2026-11-06",
+      "evidence": "Multi-level BOMs, manufacturing operations and quality inspection configuration are documented.",
+      "retrieval": "Full page opened; search content read",
+      "source_ref": "turn12view2",
+      "limitation": "This does not establish readiness for every process-manufacturing, validation or regulatory use case."
+    },
+    {
+      "id": "IND-S04",
+      "title": "ERPNext — Warranty Claim",
+      "url": "https://docs.frappe.io/erpnext/warranty-claim",
+      "publisher": "Frappe",
+      "accessed": "2026-11-06",
+      "evidence": "Serial-linked warranty and AMC status with claim resolution fields are documented.",
+      "retrieval": "Full page opened; search content read",
+      "source_ref": "turn12view3",
+      "limitation": "OEM recovery, recall, battery policy and regulated certificates need extra workflow design."
+    },
+    {
+      "id": "IND-S05",
+      "title": "ERPNext — Maintenance Schedule",
+      "url": "https://docs.frappe.io/erpnext/maintenance-schedule",
+      "publisher": "Frappe",
+      "accessed": "2026-11-06",
+      "evidence": "Periodic maintenance scheduling and related calendar events are documented.",
+      "retrieval": "Full page opened; search content read",
+      "source_ref": "turn12view4",
+      "limitation": "Field-service dispatch, access permits, offline evidence and certificate governance are additional scope."
+    },
+    {
+      "id": "IND-S06",
+      "title": "ERPNext — Timesheet",
+      "url": "https://docs.frappe.io/erpnext/timesheets",
+      "publisher": "Frappe",
+      "accessed": "2026-11-06",
+      "evidence": "Task/project hours and billable time records are documented.",
+      "retrieval": "Full page opened; search content read",
+      "source_ref": "turn12view5",
+      "limitation": "Billing caps, acceptance, overlap prevention and client approvals need implementation assessment."
+    },
+    {
+      "id": "IND-S07",
+      "title": "ERPNext — Project",
+      "url": "https://docs.frappe.io/erpnext/project",
+      "publisher": "Frappe",
+      "accessed": "2026-11-06",
+      "evidence": "Project tasks, costing, billing and financial tracking are documented.",
+      "retrieval": "Full page opened; search content read",
+      "source_ref": "turn12view6",
+      "limitation": "Does not certify construction contract, legal-matter or regulated grant accounting."
+    },
+    {
+      "id": "IND-S08",
+      "title": "Odoo — Point of Sale",
+      "url": "https://www.odoo.com/documentation/master/applications/sales/point_of_sale.html",
+      "publisher": "Odoo",
+      "accessed": "2026-11-06",
+      "evidence": "Official indexed documentation describes shop/restaurant POS, hardware, temporary outage behavior and restaurant workflows.",
+      "retrieval": "Official search-result content; full page open timed out",
+      "source_ref": "turn6search7",
+      "limitation": "Moving master documentation is a workflow benchmark, not a pinned implementation dependency or Operqon feature claim."
+    },
+    {
+      "id": "IND-S09",
+      "title": "Odoo saas-18.3 — Preparation display",
+      "url": "https://www.odoo.com/documentation/saas-18.3/applications/sales/point_of_sale/preparation.html",
+      "publisher": "Odoo",
+      "accessed": "2026-11-06",
+      "evidence": "Official indexed documentation describes POS-linked kitchen stations/stages and preparation progress.",
+      "retrieval": "Official search-result content; full page open timed out",
+      "source_ref": "turn6search4",
+      "limitation": "Research benchmark only; local printer/KDS/offline flows require hardware testing."
+    },
+    {
+      "id": "IND-S10",
+      "title": "Dynamics 365 — Rebate management module overview",
+      "url": "https://learn.microsoft.com/dynamics365/supply-chain/rebate-management/rebate-management-overview",
+      "publisher": "Microsoft",
+      "accessed": "2026-11-06",
+      "evidence": "Official indexed documentation separates rebate agreements, calculation, review and financial posting.",
+      "retrieval": "Official search-result content; full page access unavailable",
+      "source_ref": "turn7search6",
+      "limitation": "Operqon promotion rules and accounting treatment are proposed and require accountant-approved fixtures."
+    },
+    {
+      "id": "IND-S11",
+      "title": "What is the GS1 Traceability Standard?",
+      "url": "https://support.gs1.org/support/solutions/articles/43000734535-what-is-the-gs1-traceability-standard-",
+      "publisher": "GS1",
+      "accessed": "2026-11-06",
+      "evidence": "Critical Tracking Events and Key Data Elements form the traceability framework.",
+      "retrieval": "Full official page opened",
+      "source_ref": "turn25view0",
+      "limitation": "A traceability data model is not national regulatory certification."
+    },
+    {
+      "id": "IND-S12",
+      "title": "GS1 General Specifications — Release 24.0",
+      "url": "https://ref.gs1.org/standards/genspecs/24.0.0/",
+      "publisher": "GS1",
+      "accessed": "2026-11-06",
+      "evidence": "Versioned specification describes GTIN-associated lot, expiry and serial attributes and healthcare packaging distinctions.",
+      "retrieval": "Full versioned PDF opened",
+      "source_ref": "turn25view1",
+      "limitation": "Used as a versioned design reference, not claimed latest in 2026; check current edition and applicable regulator requirements before certification."
+    }
+  ]
+}

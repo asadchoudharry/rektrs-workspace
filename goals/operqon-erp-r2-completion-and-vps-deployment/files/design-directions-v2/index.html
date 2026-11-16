@@ -1,0 +1,58 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Operqon — Design Directions v2</title><style>
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:Inter,system-ui,sans-serif;background:#0B0F19;color:#E8EDF7;line-height:1.6}
+.wrap{max-width:1180px;margin:0 auto;padding:40px 24px 70px}h1{font-size:42px;letter-spacing:-.03em;line-height:1.05}h1 em{font-family:Georgia,serif;font-style:italic;font-weight:400;color:#EAB308}
+h2{font-size:26px;margin-top:44px;letter-spacing:-.02em}h3{font-size:17px;margin-top:22px}.sub{color:#94A3C8;max-width:760px;margin-top:10px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}@media(max-width:800px){.grid{grid-template-columns:1fr}}
+.card{background:#111827;border:1px solid #26314F;border-radius:16px;padding:20px}.card p{color:#A9B8D8;font-size:14px}
+figure{background:#111827;border:1px solid #26314F;border-radius:16px;overflow:hidden}figure img{width:100%;display:block}figcaption{padding:13px 15px;font-size:13px}figcaption b{color:white}figcaption span{color:#94A3C8}
+.tag{display:inline-block;background:#0F766E;color:white;padding:3px 9px;border-radius:99px;font-size:11px;font-weight:800;letter-spacing:.08em}
+.tag.gold{background:#713F12;color:#FDE68A}.note{background:#131E3A;border-radius:12px;padding:14px 16px;font-size:14px;color:#CBD5E1;margin-top:14px}
+a{color:#2DD4BF}table{width:100%;border-collapse:collapse;margin-top:12px}th,td{text-align:left;padding:9px;font-size:13px;border-bottom:1px solid #26314F}th{color:#7C8DB5;text-transform:uppercase;font-size:11px;letter-spacing:.1em}
+</style></head><body><div class="wrap">
+<div class="tag">OPERQON • DESIGN DIRECTIONS V2 • FOR OWNER PICK</div>
+<h1>Two Operqons.<br><em>Pick one world.</em></h1>
+<p class="sub">Static design artefacts only — no production code, no deploy. Every screen uses Operqon's real content: real module names, real console panels (Tenants, Identity, Billing, Provisioning, Pricing, Payments, Audit, Settings, Support), Pakistani sample companies and PKR amounts. No Frappe Desk chrome, no ERPNext identity anywhere. Open any PNG at full size, or open the matching HTML file to see the page live in your browser.</p>
+<div class="note"><b>How to decide (2 minutes):</b> Look at the two Home screenshots side by side first (Aurora vs Monolith). That feeling — dark command centre vs light calm workspace — carries through every other screen in that direction. Then check the Login page: that is the first thing every operator will see, every day.</div>
+
+<h2>Direction 1 — AURORA <span style="color:#2DD4BF">• Dark, premium, command-centre</span></h2>
+<div class="card"><p><b style="color:white">Design language:</b> Deep navy (#070B18) canvas with teal glow and gold serif-italic accents. Full left sidebar, gradient-lit KPI cards, dense tables with status pills, pill-shaped primary actions. Feels like a fintech operating system at night — confident, modern, unmistakably its own product. Best on desktop and for power users who live in the app all day.</p><p style="margin-top:8px"><b style="color:white">References (look only):</b> Dark premium ERP / fintech dashboards on Behance &amp; Dribbble; Linear-dark and Mercury-style dark SaaS; Awwwards dark product heroes. Content is 100% Operqon.</p><p style="margin-top:8px"><b style="color:white">Pairing:</b> Tenant Aurora ↔ Console Aurora share this language exactly — learn one, you know both.</p></div>
+<div class="grid">
+<figure><img src="tenant-aurora-home-1440.png" alt="Tenant Aurora Home desktop"><figcaption><b>Tenant — Aurora — Home / Dashboard</b> <span>• 1440×900 • HTML: tenant-aurora-home.html</span><br>KPIs, sales-vs-purchases chart, needs-attention queue, recent activity, quick actions for Al-Noor Traders.</figcaption></figure>
+<figure><img src="tenant-aurora-home-390.png" alt="Tenant Aurora Home mobile"><figcaption><b>Tenant — Aurora — Home (mobile)</b> <span>• 390×844</span><br>Same home, collapsed to bottom navigation — satisfies the mobile shell shot for this direction.</figcaption></figure>
+<figure><img src="tenant-aurora-invoices-1440.png" alt="Tenant Aurora Invoices"><figcaption><b>Tenant — Aurora — Sales Invoices (list)</b> <span>• 1440×900 • HTML: tenant-aurora-invoices.html</span><br>Filter pills, search, dense table, status pills, pagination, collection summary strip.</figcaption></figure>
+<figure><img src="tenant-aurora-invoice-form-1440.png" alt="Tenant Aurora Invoice Form"><figcaption><b>Tenant — Aurora — New Sales Invoice (form)</b> <span>• 1440×900 • HTML: tenant-aurora-invoice-form.html</span><br>Customer picker with credit context, items grid with stock, sticky totals + FBR-ready note.</figcaption></figure>
+<figure><img src="console-aurora-home-1440.png" alt="Console Aurora Home"><figcaption><b>Console — Aurora — Home</b> <span>• 1440×900 • HTML: console-aurora-home.html</span><br>MRR / tenant KPIs, tenant queue table, live operations feed, action alert in sidebar.</figcaption></figure>
+<figure><img src="console-aurora-home-390.png" alt="Console Aurora Home mobile"><figcaption><b>Console — Aurora — Home (mobile)</b> <span>• 390×844</span><br>Console home on a phone — queue and KPIs remain readable.</figcaption></figure>
+<figure><img src="console-aurora-login-1440.png" alt="Console Aurora Login"><figcaption><b>Console — Aurora — LOGIN (new designed surface)</b> <span>• 1440×900 • HTML: console-aurora-login.html</span><br>Split hero + form: “Run the whole business. Calmly.” with live MRR/tenant proof, role-login guidance, TOTP option.</figcaption></figure>
+<figure><img src="console-aurora-billing-1440.png" alt="Console Aurora Billing"><figcaption><b>Console — Aurora — Billing (dense panel + inspector)</b> <span>• 1440×900 • HTML: console-aurora-billing.html</span><br>OPQ- invoice table + selected-invoice inspector with bank reference, settlement and audit actions.</figcaption></figure>
+</div>
+
+<h2>Direction 2 — MONOLITH <span style="color:#FACC15">• Light, editorial, calm</span></h2>
+<div class="card"><p><b style="color:white">Design language:</b> Warm ivory (#F6F3EC) canvas, white cards, navy ink (#002147), thin icon rail instead of a heavy sidebar, oversized black type with one gold serif-italic word. Owner-friendly plain language (“Money owed to you” alongside the accounting term). Feels like a premium printed report that happens to be software — trustworthy in daylight, easiest for non-accountant owners and staff.</p><p style="margin-top:8px"><b style="color:white">References (look only):</b> Linear-style light SaaS clarity; Stripe-style console density and restraint; editorial / Swiss SaaS dashboards on Behance. Content is 100% Operqon.</p><p style="margin-top:8px"><b style="color:white">Pairing:</b> Tenant Monolith ↔ Console Monolith share this language — console uses a top panel-tab bar (all nine real panels visible) instead of a sidebar.</p></div>
+<div class="grid">
+<figure><img src="tenant-monolith-home-1440.png" alt="Tenant Monolith Home desktop"><figcaption><b>Tenant — Monolith — Home / Dashboard</b> <span>• 1440×900 • HTML: tenant-monolith-home.html</span><br>Bar-chart sales, numbered priority list, latest documents, navy quick-action block.</figcaption></figure>
+<figure><img src="tenant-monolith-home-390.png" alt="Tenant Monolith Home mobile"><figcaption><b>Tenant — Monolith — Home (mobile)</b> <span>• 390×844</span><br>Mobile shell for this direction — icon rail collapses to bottom navigation.</figcaption></figure>
+<figure><img src="tenant-monolith-invoices-1440.png" alt="Tenant Monolith Invoices"><figcaption><b>Tenant — Monolith — Sales Invoices (list)</b> <span>• 1440×900 • HTML: tenant-monolith-invoices.html</span><br>Same real data as Aurora, in the light system: heavy rule under headers, airy rows, summary cards.</figcaption></figure>
+<figure><img src="tenant-monolith-invoice-form-1440.png" alt="Tenant Monolith Invoice Form"><figcaption><b>Tenant — Monolith — New Sales Invoice (form)</b> <span>• 1440×900 • HTML: tenant-monolith-invoice-form.html</span><br>Question-led sections (“Who are you billing?”), black totals block, single clear submit.</figcaption></figure>
+<figure><img src="console-monolith-home-1440.png" alt="Console Monolith Home"><figcaption><b>Console — Monolith — Home</b> <span>• 1440×900 • HTML: console-monolith-home.html</span><br>“What needs you today?” + numbered shortlist + platform-health card + tenant table.</figcaption></figure>
+<figure><img src="console-monolith-home-390.png" alt="Console Monolith Home mobile"><figcaption><b>Console — Monolith — Home (mobile)</b> <span>• 390×844</span><br>Console home on a phone.</figcaption></figure>
+<figure><img src="console-monolith-login-1440.png" alt="Console Monolith Login"><figcaption><b>Console — Monolith — LOGIN (new designed surface)</b> <span>• 1440×900 • HTML: console-monolith-login.html</span><br>Form left, navy explainer right: all nine panels as cards + maker/checker rationale — the login teaches the product.</figcaption></figure>
+<figure><img src="console-monolith-provisioning-1440.png" alt="Console Monolith Provisioning"><figcaption><b>Console — Monolith — Provisioning (dense panel + inspector)</b> <span>• 1440×900 • HTML: console-monolith-provisioning.html</span><br>Site build table with progress bars + step inspector including the guest→login-200 go-live gate.</figcaption></figure>
+</div>
+
+<h2>Full inventory</h2>
+<div class="card"><table><tr><th>Direction</th><th>Surface</th><th>PNG</th><th>HTML source</th></tr>
+<tr><td>Aurora</td><td>Tenant Home</td><td>tenant-aurora-home-1440.png / -390.png</td><td>tenant-aurora-home.html</td></tr>
+<tr><td>Aurora</td><td>Tenant Invoices</td><td>tenant-aurora-invoices-1440.png</td><td>tenant-aurora-invoices.html</td></tr>
+<tr><td>Aurora</td><td>Tenant Invoice Form</td><td>tenant-aurora-invoice-form-1440.png</td><td>tenant-aurora-invoice-form.html</td></tr>
+<tr><td>Monolith</td><td>Tenant Home</td><td>tenant-monolith-home-1440.png / -390.png</td><td>tenant-monolith-home.html</td></tr>
+<tr><td>Monolith</td><td>Tenant Invoices</td><td>tenant-monolith-invoices-1440.png</td><td>tenant-monolith-invoices.html</td></tr>
+<tr><td>Monolith</td><td>Tenant Invoice Form</td><td>tenant-monolith-invoice-form-1440.png</td><td>tenant-monolith-invoice-form.html</td></tr>
+<tr><td>Aurora (paired)</td><td>Console Home</td><td>console-aurora-home-1440.png / -390.png</td><td>console-aurora-home.html</td></tr>
+<tr><td>Aurora (paired)</td><td>Console Login</td><td>console-aurora-login-1440.png</td><td>console-aurora-login.html</td></tr>
+<tr><td>Aurora (paired)</td><td>Console Billing + inspector</td><td>console-aurora-billing-1440.png</td><td>console-aurora-billing.html</td></tr>
+<tr><td>Monolith (paired)</td><td>Console Home</td><td>console-monolith-home-1440.png / -390.png</td><td>console-monolith-home.html</td></tr>
+<tr><td>Monolith</td><td>Console Login</td><td>console-monolith-login-1440.png</td><td>console-monolith-login.html</td></tr>
+<tr><td>Monolith</td><td>Console Provisioning + inspector</td><td>console-monolith-provisioning-1440.png</td><td>console-monolith-provisioning.html</td></tr>
+</table><p style="margin-top:10px">Total: 12 HTML pages + this index, 16 PNG screenshots. All sample data is illustrative Operqon-shaped content (e.g. Al-Noor Traders, Rektrs Private Limited, OPQ- invoice numbers, PKR Starter Rs 7,500 / Growth Rs 9,999 / Business Rs 19,999) — not live data. Next step after a pick: build the chosen direction as the real own-frontend (Phase C pattern) — nothing here is production code.</p></div>
+</div></body></html>

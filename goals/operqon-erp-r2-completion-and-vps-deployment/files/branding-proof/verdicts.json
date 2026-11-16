@@ -1,0 +1,78 @@
+{
+  "shot:01-login.png": {
+    "ok": true,
+    "detail": ""
+  },
+  "login-branded": {
+    "ok": true,
+    "detail": "app-logo srcs: ['/assets/operqon_core/images/operqon-primary-horizontal.svg', '/assets/operqon_core/images/operqon-primary-horizontal.svg', '/assets/operqon_core/images/operqon-primary-horizontal.svg', '/assets/operqon_core/images/operqon-primary-horizontal.svg']"
+  },
+  "signin-redirect": {
+    "ok": false,
+    "detail": "Timeout 45000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**/app/**\" until 'load'\n  navigated to \"http://branding-proof.local:18099/desk/operqon"
+  },
+  "signin-landing": {
+    "ok": true,
+    "detail": "http://branding-proof.local:18099/desk/operqon-core/operqon-home"
+  },
+  "shot:02-desk-home-operqon.png": {
+    "ok": true,
+    "detail": ""
+  },
+  "home-route": {
+    "ok": true,
+    "detail": "http://branding-proof.local:18099/desk/setup/home"
+  },
+  "onboarding-card-absent": {
+    "ok": true,
+    "detail": "checked rendered text of the Home workspace"
+  },
+  "shot:03-home-workspace-no-onboarding.png": {
+    "ok": true,
+    "detail": ""
+  },
+  "switcher-menu-opened": {
+    "ok": true,
+    "detail": ""
+  },
+  "shot:04-app-switcher-tenant-view.png": {
+    "ok": true,
+    "detail": ""
+  },
+  "switcher-no-erpnext-tile": {
+    "ok": true,
+    "detail": "best-effort text check; the PNG is the evidence"
+  },
+  "shot:05-apps-screen.png": {
+    "ok": true,
+    "detail": ""
+  },
+  "apps-screen": {
+    "ok": true,
+    "detail": "http://branding-proof.local:18099/desk/operqon-core/operqon-home"
+  },
+  "about-dialog": {
+    "ok": true,
+    "detail": "dialog captured"
+  },
+  "about-no-engine-brands": {
+    "ok": true,
+    "detail": "About Operqon |  | Business software for growing companies. |  | Operqon Version | 0.0.1 | INSTALLED APPS | Operqon | 0.0.1 | \u00a9 Operqon \u00b7 Rektrs (Private) Limited"
+  },
+  "shot:07-list-view-customer-group.png": {
+    "ok": true,
+    "detail": ""
+  },
+  "list-view": {
+    "ok": true,
+    "detail": "http://branding-proof.local:18099/desk/customer-group"
+  },
+  "shot:08-form-view-company.png": {
+    "ok": true,
+    "detail": ""
+  },
+  "form-view": {
+    "ok": true,
+    "detail": "http://branding-proof.local:18099/desk/setup/company/Operqon%20Proof%20Co"
+  }
+}

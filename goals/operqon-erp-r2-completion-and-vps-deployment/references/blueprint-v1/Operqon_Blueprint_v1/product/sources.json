@@ -1,0 +1,110 @@
+[
+  {
+    "id": "PRD-01",
+    "title": "Zoho One overview",
+    "url": "https://www.zoho.com/one/",
+    "accessed": "2026-11-06",
+    "supports": "Unified suite and central administration",
+    "caveat": "Official marketing; region redirects and app counts may vary",
+    "authority": "vendor official documentation/overview"
+  },
+  {
+    "id": "PRD-02",
+    "title": "Zoho One pricing FAQ",
+    "url": "https://www.zoho.com/one/pricing/faq.html",
+    "accessed": "2026-11-06",
+    "supports": "All employee versus flexible user licensing",
+    "caveat": "Regional/term-specific prices not copied into Operqon",
+    "authority": "vendor official documentation/overview"
+  },
+  {
+    "id": "PRD-03",
+    "title": "Business Central licensing guidance",
+    "url": "https://www.microsoft.com/licensing/guidance/Dynamics-365-Business-Central",
+    "accessed": "2026-11-06",
+    "supports": "User device tenant and limited-user license distinction",
+    "caveat": "Guidance not legal licensing contract",
+    "authority": "vendor official documentation/overview"
+  },
+  {
+    "id": "PRD-04",
+    "title": "ERPNext Role Based Permissions",
+    "url": "https://docs.frappe.io/erpnext/permissions",
+    "accessed": "2026-11-06",
+    "supports": "Roles document actions field levels and scoped user permissions",
+    "caveat": "Version compatibility requires implementation verification",
+    "authority": "vendor official documentation/overview"
+  },
+  {
+    "id": "PRD-05",
+    "title": "ERPNext Accounting Dimensions",
+    "url": "https://docs.frappe.io/erpnext/accounting-dimensions",
+    "accessed": "2026-11-06",
+    "supports": "Transaction dimensions and report filtering",
+    "caveat": "Historical values not automatically backfilled",
+    "authority": "vendor official documentation/overview"
+  },
+  {
+    "id": "PRD-06",
+    "title": "Odoo Multi-company",
+    "url": "https://www.odoo.com/documentation/19.0/applications/general/multi_company.html",
+    "accessed": "2026-11-06",
+    "supports": "Company scoped documents and intercompany configuration",
+    "caveat": "Pattern reference; Operqon uses its own ownership model",
+    "authority": "vendor official documentation/overview"
+  },
+  {
+    "id": "PRD-07",
+    "title": "Odoo Fiscal localizations",
+    "url": "https://www.odoo.com/documentation/19.0/applications/finance/fiscal_localizations.html",
+    "accessed": "2026-11-06",
+    "supports": "Country fiscal modules and payroll separation",
+    "caveat": "Module availability is not Operqon certification",
+    "authority": "vendor official documentation/overview"
+  },
+  {
+    "id": "PRD-08",
+    "title": "Business Central licensing and entitlements",
+    "url": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/deployment/licensing",
+    "accessed": "2026-11-06",
+    "supports": "Entitlements distinct from application permissions",
+    "caveat": "Competitor terms not applicable to Operqon",
+    "authority": "vendor official documentation/overview"
+  },
+  {
+    "id": "PRD-09",
+    "title": "Zoho Inventory Advanced Inventory Reports",
+    "url": "https://www.zoho.com/us/inventory/help/reports/advanced-inventory-reports.html",
+    "accessed": "2026-11-06",
+    "supports": "Batch and serial transaction trace reporting",
+    "caveat": "Does not establish regulated dispensing compliance",
+    "authority": "vendor official documentation/overview"
+  },
+  {
+    "id": "PRD-10",
+    "title": "Odoo Preparation display",
+    "url": "https://www.odoo.com/documentation/19.0/applications/sales/point_of_sale/preparation.html",
+    "accessed": "2026-11-06",
+    "supports": "Preparation queue and stage concepts",
+    "caveat": "Edition/device specifics require actual product review",
+    "authority": "vendor official documentation/overview"
+  },
+  {
+    "id": "PRD-11",
+    "title": "Odoo Point of Sale",
+    "url": "https://www.odoo.com/documentation/19.0/applications/sales/point_of_sale/overview/register.html",
+    "accessed": "2026-11-06",
+    "supports": "Store/restaurant touchpoints and temporary network operation",
+    "caveat": "No universal offline fiscal legality inferred",
+    "authority": "vendor official documentation/overview"
+  },
+  {
+    "id": "PRD-12",
+    "title": "Zoho Creator Understanding environments",
+    "url": "https://help.zoho.com/portal/en/kb/creator/developer-guide/environments/articles/understand-environments",
+    "accessed": "2026-11-06",
+    "supports": "Versioned development stage production promotion",
+    "caveat": "Pattern reference not production safety proof",
+    "authority": "vendor official documentation/overview"
+  }
+]
