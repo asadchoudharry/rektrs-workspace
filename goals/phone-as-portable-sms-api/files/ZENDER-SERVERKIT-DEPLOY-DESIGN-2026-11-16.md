@@ -82,9 +82,22 @@ Exact values (2026-11-15 ko installed panel ke code se verified):
 - Client ID: `serverkit-panel` (confidential, client authentication ON)
 - Panel provider name: `Rektrs Login`
 
+**Admin console public NAHI hai (2026-11-16 verified, owner ki baat durust
+thi):** login.operqon.cloud ka Caddy sirf `/realms/operqon-provider/*`,
+`/realms/operqon-customers/*`, `/resources/*`, `/.well-known/*` proxy karta
+hai — `/admin/*` aur master realm jaan-bujh kar band hain (browser mein
+"Not Found" aata hai). Ye hardening **barqarar rahe gi** — admin public
+nahi khule ga. Keycloak VPS ke andar zinda hai:
+`http://127.0.0.1:18086/admin/` → 302 (console login).
+**Rasta: owner apne laptop se SSH tunnel** (Termius port-forward
+localhost:18086 → VPS 127.0.0.1:18086), phir browser mein
+`http://localhost:18086/admin/` — master admin se login, realm
+operqon-provider select karke client banana.
+
 Steps — dono **owner ke haath se** (secret chat/Muse se kabhi nahi guzrega):
-1. Keycloak admin console → realm operqon-provider → Clients → naya client
-   `serverkit-panel`, upar wala redirect URI exact; Credentials tab se secret.
+1. (tunnel ke baad) Keycloak admin console → realm operqon-provider →
+   Clients → naya client `serverkit-panel`, upar wala redirect URI exact;
+   Credentials tab se secret.
 2. Panel → Settings → SSO → OIDC: enable, provider name, discovery URL,
    client id, secret wahi paste.
 3. **Owner ka apna sign-in test** (panel login → "Rektrs Login" → Keycloak →
