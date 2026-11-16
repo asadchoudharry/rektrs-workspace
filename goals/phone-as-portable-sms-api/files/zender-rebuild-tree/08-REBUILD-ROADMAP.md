@@ -2,7 +2,7 @@
 
 Build order for everything in this tree. Source: the master plan
 (`../ZENDER-CORE-PLUS-OWN-PLUGINS-PLAN-2026-11-15.md`, phases +
-Addenda 1–9) mapped onto the Lane 2–6 evidence. Standing rules for
+Addenda 1–10) mapped onto the Lane 2–6 evidence. Standing rules for
 every phase:
 
 - System stays **standalone**; Operqon coupling is loose REST/webhook
@@ -135,6 +135,23 @@ integrations.**
   connect via Custom HTTP or our SMPP replacement; each tenant's mask
   registered under the tenant's own business name (Addendum: masked
   SMS). Flash SMS rides the aggregator/SMPP or modem route only.
+
+## Addendum 10 — USP layer (differentiation)
+
+Owner decision 2026-11-16: all six USPs recorded (full text:
+`09-USP-ADDENDUM-10.md`; master plan Addendum 10). This is OUR layer
+on top of the core — the reason a tenant picks Sendqon. Sequence:
+1, 2, 3 first; 4 with Phase 3; 5 after the channels exist; 6 last,
+once the SaaS is proven.
+
+| # | USP | Lands in |
+|---|-----|----------|
+| 1 | Pakistan-first pack (JazzCash/EasyPaisa/Raast, PTA mask workflow, Urdu UI + templates) | Phase 1 (UI) + Phase 4 (payments) |
+| 2 | SIM Fleet Intelligence (warm-up, per-SIM limits/rotation, health score) | Phase 2 |
+| 3 | Deliverability engine (HLR validation, cross-channel cascade, spam score) | Phase 2/4 |
+| 4 | WhatsApp warm-up + ban-risk score | Phase 3 |
+| 5 | Vertical packs (school / clinic / e-commerce) | after Phase 4 |
+| 6 | Reseller++ (partner-branded SaaS) | Phase 5 era |
 
 ## Master checklist — every build item
 

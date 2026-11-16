@@ -238,6 +238,42 @@ agent ke dashboard par jaye?
   kuch shartein (messaging limit waghera). Ye hamare WABA channel ke sath
   apna voice module hoga — Phase 3/5 item.
 
+## Addendum 10 (2026-11-16) — USPs: Sendqon ka farq (differentiation layer)
+Guftugu 2026-11-15 ~22:47 PKT mein 6 USP tajaveez samne aayi theen; owner
+ne 2026-11-16 ko faisla kiya: **sab 6 is addendum mein darj** hon. Ye
+features core ke upar hamari apni layer hain — yahi woh cheez hai jo
+Sendqon ko Zender ki baqi copies aur aam messaging panels se alag karegi.
+
+1. **Pakistan-first pack** — JazzCash / EasyPaisa / Raast payments panel
+   ke andar; masked SMS ke liye PTA registration ka workflow panel se
+   (mask apply → approval tracking → live); Urdu / Roman Urdu UI aur
+   tayyar templates (school fees, COD confirmation waghera). Koi global
+   competitor Pakistan ko is tarah nahi karta.
+2. **SIM Fleet Intelligence** — SIM warm-up schedule, per-SIM daily
+   limit + rotation, per-SIM health score (delivery rate, carrier
+   blocks), carrier-wise routing. Tenant ki SIMs ban se bachana
+   SIM-bhej ki sab se bari takleef hai — ye usi ka hal hai.
+3. **Deliverability engine** — bhejne se pehle number validation (HLR),
+   cross-channel cascade (WhatsApp fail → SMS → email), campaign se
+   pehle spam-content score. Credits bachenge, delivery % barhega.
+4. **WhatsApp warm-up + ban-risk score** — naye QR numbers ke liye
+   warm-up ramp, per-number risk score, mehfooz bhejne ke pattern.
+5. **Vertical packs** — industry ke liye tayyar packs: schools (fee
+   reminder, results), clinics (appointments), e-commerce (COD,
+   abandoned cart) — templates + flows + reports pehle se bane hue.
+6. **Reseller++** — partners apni branded SaaS chalayen (apna domain,
+   apni pricing, apne sub-tenants) — vendor ke Partner Network se
+   gehra model.
+
+**Tarteeb (Muse ki sifaris; owner ka faisla: sab darj hon):** pehle
+1, 2, 3 — yehi Pakistani market ka asal moat hai; phir 4 (Phase 3 ke
+sath), 5 (channels tayyar hone ke baad), 6 sab se aakhir (SaaS proven
+hone par). Phase mapping: USP-1 → Phase 1 (Urdu UI) + Phase 4
+(payments/PTA workflow); USP-2 → Phase 2; USP-3 → Phase 2/4
+cross-cutting; USP-4 → Phase 3; USP-5 → Phase 4 ke baad; USP-6 →
+Phase 5 ke aas paas. Tafseel rebuild tree ki file
+`09-USP-ADDENDUM-10.md` mein hai.
+
 ## Owner ka sirf ek step
 Khareedna (payment) owner ka apna step hai — CodeCanyon par Zender 5
 **Extended** licence. Us se pehle Powered-by wali demo check muse karega

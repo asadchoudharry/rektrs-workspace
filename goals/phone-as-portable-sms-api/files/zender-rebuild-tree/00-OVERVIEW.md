@@ -8,7 +8,8 @@ memory; every file traces to the Lane 2–6 audit reports in
 `../zender-audit-lanes/`.
 
 Master plan: `../ZENDER-CORE-PLUS-OWN-PLUGINS-PLAN-2026-11-15.md`
-(phases + call-centre Addenda 1–9). Build order: `08-REBUILD-ROADMAP.md`.
+(phases + Addenda 1–10). Build order: `08-REBUILD-ROADMAP.md`.
+Differentiation layer (the six USPs): `09-USP-ADDENDUM-10.md`.
 
 ## What the system is
 
