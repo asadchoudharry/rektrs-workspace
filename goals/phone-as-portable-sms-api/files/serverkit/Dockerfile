@@ -138,5 +138,20 @@ EOF
 RUN chown -R www-data:www-data storage bootstrap/cache \
     && chmod -R ug+rwX storage bootstrap/cache
 
+# Writability the web installer checks (and the runtime needs): the app root
+# directory entry itself, public/ and database/ owned by www-data. The
+# entrypoint re-applies the same fixes at every container start.
+RUN chown www-data:www-data /var/www/zender \
+    && chown -R www-data:www-data public database \
+    && chmod 775 public database
+
+# Entrypoint: materializes .env from the container env when missing (a
+# recreate would otherwise lose the installer's hand-written .env — only
+# storage/ is a volume) and re-applies the writability fixes, then execs the
+# service command. Ships in the build context root.
+COPY --from=assets /build/docker-entrypoint.sh /usr/local/bin/sendqon-entrypoint.sh
+RUN chmod +x /usr/local/bin/sendqon-entrypoint.sh
+
 EXPOSE 80
+ENTRYPOINT ["/usr/local/bin/sendqon-entrypoint.sh"]
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/sendqon.conf"]
