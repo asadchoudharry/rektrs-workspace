@@ -21,7 +21,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         libicu-dev libzip-dev libxml2-dev libonig-dev libcurl4-openssl-dev \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j"$(nproc)" \
-        pdo_mysql mysqli mbstring xml curl zip bcmath gd intl opcache \
+        pdo_mysql mysqli mbstring xml curl zip bcmath gd intl opcache pcntl sockets \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Composer (official image, multi-arch)
