@@ -65,6 +65,34 @@ Autosetup ke 17 steps ko compose services mein tarjuma:
   ke liye Zender ke apne helpers host-nginx farz karte hain — woh feature
   is Docker surat mein **abhi out of scope** hai, roadmap mein note hai.)
 
+## Step 0 — Panel × Keycloak SSO (owner directive, 2026-11-16 ~10:55 PKT)
+**Standing pattern:** panel ki login Operqon wale Keycloak se hogi, aur aage
+bhi jo cheez jahan install hogi woh isi SSO se attach hogi — ek hi login
+her jagha. (login.operqon.cloud, realm `operqon-provider`.)
+
+Halat (2026-11-16 live check): discovery URL offbox-1 se **200**; panel ke
+SSO fields abhi khali hain (sso_oidc_enabled=false, client_id/discovery
+khali); defaults durust pehle se set hain (auto_provision=false,
+default_role=viewer, proxy-hop config validated 2026-11-15); panel mein
+**1 admin user maujood hai**.
+
+Exact values (2026-11-15 ko installed panel ke code se verified):
+- Redirect URI: `https://panel.rektrs.com/login/callback/oidc`
+- Discovery URL: `https://login.operqon.cloud/realms/operqon-provider/.well-known/openid-configuration`
+- Client ID: `serverkit-panel` (confidential, client authentication ON)
+- Panel provider name: `Rektrs Login`
+
+Steps — dono **owner ke haath se** (secret chat/Muse se kabhi nahi guzrega):
+1. Keycloak admin console → realm operqon-provider → Clients → naya client
+   `serverkit-panel`, upar wala redirect URI exact; Credentials tab se secret.
+2. Panel → Settings → SSO → OIDC: enable, provider name, discovery URL,
+   client id, secret wahi paste.
+3. **Owner ka apna sign-in test** (panel login → "Rektrs Login" → Keycloak →
+   wapas panel) = gate proof. Pehli test par us ka panel account email se
+   link hoga (auto_provision=false).
+Note: Keycloak groups panel mein propagate nahi hote — panel ke roles
+panel-local rehte hain; MFA Keycloak realm mein enforce hoga.
+
 ## Sequence
 1. ✅ Panel mechanism + host inventory (ye document).
 2. **Build lane**: source rsync → Dockerfile → `sendqon:5.0.4` image build
