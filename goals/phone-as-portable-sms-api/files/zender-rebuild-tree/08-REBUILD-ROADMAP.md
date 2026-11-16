@@ -247,11 +247,19 @@ Status key: **spec ready** = this tree contains a buildable spec;
 
 ## Open UNVERIFIED items — resolve before the dependent build
 
-1. **Binary licence validation mechanism** (WhatsApp / SMPP /
-   Telephony codes): online or offline? Affects how interim servers
-   behave without vendor contact and how the custom licence should be
-   worded. Resolve in Phase 0 by observation on our own install
-   (never by decompiling).
+1. **Binary licence validation mechanism** (WhatsApp / SMPP codes):
+   **RESOLVED 2026-11-16** by live observation (report:
+   `../ZENDER-LICENCE-VERIFICATION-TEST-REPORT-2026-11-16.md`).
+   One-time ONLINE activation against **api.titansys.dev** at the
+   first-ever start stores a local token (`work/storage/
+   license.token` + `machine.id`); every later start verifies the
+   stored token OFFLINE — proven under a total egress block — and
+   there is NO periodic re-verification (the WhatsApp binary's
+   120 s token rewrite is a local re-seal, zero network). The
+   vendor has no kill switch over installed servers; only a
+   from-scratch activation (fresh install / wiped `work/` storage)
+   needs the portal once. Both token files are inside the nightly
+   config backup. Telephony binary untested (not installed here).
 2. **WhatsApp session format/location** inside the WA binary: affects
    migration of live QR accounts from the vendor binary to our
    Phase 3 bridge (worst case: tenants re-link by QR — plan the

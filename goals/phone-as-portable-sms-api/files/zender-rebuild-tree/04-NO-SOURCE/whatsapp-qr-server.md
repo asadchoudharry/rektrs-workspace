@@ -46,8 +46,14 @@ session" — a whatsmeow-style linked-device engine.
 
 ## UNVERIFIED
 - On-disk session/key format and location inside the binary.
-- Whether licence validation is online or offline; any phone-home
-  beyond the (default-OFF) error-reporting switch.
+- ~~Whether licence validation is online or offline~~ **RESOLVED
+  2026-11-16** (`../../ZENDER-LICENCE-VERIFICATION-TEST-REPORT-2026-11-16.md`):
+  one-time online activation vs api.titansys.dev, then a stored
+  token (`work/storage/license.token` + `machine.id`) verified
+  OFFLINE at every start (proven under total egress block); no
+  periodic re-verification; the 120 s token rewrite is a local
+  re-seal. No phone-home beyond the (default-OFF) error-reporting
+  switch.
 - Exact payload schemas for command/event fields defined only on the
   binary side; binary-internal retry/reconnect behaviour.
 - Real per-server resource limits at 100 accounts.

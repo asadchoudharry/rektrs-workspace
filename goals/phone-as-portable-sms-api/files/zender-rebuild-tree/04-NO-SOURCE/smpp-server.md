@@ -44,7 +44,12 @@ the wire protocol is this binary's job.
 ## UNVERIFIED
 - Bind management internals (transceiver/receiver sessions),
   throttling and reconnection policies inside the binary.
-- Licence validation mechanism (online/offline).
+- ~~Licence validation mechanism (online/offline)~~ **RESOLVED
+  2026-11-16** (`../../ZENDER-LICENCE-VERIFICATION-TEST-REPORT-2026-11-16.md`):
+  one-time online activation vs api.titansys.dev, then a stored
+  token (`work/storage/license.token` + `machine.id`) verified
+  OFFLINE at every start — proven with all non-local egress
+  dropped; no periodic re-verification.
 - Real wire throughput — "500 providers/server" is a core-side
   capacity figure, not a measured messages/sec.
 
