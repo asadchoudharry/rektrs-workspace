@@ -1,26 +1,60 @@
-# SENDQON — PKR PRICING PROPOSAL (2026-11-16)
+# SENDQON — PKR PRICING PROPOSAL v2 (2026-11-16, market check ke baad REVISED)
 
-Status: **PROPOSAL — owner ki manzoori baqi.** System mein abhi vendor
-ke USD seed plans hain; ye tajweez un ki PKR shakl hai. Manzoori ke
-baad Muse billing currency PKR karke ye prices laga dega. Charge
-asal mein tab hoga jab koi payment gateway active ho (Bank Transfer
-owner ke bank details par ruka hai; JazzCash/EasyPaisa/Raast Phase 4
-ke apne plugins hain — USP-1).
+Status: **PROPOSAL — owner ki manzoori baqi.** Pehli tajweez (flat
+Rs 4,999/12,999/49,999) market check ke baad revise ki gayi hai —
+BYOD market us se sasta hai. Research: 2026-11-16, FX ≈ Rs 277/USD;
+mukammal report `research_notes/sendqon-market-pricing-pakistan-*`.
 
-## Maujooda seed plans (USD) → tajweez-shuda PKR
+## Market saboot (khulasa)
 
-| Plan | USD (seed) | **PKR tajweez / month** | PKR / year (2 mah muft) |
-|------|-----------|--------------------------|--------------------------|
-| Free | $0 | **Rs 0** | — |
-| Starter | $19 (≈ Rs 5,320) | **Rs 4,999** | Rs 49,990 |
-| Pro | $49 (≈ Rs 13,720) | **Rs 12,999** | Rs 129,990 |
-| Enterprise | $199 (≈ Rs 55,720) | **Rs 49,999** | Rs 499,990 |
+- **BYOD (apni device) panels:** SendFlow (Pakistan) Rs 699 / 1,499 /
+  3,999 per month; textbee $14.99–29.99; SendPK own-number
+  Rs 3,000–13,000/30 din. Band: **Rs 700–4,000** aam tenant,
+  **Rs 4,000–13,000** multi-number.
+- **Official WhatsApp API platforms (PKR):** Autogine 1,500–5,500;
+  BAMNEXA 4,999–9,999; WAB2C 5,500–55,000; NotiFly 8,900–21,900
+  (+15,000 setup) — upar se Meta per-message alag.
+- **Per-SMS (Pakistan):** branded/masked retail Rs 3.15–3.90
+  (SendPK 3.80–3.90 + mask setup 5,000 + 5,000/saal; Veevo 3.15;
+  BSMS 2.70–3.20); Pak Sender flat 4.30.
+- **Meta Pakistan per-message:** marketing $0.0473 (≈ Rs 13.1),
+  utility/auth $0.0150 (≈ Rs 4.15); BSP resale PKR 15 / 5.
+- **Device-supplied model:** Pakistan mein koi vendor device-rent
+  publish nahi karta; bahir SIM hosting €41–75/mo, rented Android
+  $40–99/mo per device. All-in Model B band ≈ **Rs 9,000–35,000/mo**
+  (modest volume) muqabla Model A all-in Rs 750–4,150.
 
-Rate: ~Rs 280/USD. PKR qeematein jaan boojh kar seed prices se
-**halki si kam aur gol (psychological) rakhi hain** — Pakistani market
-mein $19 wali cheez Rs 4,999 par foran samajh aati hai.
+## MODEL A — Device USER ki (software only)
 
-## Limits (seed ke mutabiq, tabdeeli ki tajweez nahi)
+Tenant apna Android phone/SIM ya apna provider lagata hai; hum sirf
+panel dete hain. Uski SIM bundle cost usi ki (Rs 50–150/mo).
+
+| Plan | PKR / month | PKR / year (2 mah muft) |
+|------|------------|--------------------------|
+| Free | Rs 0 | — |
+| Starter | **Rs 2,499** | Rs 24,990 |
+| Pro | **Rs 5,999** | Rs 59,990 |
+| Enterprise | **Rs 14,999** | Rs 149,990 |
+
+## MODEL B — Device HAMARI (managed device + SIM)
+
+Hum device + SIM dete aur manage karte hain (setup, bundle, ban/
+replacement ki zimmedari hamari). Qeemat = Model A plan + managed
+device fee **Rs 4,999 / device / month**:
+
+| Plan | PKR / month | Devices shamil |
+|------|------------|----------------|
+| Starter Managed | **Rs 7,499** | 1 |
+| Pro Managed | **Rs 15,999** | 2 |
+| Enterprise Managed | **Rs 34,999** | 5 |
+
+- Plan quota se zyada SMS (aggregator/masked route): **Rs 4.25/SMS**
+  pass-through style.
+- WhatsApp official API route dono models mein: Meta ki asal
+  per-message cost pass-through (marketing ≈ Rs 13.1, utility/auth
+  ≈ Rs 4.15) — market ke BSP bhi yehi karte hain (PKR 15/5 resale).
+
+## Limits (seed plans ke mutabiq, dono models par)
 
 - **Free:** 500 contacts, 1 channel, team = owner only, 100 SMS/mo.
 - **Starter:** 5,000 contacts, tamam channels, 2,000 SMS/mo, 100 credits.
@@ -29,10 +63,9 @@ mein $19 wali cheez Rs 4,999 par foran samajh aati hai.
 
 ## Notes
 
-- Trial (3 din, 50 messages) pehle se ON hai — Free plan ke sath yehi
-  funnel chalega: Trial → Free → Starter.
-- SMS ki asal cost tenant ke apne channel (SIM/provider) par hai;
-  plan ki SMS limits platform quotas hain, hamari cost nahi.
-- Agar owner chahe to launch ke liye ek **"Founding" discount**
-  (pehle 50 customers ko Pro Rs 9,999 lock-in) bhi rakha ja sakta
-  hai — ye alag faisla hai, tajweez mein shamil nahi kiya.
+- Manzoori ke baad Muse billing currency PKR karke Model A prices
+  laga dega; Model B plans alag plan entries ke tor par banein ge.
+- Charge asal mein tab hoga jab payment gateway active ho (Bank
+  Transfer owner ke bank details par ruka hai; JazzCash/EasyPaisa/
+  Raast Phase 4 — USP-1).
+- Trial (3 din, 50 messages) pehle se ON hai.
