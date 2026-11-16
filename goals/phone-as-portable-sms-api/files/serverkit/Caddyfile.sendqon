@@ -1,0 +1,25 @@
+# Sendqon (Zender) — Caddy block for offbox-1 /etc/caddy/Caddyfile
+# STATUS: DRAFT — apply only at deploy time (see preconditions).
+#
+# Preconditions:
+#   1. DNS: sendqon.rektrs.com A (DNS-only) -> 129.146.96.133 must be live
+#      BEFORE applying (Caddy fetches the Let's Encrypt cert on first hit).
+#   2. <APP_PORT> = the HTTP_PORT the ServerKit panel actually assigned at
+#      install time. NOT 8080 blindly — the panel itself sits on
+#      127.0.0.1:8080; if taken, install with HTTP_PORT=18081.
+#   3. Reverb loopback port = REVERB_PORT from the template (default 18080).
+# Apply: append block -> `caddy validate` -> `systemctl reload caddy` ->
+# curl https://sendqon.rektrs.com (expect Zender installer/login).
+
+sendqon.rektrs.com {
+	# Laravel Reverb websockets — vendor nginx /app/ + /apps/ families
+	handle /app/* {
+		reverse_proxy 127.0.0.1:18080
+	}
+	handle /apps/* {
+		reverse_proxy 127.0.0.1:18080
+	}
+	handle {
+		reverse_proxy 127.0.0.1:<APP_PORT>
+	}
+}
