@@ -1,6 +1,26 @@
 # ZENDER (SENDQON) — ORACLE INSTALLATION PLAN
 Date: 2026-11-16 · Status: PLAN (install on owner GO) · Audit base: Lanes 1–6 + rebuild tree
 
+## ADDENDUM — ROUTE CHANGE (owner, 2026-11-16 ~10:49 PKT)
+**Install ServerKit panel ke raste se hoga** — vendor autosetup seedha host OS
+par NAHI chalega. Wajah: offbox-1 par **ServerKit pehle se installed hai**
+(v1.11.40, 2026-11-15; panel.rektrs.com; nginx + docker services active) aur
+wahi is server ka management layer hai. Tabdeelian:
+- Autosetup ke 17 steps ab **spec/checklist** hain: jo kuch woh karta hai
+  (env values, FPM pool limits, Reverb/queue services, har-minute cron,
+  nginx ke Reverb proxy paths, SSL) wohi ServerKit deployment ko reproduce
+  karna hoga — zyada imkaan **custom template / Docker compose stack**
+  (app + MySQL + Reverb + queue + scheduler) ki surat mein.
+- Host par pehle se **nginx (ServerKit ka) + Docker** hai — bare-metal
+  takrao wala khatra khatam; lakin panel ka template mechanism pehle
+  verify hoga (fork `asadchoudharry/OperqonServer` ke templates ka jaiza)
+  ke custom PHP/Laravel app kis surat deploy hoti hai.
+- **Owner step (gate):** panel ka first-admin banana abhi owner ke zimme
+  baqi hai (setup code install ke waqt bana tha) + 2FA. Panel login ke
+  baghair panel-route aage nahi barh sakta.
+- Baqi plan (backup design, verification battery, APP_KEY hifazat, licence
+  codes wala mamla, phases) wesay ka wesa laagu hai.
+
 ## 0. Faisla khulasa (decisions up front)
 - **Host: offbox-1** (129.146.96.133) — 2 OCPU / 12 GB RAM / 100 GB, Ubuntu 24.04 **ARM64**.
   Dono micro instances (1 OCPU / 1 GB) Zender ke liye bohat chhote hain
