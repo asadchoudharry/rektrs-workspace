@@ -80,7 +80,21 @@ Exact values (2026-11-15 ko installed panel ke code se verified):
 - Redirect URI: `https://panel.rektrs.com/login/callback/oidc`
 - Discovery URL: `https://login.operqon.cloud/realms/operqon-provider/.well-known/openid-configuration`
 - Client ID: `serverkit-panel` (confidential, client authentication ON)
-- Panel provider name: `Rektrs Login`
+- Panel provider name: ~~`Rektrs Login`~~ → **FINAL (owner, 2026-11-16):
+  identity bridge ka naam `Rektrs ID` hai, domain `id.rektrs.com`**
+  (Apple ID style — ek account, sab darwazay).
+
+**Naam/domain ki amal surat:** Panel SSO mein provider name `Rektrs ID`,
+client_id aur discovery URL (abhi login.operqon.cloud wali) **pre-fill ho
+chuke hain** (2026-11-16, verified); enabled=false, secret khali — owner
+kcadm commands se client bana kar secret paste kare ga, phir enable + apna
+sign-in test. **id.rektrs.com par Keycloak ka hostname le jana alag planned
+phase hai** — woh live Operqon logins ke issuer ko bhi badalta hai, is liye
+saare clients ki discovery ikathi update karke ek window mein hoga; tab tak
+brand (Rektrs ID) live hai, sirf address purana hai. Admin console ka
+browser rasta band hai (hostname redirect → public Not Found) aur stored
+admin credentials se client banana Muse ke liye policy-blocked hai —
+client hamesha owner-run kcadm se bane ga.
 
 **Admin console public NAHI hai (2026-11-16 verified, owner ki baat durust
 thi):** login.operqon.cloud ka Caddy sirf `/realms/operqon-provider/*`,
