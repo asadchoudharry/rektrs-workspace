@@ -1,0 +1,1 @@
+{"author":"Sendqon","description":"One line: what this plugin does.","is_core":false,"main_class":"src/ExamplePlugin.php","migrations":[],"name":"Example Plugin","namespace":"App\\Plugins\\Tools\\Example\\ExamplePlugin","personal_data":false,"runtime_contract":1,"slug":"example_plugin","type":"tool","version":"1.0.0"}
