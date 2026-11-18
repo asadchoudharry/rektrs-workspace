@@ -157,3 +157,13 @@ Per-item sections are appended as each item completes.
 **Production:** fresh backup (status=OK, push=OK) → installed **v1.0.0 ACTIVE**; baked into the build tree (20 files).
 
 **PENDING-ACCOUNT:** a real Blesta 5.x install for the plugin half; plan flag `blesta` is the owner's pricing decision.
+
+## 11. Odoo — v1.0.0 INSTALLED, ACTIVE
+
+**Design:** `ConnectedSites` client implementing `IntegrationSiteIdentity` — every database carries its own uuid (`odoo_sites.database_uuid` + `identity_hash`, header `X-Integration-Database-Uuid`) and per-add-on version columns (`sms_version`, `whatsapp_version`, `auth_version`). The branded download is **series-keyed (19.0 / 20.0)**: `BrandedDownload::metadata($series)` returns the add-on version map core's resolver expects (verified shape: `{series: {sms, whatsapp, auth}}`), `build($series, $slug)` bakes the series into each add-on manifest, and the prepare route takes `?series=`. Connector = three Python add-ons (compile-checked): **sendqon_sms** (Connect controller at `/sendqon/connect`, shared API client, invoice/order SMS rules off by default), **sendqon_whatsapp** (same events over WhatsApp routing), **sendqon_auth** (OTP send/verify endpoints for a second-factor screen). The baked brand values ride in `sendqon_sms/brand.php` — the one filename core's archive guard exempts — and the Python client reads it as data.
+
+**Dev battery: 47/47 PASS** (in-process 23/23 incl. both series' builds, manifest baking, archive guard, identity rules; HTTP 24/24 incl. the uuid-carrying Connect approval, identity-mismatch enforcement on sends without the uuid header, series-20.0 prepare, signed download, admin UI surface).
+
+**Production:** fresh backup (status=OK, push=OK) → installed **v1.0.0 ACTIVE**; baked into the build tree (46 files).
+
+**PENDING-ACCOUNT:** a real Odoo 19.0/20.0 install for the add-ons; plan flag `odoo` is the owner's pricing decision.
