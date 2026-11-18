@@ -1,0 +1,43 @@
+# Sendqon — Innovations List
+
+Recorded 2026-11-19 on the owner's order: *"3no ko yaad rakhna, innovations list main dal do, or ek team inki research per dal do."*
+
+These are **system-level inventions**, not features — each one creates a network or institution that does not exist in Pakistan today, and each grows out of Sendqon's unique asset: thousands of real phone numbers in daily, consented business contact. Research lanes for items 1–3 were launched the same night (reports land in this folder as `SENDQON-INNOVATION-RESEARCH-*.md`). Item 4 was presented to the owner the same night; his research/go decision is pending.
+
+Status key: **RESEARCH** = research lane running · **PROPOSED** = presented, owner decision pending.
+
+---
+
+## 1. Number Trust Bureau — RESEARCH
+
+**The invention:** a credit bureau for phone numbers. Banks judge a *person* by history; nobody in Pakistan judges a *number* by its history.
+
+**How it works:** every Sendqon tenant's daily operations generate outcome signals about the numbers they deal with — COD parcel accepted or returned, school fee paid on time or not, calls answered or number dead, Raast account title matching the claimed name, number age and liveness (HLR). Aggregated and anonymised across tenants, each number accumulates a portable trust profile. Any business can ask, in one API call before dispatching a parcel or extending credit: *"Is number par bharosa karun?"*
+
+**Why only us:** the data cannot be bought — it accrues only by operating a messaging platform at scale. Every tenant that joins deepens the moat. First buyers are obvious: e-commerce/COD sellers bleeding from fake orders and returns.
+
+**Feeds on:** Sendqon message/call/payment outcomes, the Raast title-check route (B2 plugins), HLR plugin (B4). **Fed by:** item 4 (every notarised agreement becomes trust history).
+
+## 2. Internet Band, Business Band Nahi — SMS Fallback Network — RESEARCH
+
+**The invention:** a delay-tolerant transaction network that rides pure SMS. When the internet dies — shutdown, flood, dead zone — Sendqon tenants' phones keep passing the essential transactions (order confirmations, payment notices, attendance, delivery codes) phone-to-phone by store-and-forward SMS, and everything syncs when data returns.
+
+**Why it matters here:** internet shutdowns and patchy coverage are a recurring Pakistani reality; on that day every cloud business stops and a Sendqon business would not. The principle is NASA's delay-tolerant networking, commercialised for Pakistani SMBs — no one sells this here.
+
+**Feeds on:** the own Android gateway app (B7), sim_fleet (USP-2), the missed-call M2M signalling concept (coded rings as a zero-cost control channel when even SMS is congested).
+
+## 3. Human by the Minute — RESEARCH
+
+**The invention:** human attention as an API. An AI agent (B3) takes the call first; where it gets stuck, the PBX (B9) conferences in a real Pakistani human within seconds — a registered, vetted person working from home (housewives, students, retired clerks) — who is paid **per minute** via JazzCash/EasyPaisa. No call-centre building, no shifts, no payroll: a liquid human layer behind AI, rentable by any tenant by the minute.
+
+**Why it is a system, not a feature:** it reorganises labour the way ride-hailing reorganised transport — supply (idle human time at home) meets demand (businesses that need a human voice for 3 minutes) through our switchboard, with quality scoring feeding item 1's trust data.
+
+## 4. Gawah — SIM-Notarised Verbal Agreements — PROPOSED (2026-11-19)
+
+**The invention:** a notary in every pocket. Pakistan's real economy runs on *zabaan* — udhaar, rent, wages, land deals are spoken promises with no proof, and in a dispute the weaker party loses. Two people on an ordinary call invoke Gawah: the system announces recording in Urdu (consent), captures the promise segment, binds it to both SIM identities + Raast account titles, timestamps and seals it, and issues both parties a verifiable **Gawahi certificate** (checkable later by SMS/IVR code). Built on our PBX call recording + SIM identity — no third-party API.
+
+**First legal step before any build:** a formal legal opinion on evidentiary weight under the Qanoon-e-Shahadat Order 1984 / Electronic Transactions Ordinance 2002. **Interlock:** every Gawah record feeds the Number Trust Bureau (item 1).
+
+---
+
+*Programme note: these sit OUTSIDE the B0–B9 build plan. Nothing here is being built yet — research first, owner decides.*
