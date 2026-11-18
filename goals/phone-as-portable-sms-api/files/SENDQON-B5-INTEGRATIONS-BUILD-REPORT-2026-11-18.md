@@ -121,3 +121,15 @@ Per-item sections are appended as each item completes.
 **Production:** fresh backup (status=OK push=OK) → installed **v1.0.0 ACTIVE**. Site + /login 200. Baked into the build tree. **Push:** `plugin-whmcs` **ba80291** (ls-remote verified).
 
 **PENDING-ACCOUNT:** a real WHMCS 9.0+ install to place the addon module into and approve the first connection (connector half is protocol-identical to the battery-proven stub and PHP-syntax verified). Tenant use also needs the plan flag `whmcs` (owner pricing decision — untouched).
+
+## 8. Shopify — v1.0.0 INSTALLED, ACTIVE (Store family)
+
+**Architecture (core-verified):** `CommerceAccess::providerLive('shopify')` needs the manifest at `Integrations/Shopify/plugin.json` AND a live `StoreIntegration` in core's registry. There are no core shopify routes — the connect flow and webhooks are the plugin's own. Core also resolves COD/automation writebacks through a `CommerceProvider` contract (singleton `CommerceProviders`), which the plugin registers.
+
+**Design:** type `integration`, runtime contract 1, namespace `App\Plugins\Integrations\Shopify`. Tenant-owned app model per the spec: each merchant creates their own app in the Shopify Dev Dashboard (scopes `read_orders, write_orders, read_customers, read_fulfillments, read_checkouts`) and connects on the plugin's tenant page `/shopify` with the myshopify domain + Client ID + Client Secret. The plugin exchanges a client-credentials token, creates the core commerce store (`CommerceStores::create` — quota enforced by core; note it returns a `[$store, $key]` tuple, battery-found), and registers 11 webhook topics automatically. Credentials are stored encrypted (verified at rest). Webhooks are HMAC-verified per store and feed `CommerceIngest` (orders with provider-status mapping into the core status enum; checkouts as abandoned-checkout data, completed ones skipped since they arrive as orders); `app/uninstalled` disconnects; `customers/redact`/`shop/redact` erase via core's `CommercePersonalData::eraseStoreCustomer`; raw payloads prune after 7 days. COD writebacks (tags, cancel-with-restock) and order admin URLs go through the plugin's `CommerceProvider`.
+
+**Dev battery: 23/23 PASS** (in-process 16/16 incl. providerLive/allowed, card, faked connect flow — token cached, shop read, all webhooks registered, secret encrypted at rest, valid-HMAC order ingested as paid with correct minor-unit total, bad HMAC 401, redact 200, writeback provider resolves + addTags done + adminUrl; HTTP 7/7 incl. the tenant page + connect form (UI surface), webhook HMAC over real HTTP, admin plugin list).
+
+**Production:** fresh backup (status=OK, push=OK) → installed **v1.0.0 ACTIVE**. Tenant use needs the `shopify` plan feature (owner pricing decision — untouched).
+
+**PENDING-ACCOUNT:** a real Shopify store + Dev Dashboard app per merchant.
