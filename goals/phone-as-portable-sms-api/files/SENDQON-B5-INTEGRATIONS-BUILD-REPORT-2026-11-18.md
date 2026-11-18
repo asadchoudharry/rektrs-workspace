@@ -133,3 +133,15 @@ Per-item sections are appended as each item completes.
 **Production:** fresh backup (status=OK, push=OK) → installed **v1.0.0 ACTIVE**. Tenant use needs the `shopify` plan feature (owner pricing decision — untouched).
 
 **PENDING-ACCOUNT:** a real Shopify store + Dev Dashboard app per merchant.
+
+## 9. Perfex CRM — v1.0.0 INSTALLED, ACTIVE
+
+**Design:** same branded-connector pattern. `perfex_sites` with **`module_version`**; callback `/modules/sendqon/connect.php`. Connector = a Perfex module (`modules/sendqon/`): hooks for invoice created/paid/overdue, payment received, ticket opened/replied, contract + lead staff alerts — **all rules disabled by default**; sends queue in the module table with backoff retries (max 5, Perfex cron drain); reply-by-text lands on the customer's latest open ticket; standalone connect/webhook endpoints work against Perfex's own app-config + options table; client OTP 2FA via the core OTP API.
+
+**Battery-found fixes during the build:** the generator's category rename (`Support`→`CRM`) corrupted framework namespaces (`Illuminate\Support\…` → `Illuminate\CRM\…`) across four files — repaired and re-verified; a fixed Author-URI URL in the module header tripped core's self-hosted archive guard — removed.
+
+**Dev battery: 44/44 PASS** (in-process 21/21 + HTTP 23/23 incl. full Connect approval against the stub, send refusal, wrong-site 403, signed download, admin UI surface).
+
+**Production:** fresh backup (status=OK, push=OK) → installed **v1.0.0 ACTIVE**; baked into the build tree (18 files).
+
+**PENDING-ACCOUNT:** a real Perfex CRM 3.x install for the module half; plan flag `perfex` is the owner's pricing decision.
