@@ -41,7 +41,9 @@ Per-item sections are appended as each item completes.
   `App\Plugins\Channels\Push\`. Source: `~/workspace/sendqon-plugins/web-push/`.
   **Push source push (initially blocked by the VM's intermittent O_EXCL
   write fault) was CLEARED by the continuation lane: branch `plugin-push`
-  @ 0b67d98.** The continuation lane also re-verified items 1–2 in a fresh
+  @ b74b7d6** (an earlier local commit, 0b67d98, turned out never to have
+  persisted on the remote — found by an ls-remote audit at B4 close and
+  re-pushed; all source branches were ls-remote-verified at close). The continuation lane also re-verified items 1–2 in a fresh
   process on production before building further: widget LIVE v1.0.0,
   push LIVE v1.0.0, ai_agents v1.0.1 — all as recorded here; no
   discrepancies found.
@@ -207,7 +209,7 @@ All eight plugins are baked into the host build tree (`~/sendqon-build/src/app/P
 |---|---|---|
 | `plugin-widget` | 898a883 | Website Chat source (first lane) |
 | `plugin-ai_agents` | cd75c4f | B3 fix: `contact_id` on `ai_agent_turns` (v1.0.1) |
-| `plugin-push` | 0b67d98 | Web Push source (pending push cleared by continuation lane) |
+| `plugin-push` | b74b7d6 | Web Push source (the continuation lane re-pushed it — an earlier local commit 0b67d98 had never persisted on the remote; verified via ls-remote at close) |
 | `plugin-telegram` | 71bc2ef → **65fe641** | Telegram v1.0.0 + companion; then v1.1.0 store hooks + pip-only companion Dockerfile |
 | `plugin-telegram_store` | 67fe670 | Telegram Store v1.0.2 |
 | `plugin-email` | 67b65ee | Email channel v1.0.7 + companion |
