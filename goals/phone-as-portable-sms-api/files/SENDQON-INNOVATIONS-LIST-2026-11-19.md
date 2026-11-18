@@ -49,7 +49,7 @@ Status key: **RESEARCH** = research lane running · **PROPOSED** = presented, ow
 - **#2 SMS Fallback Network → GO WITH CONDITIONS.** 22 PK shutdowns in 2024, $1.62B losses (world's highest); in data-only suspensions SMS/voice provably stay alive. One encrypted transaction fits a single SMS segment; in-bundle cost ≈ Rs 0.02–0.10/txn. Hard limit stated in the report: in a full cellular suspension SMS dies too — sell as dead-zone/flood/data-outage continuity, never "shutdown-proof". Ceiling is regulatory (~1,000 SMS/day/SIM anti-spam), capacity scales by SIM count under sim_fleet.
 - **#3 Human by the Minute → GO WITH CONDITIONS.** Validated internationally in 2026 at $1/min (US); our viable point ≈ Rs 30/talk-min tenant, Rs 10/min worker, on local rails only (international termination at Rs 48.8/min kills it; local SIP rates unpublished — measure in pilot). First step is a zero-code concierge pilot (one clinic + one school, two weeks).
 
-## 5. The Machine Exchange — Agent-to-Agent Telephony — PROPOSED (2026-11-19)
+## 5. The Machine Exchange — Agent-to-Agent Telephony — RESEARCH (lane launched 2026-11-19 on the owner's "Chalao phir")
 
 **The invention:** the first telephone exchange built for machines, not people. Until now every phone call in history was human↔human or human↔menu. With AI agents on both ends, a new thing becomes possible: **my agent calls your agent** — to book, negotiate, confirm, settle — and when both sides detect they are machines, the call abandons slow human speech and switches to a fast machine protocol (data channel / coded audio), finishing in seconds, with a signed record of what was agreed. The missing layer — and the product — is the exchange itself: agent identity (which business does this agent speak for?), authority limits (what may it commit?), and a trust record of every machine-made promise (feeding #1). A 2025 hackathon demo (two agents switching to beeps) proved the spark; no one has built the network, the identity layer, or the billing. Our PBX (B9) + AI Agents (B3) are its two halves.
 
@@ -60,6 +60,10 @@ Status key: **RESEARCH** = research lane running · **PROPOSED** = presented, ow
 ## 7. The Reality Oracle — Fleet-Verified Physical Truth — PROPOSED (2026-11-19)
 
 **The invention:** an API that answers questions about the physical world — "is this shop open, at this address, right now?" — by dispatching the nearest fleet phone/person to look, photograph and attest (GPS + time + SIM identity). Digital Pakistan runs on unverifiable claims (fake addresses, ghost shops, phantom deliveries); a verification network with a signed attestation is infrastructure none of the data-collection apps (Premise, Streetbees) sell as a real-time API here. Extends #3's human layer from voice to presence.
+
+## 8. Rektrs Line — The Smart Number (Software Telco / MVNO) — PROPOSED (2026-11-19)
+
+**The invention at full size:** stop building on top of the network — become a layer of it. Today a phone number is dumb: it rings, that is all. A **Rektrs Line** is a number born smart: an AI receptionist inside the line, Gawah recording on demand, Insaan Check, a trust score that travels with the number, and a cloud identity that survives losing the SIM — all properties of the line itself, working on a Rs 3,000 feature phone with no app installed. The staged path: today's overlay (our fleet and bridge riding others' networks) → the aggregator track (running) → a **PTA MVNO licence** (the framework exists; a host-operator agreement is the hard gate) on a cloud-native core. At that point every other item on this list stops being an add-on and becomes a built-in property of every number we issue. The other innovations are features; this is the ground they stand on.
 
 ---
 
