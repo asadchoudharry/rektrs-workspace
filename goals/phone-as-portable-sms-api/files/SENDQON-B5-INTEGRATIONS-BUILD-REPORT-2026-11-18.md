@@ -145,3 +145,15 @@ Per-item sections are appended as each item completes.
 **Production:** fresh backup (status=OK, push=OK) → installed **v1.0.0 ACTIVE**; baked into the build tree (18 files).
 
 **PENDING-ACCOUNT:** a real Perfex CRM 3.x install for the module half; plan flag `perfex` is the owner's pricing decision.
+
+## 10. Blesta — v1.0.0 INSTALLED, ACTIVE
+
+**Design:** same branded-connector pattern with the family's one identity twist: Blesta is multi-company, so the client implements core's `IntegrationSiteIdentity` — `blesta_sites` carries `company_id` + `identity_hash`, the connect request must present `company_id`, and the connector sends it back as `X-Integration-Company-Id` on every call; reconnects scope per company. Version column `plugin_version`; callback `/plugin/sendqon/client_main/callback/`. Connector = a Blesta plugin (`plugins/sendqon/`): event subscriptions (invoice created/paid, service suspension staff alerts — all disabled by default), per-company settings, queued sends with backoff (max 5), client OTP 2FA.
+
+**Battery-found items:** the Connect consent refuses identity-carrying integrations without the identity field — the battery's consent URL now presents `company_id=1` (the connector's own connect URL always includes it); fixed author URLs in the connector tripped the self-hosted archive guard, same as Perfex.
+
+**Dev battery: 44/44 PASS** (in-process 21/21 + HTTP 23/23 incl. the identity-carrying Connect approval, send refusal, wrong-site 403, signed download, admin UI surface).
+
+**Production:** fresh backup (status=OK, push=OK) → installed **v1.0.0 ACTIVE**; baked into the build tree (20 files).
+
+**PENDING-ACCOUNT:** a real Blesta 5.x install for the plugin half; plan flag `blesta` is the owner's pricing decision.
