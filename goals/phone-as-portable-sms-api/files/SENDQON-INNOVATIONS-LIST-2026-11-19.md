@@ -40,4 +40,28 @@ Status key: **RESEARCH** = research lane running · **PROPOSED** = presented, ow
 
 ---
 
+---
+
+## Research outcomes (2026-11-19, all four lanes complete — reports in this folder)
+
+- **#1 Number Trust Bureau → GO WITH CONDITIONS.** Demand priced (COD 80–90% of PK e-commerce, RTO 20–35%, Rs 800–2,000 loss per return; sellers already pay for defence). Narrow flag-sharing exists (SafeShip, ConfirmFlow, OrderAudit) — the standalone cross-vertical trust API does not. Kill criterion built in: anchor-seller backtest before scale spend. First step: legal opinion (Credit Bureaus Act 2015 reach; the word "Bureau" never ships publicly).
+- **#1b Bureau seed data → mapped.** Headline: **no lawful source anywhere sells the name or CNIC behind a PK number** — PTA's record is holder-only, so every "name database" on sale is leaked data by construction (never-touch list: 8 items). Best lawful seed: **SendPK's HLR & MNP API** (MNP Rs 0.78/lookup, HLR Rs 1.56) plugging into the existing B4 `hlr` plugin contract. Day-one stack ≈ Rs 1–4/number supports a **Reachability & Identity-Shape Score only** (dead/fake/ported + business-identity flags) — behaviour prediction must wait for tenant history.
+- **#2 SMS Fallback Network → GO WITH CONDITIONS.** 22 PK shutdowns in 2024, $1.62B losses (world's highest); in data-only suspensions SMS/voice provably stay alive. One encrypted transaction fits a single SMS segment; in-bundle cost ≈ Rs 0.02–0.10/txn. Hard limit stated in the report: in a full cellular suspension SMS dies too — sell as dead-zone/flood/data-outage continuity, never "shutdown-proof". Ceiling is regulatory (~1,000 SMS/day/SIM anti-spam), capacity scales by SIM count under sim_fleet.
+- **#3 Human by the Minute → GO WITH CONDITIONS.** Validated internationally in 2026 at $1/min (US); our viable point ≈ Rs 30/talk-min tenant, Rs 10/min worker, on local rails only (international termination at Rs 48.8/min kills it; local SIP rates unpublished — measure in pilot). First step is a zero-code concierge pilot (one clinic + one school, two weeks).
+
+## 5. The Machine Exchange — Agent-to-Agent Telephony — PROPOSED (2026-11-19)
+
+**The invention:** the first telephone exchange built for machines, not people. Until now every phone call in history was human↔human or human↔menu. With AI agents on both ends, a new thing becomes possible: **my agent calls your agent** — to book, negotiate, confirm, settle — and when both sides detect they are machines, the call abandons slow human speech and switches to a fast machine protocol (data channel / coded audio), finishing in seconds, with a signed record of what was agreed. The missing layer — and the product — is the exchange itself: agent identity (which business does this agent speak for?), authority limits (what may it commit?), and a trust record of every machine-made promise (feeding #1). A 2025 hackathon demo (two agents switching to beeps) proved the spark; no one has built the network, the identity layer, or the billing. Our PBX (B9) + AI Agents (B3) are its two halves.
+
+## 6. Insaan Check — Proof-of-Human for the Voice-Clone Age — PROPOSED (2026-11-19)
+
+**The invention:** STIR/SHAKEN proves a *number* is real; nothing proves the *human* is. As voice cloning explodes, any tenant can challenge any caller mid-call: SIM possession + voiceprint + a family/business code-word ceremony, returning a live verdict — "insaan hai, wahi hai". A cross-business human-authentication layer over the ordinary phone network, sold as an API; banks do voice biometrics inside their own walls, nobody sells it as shared infrastructure in Pakistan. Pairs with #5: in a world of machine callers, proof-of-human becomes a billable primitive.
+
+## 7. The Reality Oracle — Fleet-Verified Physical Truth — PROPOSED (2026-11-19)
+
+**The invention:** an API that answers questions about the physical world — "is this shop open, at this address, right now?" — by dispatching the nearest fleet phone/person to look, photograph and attest (GPS + time + SIM identity). Digital Pakistan runs on unverifiable claims (fake addresses, ghost shops, phantom deliveries); a verification network with a signed attestation is infrastructure none of the data-collection apps (Premise, Streetbees) sell as a real-time API here. Extends #3's human layer from voice to presence.
+
+---
+
 *Programme note: these sit OUTSIDE the B0–B9 build plan. Nothing here is being built yet — research first, owner decides.*
+*Standing owner directive (2026-11-19 ~00:38 PKT): the hunt continues — new finds are appended to this list as they surface, each marked PROPOSED until the owner promotes it.*
