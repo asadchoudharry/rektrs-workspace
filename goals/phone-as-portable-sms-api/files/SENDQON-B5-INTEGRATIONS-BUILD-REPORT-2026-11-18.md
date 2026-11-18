@@ -167,3 +167,13 @@ Per-item sections are appended as each item completes.
 **Production:** fresh backup (status=OK, push=OK) → installed **v1.0.0 ACTIVE**; baked into the build tree (46 files).
 
 **PENDING-ACCOUNT:** a real Odoo 19.0/20.0 install for the add-ons; plan flag `odoo` is the owner's pricing decision.
+
+## 12. Admin API — v1.0.0 INSTALLED, ACTIVE (type `tool`)
+
+**Design:** slug `admin-api`, type `tool`, runtime contract 1, namespace `App\Plugins\Tools\AdminApi`. The provider binds core's `AdminApiDocs` contract as a singleton — the exact condition core's `AdminApiRuntime::live()` probes (verified live + `availableTo(dev admin)` in a fresh process) — and registers `/api/v1/admin/*` routes: overview (core `AdminStatsService`), users list/detail + suspend/unsuspend (`UserService`), plans, transactions + KPIs (`TransactionAdminService`), vouchers list/create (`VoucherService`), and `openapi.json` generated from the endpoint catalogue. **Every write delegates to the same audited core admin services the panel uses.** Security per the spec: Bearer keys only (session/transient tokens refused in the controller), the key owner must be an admin, each route requires its `admin.*` ability on the key; the OpenAPI 3.1 document ships with the plugin.
+
+**Dev battery: 17/17 PASS** — guest 401, tenant-owned key 403, overview/users/plans/transactions/vouchers 200, read-only key refused the suspend (403), suspend → DB status flips → unsuspend, OpenAPI document served with the users path, admin plugin list (page 2 of the paginated list) shows `admin-api`.
+
+**Production:** fresh backup (status=OK, push=OK) → installed **v1.0.0 ACTIVE**; guest probe of `/api/v1/admin/overview` on production returns 401 (endpoint live, key required). Baked into the build tree (9 files, under `Plugins/Tools/AdminApi`).
+
+**PENDING-ACCOUNT:** none for function — operators mint admin-scoped keys in the panel when they want them.
