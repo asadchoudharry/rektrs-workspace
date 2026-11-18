@@ -109,3 +109,15 @@ Per-item sections are appended as each item completes.
 **Production:** fresh backup (status=OK push=OK) → installed **v1.0.0 ACTIVE**. Site + /login 200. Baked into the build tree. **Push:** `plugin-wordpress` **fe849d8** (ls-remote verified).
 
 **PENDING-ACCOUNT:** a real WordPress (+WooCommerce) install to place the connector into and approve the first connection (connector half is protocol-identical to the battery-proven stub and PHP-syntax verified; the WooCommerce intake was proven against core's real endpoints with a protocol payload). Tenant use also needs the plan flag `wordpress` (owner pricing decision — untouched).
+
+## 7. WHMCS — COMPLETE + LIVE (ACTIVE v1.0.0)
+
+**Plan-card check:** type `integration`, runtime contract 1 — confirmed; version column is `module_version` (core's ConnectedSites header map for WHMCS). No core edits.
+
+**What was built** (slug `whmcs`, namespace `App\Plugins\Integrations\Whmcs`): the ConnectedSites client, `whmcs_sites` migration, branded download. **Connector half** (`connector/sendqon/`, a WHMCS addon module for `modules/addons/`): state-validated Connect callback storing the key in the addon's settings rows, an admin output page with per-event rules — invoice created/paid/reminder, ticket opened/user reply/admin reply/closed, client registered, service suspended/unsuspended — **all starting disabled** per the spec, staff copy numbers, reply-by-text via `webhook.php` (latest open ticket matched by phone, `localAPI('AddTicketReply')`, optional shared secret), phone verification + a sign-in code challenge via core OTP (client-area verify page), and a cron-drained retry queue (`mod_sendqon_queue`, exponential backoff, max 5 attempts).
+
+**Battery (dev): 44/44 PASS** — in-process 21/21 + HTTP 23/23 (hub/detail/help, Connect approval against the stub at the module callback path, send → `site_routing_unavailable`, site summary, wrong-site 403, signed download with baked brand, guest blocked, admin plugins UI lists WHMCS).
+
+**Production:** fresh backup (status=OK push=OK) → installed **v1.0.0 ACTIVE**. Site + /login 200. Baked into the build tree. **Push:** `plugin-whmcs` **ba80291** (ls-remote verified).
+
+**PENDING-ACCOUNT:** a real WHMCS 9.0+ install to place the addon module into and approve the first connection (connector half is protocol-identical to the battery-proven stub and PHP-syntax verified). Tenant use also needs the plan flag `whmcs` (owner pricing decision — untouched).
