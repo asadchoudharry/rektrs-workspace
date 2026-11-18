@@ -177,3 +177,41 @@ Per-item sections are appended as each item completes.
 **Production:** fresh backup (status=OK, push=OK) → installed **v1.0.0 ACTIVE**; guest probe of `/api/v1/admin/overview` on production returns 401 (endpoint live, key required). Baked into the build tree (9 files, under `Plugins/Tools/AdminApi`).
 
 **PENDING-ACCOUNT:** none for function — operators mint admin-scoped keys in the panel when they want them.
+
+## 13. Freemius — evidence assessment: NOT BUILT
+
+Per the plan's evidence-first rule (same rule that disposed GoHighLevel and monday.com in §1), the Freemius spec (`02-PAID-PLUGINS/freemius.md`) was assessed against what can actually be evidenced:
+
+- **Price: UNVERIFIED** — the item does not appear on the vendor's products portal and is absent from the Lane 3 catalogue.
+- **Version v1.1.0** is known only from the demo instance's plugin list, where it shows **"Not installed"**.
+- **No portal page, no documentation** — the only other trace is a one-line mention in the vendor's gateway list.
+- The spec itself records its source status as UNVERIFIED and instructs: everything beyond existence "must be established from the vendor before any build decision. Do not guess" (priority: "None currently").
+
+**Disposition: NOT BUILT.** The evidence rule (vendor documentation or real tenant demand) is not met. Revisit only if Titan Systems publishes documentation/pricing for the item or a tenant requests Freemius licensing integration by name.
+
+## Final summary — Phase B5 COMPLETE (2026-11-18)
+
+All 14 plan items dispositioned: **12 built + live, 2 evidence-deferred (GoHighLevel, monday.com), 1 evidence-assessed not built (Freemius)** — the three non-builds are recorded with their evidence in §1 and §13. **No core files were edited in B5** (the one core-pattern fix, Browser Extension's error envelope, was plugin-side), **no plan features, prices or flags were changed**, and every production install was preceded by a fresh backup (all `status=OK push=OK`) and baked into the host build tree.
+
+| # | Item | Battery | Production |
+|---|------|---------|------------|
+| 1 | Google Sheets | 31/31 + UI | Installed, **INACTIVE** (refuses activation until the operator's Google Cloud OAuth app exists) |
+| 2 | Browser Extension v1.0.1 | 16/16 | **ACTIVE** |
+| 3 | osTicket | 44/44 | **ACTIVE** |
+| 4 | Flarum | 44/44 | **ACTIVE** |
+| 5 | Appointment Booking | 48/48 | **ACTIVE** |
+| 6 | WordPress + WooCommerce | 46/46 | **ACTIVE** |
+| 7 | WHMCS | 44/44 | **ACTIVE** |
+| 8 | Shopify | 23/23 | **ACTIVE** |
+| 9 | Perfex CRM | 44/44 | **ACTIVE** |
+| 10 | Blesta | 44/44 | **ACTIVE** |
+| 11 | Odoo | 47/47 | **ACTIVE** |
+| 12 | Admin API | 17/17 | **ACTIVE** |
+
+**Battery total: 448 checks, all passing**, each including the owner-directed UI-surface check on the dev copy (admin plugin list + Configure surface, tenant hub cards, detail/help pages, and each plugin's own pages where it ships them). Production end-state verified by direct probe on 2026-11-18: 11 plugins `active`, `google_sheets` `inactive` by design; site + login 200 throughout.
+
+**Push ledger (every push verified with `git ls-remote`):** `plugin-google_sheets` dde88af · `plugin-browser_extension` e97edd7 · `plugin-osticket` 8b19972 · `plugin-flarum` fdd3ba3 · `plugin-appointment_booking` 7a0b360 · `plugin-wordpress` fe849d8 · `plugin-whmcs` ba80291 · `plugin-shopify` 498f1e8 · `plugin-perfex` b79bc22 · `plugin-blesta` 577e3bc · `plugin-odoo` cc8ea04 · `plugin-admin_api` 2bce246. This report was pushed section-by-section to Sendqon `rebuild-tree` (planning/) and rektrs-workspace `main` (goals/phone-as-portable-sms-api/files/).
+
+**Plan-card corrections recorded during B5:** core's registry accessor is `get()` (`live()` is private); `CommerceStores::create` returns a `[$store, $key]` tuple; `IntegrationVersions::shipped('odoo')` returns a series→add-on-versions map; the admin plugin list paginates at 24 per page; core-rendered detail/help pages exist only for the seven branded-connector keys (Shopify therefore ships its own tenant page); identity-carrying integrations (Blesta company_id, Odoo database_uuid) refuse Connect approvals and sends that omit the identity field/header — by design, and the connectors always send them.
+
+**PENDING-ACCOUNT (owner/operator steps, nothing else blocks):** a Google Cloud OAuth app for Google Sheets activation and (optionally) for Appointment Booking's calendar sync; real platform installs for the seven connector halves (osTicket 1.18.x, Flarum 2.x, WordPress/WooCommerce, WHMCS 9.0+, Perfex 3.x, Blesta 5.x, Odoo 19.0/20.0) and a Shopify store app per merchant; per-integration plan flags (`google_sheets`, `browser_extension`, `osticket`, `flarum`, `appointment_booking`, `wordpress`, `whmcs`, `shopify`, `perfex`, `blesta`, `odoo`) remain the owner's pricing decisions — all untouched.
