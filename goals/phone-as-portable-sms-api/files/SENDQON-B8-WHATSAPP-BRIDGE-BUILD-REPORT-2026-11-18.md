@@ -82,7 +82,7 @@ Sources: `WaBinaryClient`, `WhatsappServerKind`, `BootstrapController`, `Broadca
 
 - Bridge source → Sendqon `bridge-whatsapp-own` @ **a4663a8**
 - Plugin source → Sendqon `plugin-wa_guard` @ **7e6983a**
-- This report → Sendqon `rebuild-tree` @ _<filled at push>_ · rektrs-workspace `main` @ _<filled at push>_
+- This report → Sendqon `rebuild-tree` @ **51e08a9** · rektrs-workspace `main` @ **df23adc** (ledger completed by the follow-up amendment commits)
 
 ## 7. Owner items
 
