@@ -40,3 +40,21 @@ Battery-found fixes, all in-plugin or in the battery rig: the soft-delete adopti
 **Production:** fresh backup (status=OK push=OK) → installed **v1.0.0 ACTIVE** (activatable unconfigured by design); tracking table created; **applied rows = 0 (nothing seeded)**; fresh-process route probe registered; site + /login 200; guest pack page → 302 to login; all containers Up. Baked into the build tree (13 files). **Push:** `plugin-schools_pack` **3365c3f** (ls-remote verified).
 
 **PENDING-ACCOUNT:** none. Tenant use needs a channel (SMS/WhatsApp) for the flows to reach parents, and parents' Fee Due Date values on their contacts — both tenant-side by design.
+
+## 2. Clinics Pack — COMPLETE + LIVE (ACTIVE v1.0.0)
+
+**Plan-card check:** type `integration`, runtime contract 1 — confirmed. Slug `clinics_pack`, namespace `App\Plugins\Integrations\ClinicsPack`, page at `/packs/clinics`. The pack's flows run on the B5 Appointment Booking plugin's real node types (`trigger.appointment`, `send.booking_link`, `wait.booking`) — the plan card's stated dependency, now satisfiable because B5 shipped them.
+
+**Content inventory (25 items):**
+- **Contact fields (2):** Last Visit Date (date), Blood Group (select: A+/A-/B+/B-/AB+/AB-/O+/O-).
+- **Tags (4):** Patient, New Patient, Follow-up Due, Chronic Care.
+- **Conversation labels (4):** Appointment, Report Query, Emergency, Billing.
+- **Message templates — canned responses (8):** appointment confirmed, appointment rescheduled, reports ready, clinic timings, follow-up reminder, prescription refill, emergency guidance (directs the patient to call **1122** first — no chat-first advice for emergencies), consultation fee.
+- **Flows (5):** *Appointment Reminder (24h)* — `trigger.appointment` event `reminder`, 1440 minutes before, with the appointment service/date/time merge tokens and the manage-booking link; *Appointment Reminder (2h)* — same trigger at 120 minutes; *Booking Confirmation* — event `booked` → confirmation → tag the contact Patient; *Cancelled — Offer Rebooking* — event `canceled` → acknowledgement → booking link → `wait.booking` 72h (booked → end; timed out → one gentle nudge); *New Patient Intake* — keyword APPOINTMENT/BOOK → welcome → booking link → wait → on booking tag New Patient + notify the owner, on timeout a closing message.
+- **Drip sequences (2):** *Post-Visit Follow-up Drip* — thank-you → wait 2d → recovery check-in → wait-for-reply (3 days) → wait 4d → follow-up reminder → tag Follow-up Due; *Chronic Care Recall* — recall → wait 7d → reminder.
+
+**Battery (dev): 62/62 PASS** — in-process 40/40 (apply creates all 25 with zero errors; every flow's `validation_errors` empty and flows inactive; reminder flow's `trigger_type` derived as `appointment` with the 1440-minute config intact; confirmation flow's tag placeholder resolved to the real Patient tag id; sequences draft + compiled; re-apply creates 0/skips 25; the reminder flow **publishes cleanly through `FlowDrafts`**; tenant B isolation; tenant C adopts exactly 2 pre-existing records; remove is exact and a second remove is a no-op) and HTTP/UI 22/22 (same surface matrix as the schools pack: guest 302, owner page + badges + buttons, member read-only with POST apply → 403, remove/re-apply via the real forms with the "Pack applied: 25 created" flash, admin plugins list, flows page + login 200). One dry-run note, stated plainly: the intake flow's dry run executed the welcome reply and the booking-link send, then the platform's `FlowTestRunner` simulator reported the run failed **at the `wait.booking` node** — the simulator only models reply waits, not booking waits. The node itself is core's booking executor (proven end-to-end in the B5 battery) and the flow passes `FlowValidator`; this is a simulator gap, not a pack defect.
+
+**Production:** fresh backup (status=OK push=OK) → installed **v1.0.0 ACTIVE**; tracking table created; **applied rows = 0 (nothing seeded)**; fresh-process route probe registered; site + /login 200; guest pack page → 302 to login. Baked into the build tree (13 files, md5-verified). **Push:** `plugin-clinics_pack` **33f023e** (ls-remote verified).
+
+**PENDING-ACCOUNT:** none. Tenant use needs Appointment Booking services set up in the workspace (the flows key off them) and a channel for delivery — both tenant-side by design.
