@@ -58,3 +58,41 @@ Battery-found fixes, all in-plugin or in the battery rig: the soft-delete adopti
 **Production:** fresh backup (status=OK push=OK) → installed **v1.0.0 ACTIVE**; tracking table created; **applied rows = 0 (nothing seeded)**; fresh-process route probe registered; site + /login 200; guest pack page → 302 to login. Baked into the build tree (13 files, md5-verified). **Push:** `plugin-clinics_pack` **33f023e** (ls-remote verified).
 
 **PENDING-ACCOUNT:** none. Tenant use needs Appointment Booking services set up in the workspace (the flows key off them) and a channel for delivery — both tenant-side by design.
+
+## 3. E-commerce Pack — COMPLETE + LIVE (ACTIVE v1.0.0)
+
+**Plan-card check:** type `integration`, runtime contract 1 — confirmed. Slug `ecommerce_pack`, namespace `App\Plugins\Integrations\EcommercePack`, page at `/packs/ecommerce`. The store flows use core's commerce node types with the **exact configs and merge tokens of core's own store templates** (`resources/flow-templates/store_cod_confirmation.json`, `store_cart_recovery.json`, `store_delivered.json` — read from the live code before authoring). Core already ships basic English versions of these automations via CommerceAutomations; the pack's value on top is the Roman-Urdu COD flow with unconfirmed-tagging, cart recovery with abandoner tagging, the review request, and the keyword status desk — as one tenant-appliable bundle with the vertical's fields, tags, labels and templates.
+
+**Content inventory (24 items):**
+- **Contact fields (2):** Delivery City (text), Last Order Date (date).
+- **Tags (5):** Customer, VIP, Cart Abandoner, Repeat Buyer, COD Unconfirmed.
+- **Conversation labels (4):** Order Query, Delivery Issue, Return / Exchange, Payment Issue.
+- **Message templates — canned responses (8):** order status, delivery information, return policy, exchange steps, payment methods (COD / JazzCash / EasyPaisa / bank transfer), COD confirmed (Roman Urdu), discount enquiry, size-guide help (bilingual).
+- **Flows (4):** *COD Confirmation (Roman Urdu)* — `trigger.store_cod_order_placed` → 10-minute delay → Roman-Urdu confirm/cancel request with `{{order.number}}` / `{{order.total}}` / confirm + cancel links → `wait_cod_answer` 12h (confirmed → `update_store_order confirm`; cancelled → `cancel`; timed out → Roman-Urdu reminder → second 12h wait → still silent → `unconfirmed` + tag COD Unconfirmed); *Abandoned Cart Recovery* — `trigger.store_checkout_abandoned` → 1h delay → recovery message with `{{checkout.items}}` / `{{store.name}}` / `{{checkout.recovery_url}}` → 23h delay → second reminder → tag Cart Abandoner; *Delivered — Ask for a Review* — `trigger.store_order_delivered` → 2-day delay → `send.review_request` with `{{review_link}}`; *Order Status Desk (STATUS)* — keyword STATUS → `send.question` captures the order number into the run's variables → internal note → owner notification → acknowledgement (the desk deliberately does **not** fake a live lookup: the team answers with the real status from the store, which is how a small store actually works).
+- **Drip sequence (1):** *Post-Purchase Drip* — thank-you → wait 7d → new arrivals → wait 14d → loyalty offer (reply OFFER).
+
+**Battery (dev): 62/62 PASS** — in-process 40/40 (apply creates all 24 with zero errors; all 4 flows validate clean and arrive inactive; COD flow's `trigger_type` derived as `store_cod_order_placed`, both answer waits present, all three order-update actions present; cart flow's tag placeholder resolved to the real Cart Abandoner tag id; sequence draft + compiled; re-apply creates 0/skips 24; the status-desk flow **publishes cleanly** and its **dry run completes end-to-end** — question → note → notify → acknowledgement → end; tenant B isolation; tenant C adopts exactly 2; remove exact, second remove a no-op) and HTTP/UI 22/22 (guest 302; owner page with all items + badges + buttons; member read-only, POST apply → 403; remove/re-apply via the real forms with the "Pack applied: 24 created" flash; admin plugins list; flows page + login 200). One battery-script defect was found and fixed during the run (a count replacement in the derived battery script had also rewritten the tags assertion from 5 to 4 — the pack itself was correct, proven by direct query; the fixed battery passes 40/40).
+
+**Production:** fresh backup (status=OK push=OK) → installed **v1.0.0 ACTIVE**; tracking table created; **applied rows = 0 (nothing seeded)**; fresh-process route probe registered; site + /login 200; guest pack page → 302 to login; all three packs verified ACTIVE side by side. Baked into the build tree (13 files, md5-verified). **Push:** `plugin-ecommerce_pack` **35ae98f** (ls-remote verified).
+
+**PENDING-ACCOUNT:** none. Tenant use needs a connected store (Shopify/WooCommerce from B5) for the store triggers to fire and a channel for delivery — both tenant-side by design.
+
+## B6 closing summary
+
+**All three USP-5 vertical packs are built, batteried and LIVE**, on one shared, proven engine (tracked apply / adopt / remove, owner-only, nothing ever auto-seeded):
+
+| Pack | Items | Battery | Production | Source push |
+|---|---|---|---|---|
+| Schools Pack v1.0.0 | 29 (3 fields · 5 tags · 4 labels · 10 templates · 5 flows · 2 drips) | 63/63 | ACTIVE, 0 applied rows | `plugin-schools_pack` 3365c3f |
+| Clinics Pack v1.0.0 | 25 (2 fields · 4 tags · 4 labels · 8 templates · 5 flows · 2 drips) | 62/62 | ACTIVE, 0 applied rows | `plugin-clinics_pack` 33f023e |
+| E-commerce Pack v1.0.0 | 24 (2 fields · 5 tags · 4 labels · 8 templates · 4 flows · 1 drip) | 62/62 | ACTIVE, 0 applied rows | `plugin-ecommerce_pack` 35ae98f |
+
+**187 battery checks in total**, every one including the rendered UI-surface matrix (guest redirect, owner page + apply/remove through the real forms, workspace-member read-only + 403 on apply, second-tenant isolation, admin plugin list). Plan-card acceptance lines: Schools — a test workspace applies the pack and its fee-reminder flow publishes and dry-runs the same day ✓ (dev tenant, in one sitting); Clinics — appointment → reminder → follow-up drip exists end-to-end as validated, publishable content on the B5 booking nodes ✓ (the booking *events* themselves fire from the tenant's real bookings); E-commerce — COD confirmation + abandoned-cart recovery flows validate, publish and (for the desk) dry-run ✓ (store triggers fire from the tenant's connected store).
+
+**What could not be made real, stated plainly:** (1) **Report definitions** — the platform has no user-defined report store; packs ship none, and everything they create reports through the built-in campaign/sequence/flow surfaces. (2) **WABA message templates** — Meta reviews those per tenant WABA account; pack templates are canned responses (the workspace's working template store), with the Urdu/Roman-Urdu content the USP calls for. (3) A **plan-feature flag** for packs — no core plan key exists and adding one means a core edit; packs gate on admin activation + owner-only apply, the platform's own pattern for content plugins. (4) The clinics intake **dry run** cannot pass the `wait.booking` node in core's simulator (it models reply waits only) — the flow validates clean and the node is core's B5-proven executor.
+
+**Discipline record:** zero core files edited; no PATCH-REGISTER entries; no plan features, prices or flags changed; a fresh verified production backup preceded every install; every plugin baked into `~/sendqon-build/src/app/Plugins/Integrations/` (13 files each, md5-verified against the packaged source); every push below verified with `ls-remote`.
+
+**Push ledger (all ls-remote-verified):** sources `plugin-schools_pack` 3365c3f · `plugin-clinics_pack` 33f023e · `plugin-ecommerce_pack` 35ae98f; this report on Sendqon `rebuild-tree` and rektrs-workspace `main` (final hashes in the commit history of both).
+
+**Owner click-paths:** tenant pages https://sendqon.rektrs.com/packs/schools · /packs/clinics · /packs/ecommerce (sign in as a workspace owner to apply a pack). Standing platform limitation, as with the earlier plugin pages: plugins cannot add sidebar menu entries in this architecture — pack pages are reached by URL.
