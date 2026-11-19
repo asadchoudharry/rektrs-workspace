@@ -94,3 +94,17 @@ Own SMPP adapter (Node, node-smpp) + Jasmin 0.10.12 in Docker (own ARM64 image f
 | `rebuild-tree` + workspace `main` | (this report) | This report |
 
 No credentials, keys, licence codes, or session files are in any pushed tree (companion dev config with live secrets was deliberately excluded; production secrets were generated on the host and never left it).
+
+---
+
+## Addendum — Production repair, 2026-11-19 (owner screenshots ~10:21 PKT)
+
+**Defect found by the owner:** the admin panel showed all three B9 plugins as unloadable — GsmModem and ResellerPlus with "Invalid manifest" (directory-scan cards) and "Files missing" (DB-record cards), Pbx with "Invalid manifest". The plugins' DB records said `active` and the dev battery had passed, yet the live panel could not load them.
+
+**Root cause (proven):** the lane's production copy route carried this VM's 0640 file modes and uid-1001 ownership into the container. The web process runs as `www-data` (uid 33) and could not read 40 files / traverse-check 29 directories across the three plugin trees (manifests and main classes included). The dev battery missed it because its probes ran as **root**, which reads anything. Earlier phases (B1–B8) installed through PluginManager zip extraction, which lands files readable — only B9's direct copy route hit the trap.
+
+**Repair (2026-11-19, after a fresh verified production backup, status=OK push=OK):** ownership/modes normalised to the healthy plugins' pattern (root:root, files 644, dirs 755) in (1) the live production container, (2) the host build tree `~/sendqon-build/src` (the GsmModem copy there was root-owned; fixed via sudo), (3) the dev container, and (4) the local plugin source trees on this VM.
+
+**Verification (as the web user, fresh process):** whole Plugins tree now has 0 files unreadable by www-data; a www-data probe reports `gsm_modem: active`, `pbx: active`, `reseller_plus: active` and all three main classes LOAD; `/login` → 200; caches cleared as www-data.
+
+**Standing lessons:** (a) every production plugin verification must include a probe **as www-data**, never only as root; (b) any file copied into a container or build tree must be mode-normalised (0644/0755) at copy time — the same trap recorded for Operqon $ROOT syncs and Hostinger deploys; (c) durability note — all own plugins currently live in the running container's layer + the build tree, NOT in the `sendqon:5.0.4` image (a fresh container from the image has none of them); the image rebuild that makes them survive a recreate remains a separate, deliberate step, still pending.
