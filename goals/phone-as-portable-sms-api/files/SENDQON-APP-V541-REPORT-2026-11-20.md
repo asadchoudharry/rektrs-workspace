@@ -1,22 +1,27 @@
 # Sendqon Gateway App v5.4.1 — Report (2026-11-20)
 
-**Release:** `sendqon-gateway-own-v5.4.1.apk` · 4,587,543 bytes · SHA-256 `e0e8bbe242db36e05c11e0beb39cbf2e064634e39441df3c91cbf3c3a9e314db`
+**Release:** `sendqon-gateway-own-v5.4.1.apk` · 4,587,543 bytes · SHA-256 `8ab5b9d12f2886e54042acf68755ca8921f47b7d8ad6f1f838834fc5a1ed1f40`
 **Identity:** package `com.rektrs.sendqon`, version 5.4.1 / code 50401, signer `eba2c40d377418385830b1228a6ea19c65593f837790e2971a5431a9fd7742ee` (custody key, verified from the built APK with apksigner — in-place update over 5.4.0 holds)
-**Source:** branch `app-own-android`, commit `1420e74` (pushed, ls-remote verified)
-**Slot:** registered in the production `android_gateway` slot 2026-11-20T16:45:26Z (21:45:26 PKT) — proof in §6.
+**Source:** branch `app-own-android`, commits `1420e74` + `1af10f4` (pushed, ls-remote verified)
+**Slot:** registered in the production `android_gateway` slot 2026-11-20T16:56:27Z (21:56:27 PKT) — proof in §6. (A first 5.4.1 build, sha `e0e8bbe2…`, was registered at 16:45:26Z and superseded eleven minutes later by this build — same version, folded-in field evidence, §1 — before any phone had taken 5.4.1.)
 
 v5.4.1 is a single-purpose release: v5.4.0's balance check read **neither** of the owner's SIMs on his phone (field screenshot, 2026-11-20 16:08 PKT — both SIM cards showed "Couldn't read balance" with "checked now"). It hardens the parser against real carrier reply families, fixes the one thing no parser could fix (the Ufone default code pointed at the bundle-resources service, §2), reads multi-message USSD sessions whole, and carries the SIM 2 "Disabled" diagnosis (§5, report-only — no state was changed).
 
-**Evidence honesty, up front:** the owner never sent the Carrier-reply screenshots, so his SIMs' exact reply texts were never seen by this lane. The corpus below is built from public evidence; every entry is marked **[S]** source-backed (a published source quotes the wording or directly describes the reply's content) or **[I]** inferred (the reply family as widely described). Nothing about his actual balances is claimed anywhere in this report.
+**Evidence note:** the lane began from public evidence (the owner never sent the Carrier-reply screenshots), and the corpus in §2 is marked **[S]** source-backed / **[I]** inferred accordingly. Mid-lane, the parallel sim_fleet lane captured the owner's phone's real sync panel-side (2026-11-20 16:46:48 UTC) — **the actual two replies are now known verbatim and are §1's root cause**; both were folded into this release before it closed (§3, verdict layer) and are pinned in the test corpus as field-verbatim [S]. Nothing about his actual balances is claimed anywhere in this report — neither reply contained one.
 
 ---
 
 ## 1. What the field failure actually was
 
-Two independent defects, one per SIM:
+**Root cause, from the phone's own synced raw replies** (panel-side capture, 2026-11-20 16:46:48 UTC — the checks behind the 16:08 PKT screenshot): at check time, **neither carrier returned a figure at all.**
 
-- **Ufone (SIM 2): a wrong default code, not a parser gap.** v5.4.0 dialled `*706#` for Ufone. Per Ufone's own FAQ and every current code guide, `*706#` is the **bundle / Super Card resources** inquiry — it answers with minutes, SMS and MBs remaining plus an expiry date. It contains no money figure, so the v5.4.0 parser's "Couldn't read balance" was the *honest* outcome of dialling a service that never states a balance. The money-balance code is `*124#` (§2). No parser hardening could have fixed this SIM.
-- **Zong (SIM 1): a parser gap.** `*222#` is the right code (Zong's own published code), so the reply did carry the balance — in a wording outside v5.4.0's shapes. v5.4.0 accepted only `Rs`/`PKR`/روپے-marked figures near the single English word "balance", and its multi-figure rule fell back to the *first* marked figure. Real reply families include Roman-Urdu markers and phrasings, Urdu-script replies, fee figures and validity dates (§2), any of which defeats that logic.
+- **Zong (SIM 1): the carrier deferred the inquiry.** Verbatim reply: **"Please try again later"** — a transient carrier failure. There was no balance in the reply to parse; v5.4.0's single "Couldn't read balance" label was the wrong story for it. In this release a deferral surfaces as a check failure — "Carrier busy — try again" (§3) — which is what it is.
+- **Ufone (SIM 2): the carrier reported an empty SIM.** Verbatim reply: **"Dear customer, you have insufficient balance. Please recharge your account."** — the SIM held nothing (the same SIM the owner confirmed had no SMS balance). That is a verdict, not an unreadable reply and not "Rs 0": this release gives it its own state (§3) and never fabricates a number for it.
+
+Two further defects stood behind the same screenshot, independent of what the carriers answered that day:
+
+- **Ufone's default code was wrong.** v5.4.0 dialled `*706#` — per Ufone's own FAQ and every current code guide, the **bundle / Super Card resources** inquiry (minutes/SMS/MBs + expiry), whose substantive answer contains no money figure. The money-balance code is `*124#` (§2); v5.4.1 dials it.
+- **The parser was narrower than real reply families.** v5.4.0 accepted only `Rs`/`PKR`/روپے-marked figures near the single English word "balance", and its multi-figure rule fell back to the *first* marked figure. Roman-Urdu markers and phrasings, Urdu-script replies, fee figures and validity dates (§2) defeat that logic; §3 is the hardened rule set, and §4 pins it.
 
 ## 2. Corpus — codes and reply families
 
@@ -45,6 +50,8 @@ Reply families the parser is now pinned against (amounts in tests are illustrati
 | 10 | Competing prices, no balance keyword: "Get 500MB in Rs 50 or 2GB in Rs 100" | [I] — must stay unread |
 | 11 | Helpline/instruction lines: "Balance janne ke liye 333 dial karein", "Balance check karne ke liye *124# dial karen" | [I] — must stay unread |
 | 12 | Multi-message session: "Please wait…" then the substantive reply; menu-only sessions | [I] |
+| 13 | **Zong deferral: "Please try again later"** | **[S] field-verbatim** (owner's phone, 2026-11-20) |
+| 14 | **Ufone empty SIM: "Dear customer, you have insufficient balance. Please recharge your account."** | **[S] field-verbatim** (owner's phone, 2026-11-20) |
 
 ## 3. Parser rules (v5.4.1)
 
@@ -58,13 +65,15 @@ The honesty contract is unchanged — a wrong number is worse than none — and 
 
 **Sessions:** `BalanceChecker` now collects *all* messages a USSD session delivers (first message within the existing 30 s, then a grace window of 4 s of silence, capped at 15 s) instead of latching the first one. The full transcript is stored as the raw record, and `BalanceParser.parseSession` reads the **last** substantive message first, then earlier ones — an opening menu or acknowledgement can no longer shadow the reply (corpus #12). A menu-only session still ends UNPARSEABLE with the transcript one tap away.
 
+**Verdicts, not just amounts:** on top of the amount parser sits a classifier (`BalanceParser.classify` / `classifySession`) with four outcomes, because a figureless reply is not automatically "unreadable" (§1 proved it twice in one screenshot). **AMOUNT** — a figure read with confidence, as above. **INSUFFICIENT** — the carrier's own empty-SIM wording ("insufficient balance/credit", Roman-Urdu *balance khatam*, Urdu بیلنس ختم): stored as its own status, displayed "Insufficient balance (carrier)", counts as low for the alert, and carries **no amount — Rs 0 is never fabricated**. **DEFERRED** — the carrier put the inquiry off ("try again", "temporarily unavailable", busy/unavailable phrasings; a lone short "Please wait" counts, a mid-session one cannot shadow a real answer because amounts and insufficient verdicts are read first): stored as a check failure with the note `carrier_deferred`, displayed "Carrier busy — try again" — a failure to retry, explicitly NOT "couldn't read". **UNREADABLE** — everything else, as before. The raw reply stays viewable under every outcome.
+
 **Code change:** `BalanceCodes` Ufone default `*706#` → `*124#`, with the reason recorded in the code. Overrides are untouched: a code the user edited in Settings still wins, and because Settings only stores an override that differs from the default, the corrected default reaches every phone that never edited it — including the owner's.
 
 ## 4. Battery
 
-JVM battery over the pure logic, **34 tests, all passing** (`OK (34 tests)`): the full v5.4.0 suite re-run for regressions (22 — parser 11, codes 2, threshold/gate/payload 5, battery-read 4; the codes test's Ufone expectation updated to `*124#`) plus 12 new corpus tests covering §2 families 1–12, including every must-not-parse trap (bundle quotas, expiry dates, fee-only replies, competing prices, helpline numbers, menu-only sessions).
+JVM battery over the pure logic, **38 tests, all passing** (`OK (38 tests)`): the full v5.4.0 suite re-run for regressions (22 — parser 11, codes 2, threshold/gate/payload 5, battery-read 4; the codes test's Ufone expectation updated to `*124#`), 12 corpus tests covering §2 families 1–12 including every must-not-parse trap (bundle quotas, expiry dates, fee-only replies, competing prices, helpline numbers, menu-only sessions), and 4 field-evidence tests: both verbatim replies of §2 families 13–14 classify to their own verdicts with **no amount attached**, a deferral after an acknowledgement stays a deferral, an early insufficient message never shadows a figure delivered later in the session, and the carrier-insufficient state counts as low for the alert.
 
-Run the v5.4.0 way, for the same reason: Gradle's test executor dies on this box, so classes were compiled by Gradle (`compileDebugKotlin` + `compileDebugUnitTestKotlin`, clean) and executed with JUnitCore 4.13.2 over the compiled classes. The battery earned its keep twice during development — both finds were in the new fee-clause logic, both fixed and re-pinned: (a) a fee figure in a clause that also contained the word "balance" ("…deducted for balance inquiry") initially counted as usable; the clause test now compares which word — charge or keyword — sits nearer the figure; (b) clause splitting initially broke on the decimal point inside "0.24" itself; a dot flanked by digits is no longer a clause break. Full debug + release builds are clean; nothing outside the balance feature was touched (Balance.kt parser/codes, BalanceChecker session collection, version bump, tests).
+Run the v5.4.0 way, for the same reason: Gradle's test executor dies on this box, so classes were compiled by Gradle (`compileDebugKotlin` + `compileDebugUnitTestKotlin`, clean) and executed with JUnitCore 4.13.2 over the compiled classes. The battery earned its keep twice during development — both finds were in the new fee-clause logic, both fixed and re-pinned: (a) a fee figure in a clause that also contained the word "balance" ("…deducted for balance inquiry") initially counted as usable; the clause test now compares which word — charge or keyword — sits nearer the figure; (b) clause splitting initially broke on the decimal point inside "0.24" itself; a dot flanked by digits is no longer a clause break. Full debug + release builds are clean; nothing outside the balance feature was touched (Balance.kt parser/codes/verdicts, BalanceChecker session collection + verdict mapping, the Home balance line and its EN/UR strings, version bump, tests).
 
 ## 5. SIM 2 "Disabled" — diagnosis (report-only; nothing was changed)
 
@@ -80,16 +89,16 @@ Run the v5.4.0 way, for the same reason: Gradle's test executor dies on this box
 
 Via core `AppFiles::store()` as www-data (one bootstrapped run; APK staged host → container by tar-pipe, SHA-256 verified at every hop):
 
-- Before: 5.4.0, sha `94740924…`, uploaded 2026-11-20T10:10:59Z.
-- After: **5.4.1**, sha `e0e8bbe2…`, size 4,587,543, package `com.rektrs.sendqon`, signer `eba2c40d…`, uploaded **2026-11-20T16:45:26Z (21:45:26 PKT)**.
+- Before: 5.4.0, sha `94740924…`, uploaded 2026-11-20T10:10:59Z (the first 5.4.1 build, sha `e0e8bbe2…` at 16:45:26Z, sat in the slot for the eleven minutes between the two registrations).
+- After: **5.4.1**, sha `8ab5b9d1…`, size 4,587,543, package `com.rektrs.sendqon`, signer `eba2c40d…`, uploaded **2026-11-20T16:56:27Z (21:56:27 PKT)**.
 - Offer matching (in-process `GatewayAppVersions::matches`): our signer → **true**; the real vendor cert `77f4e3df…` → **false** (empty offer).
-- `required_at` = **2026-11-23T16:45:26Z (2026-11-23 21:45:26 PKT)** — registration +72 h exactly; `min_required_version` stays 5.0.0 until then.
-- Signed download URL (the same `api.internal.android.app.download` link the update check hands out) fetched over HTTPS: **HTTP 200, 4,587,543 bytes, SHA-256 = `e0e8bbe2…`** — byte-identical to the built APK.
+- `required_at` = **2026-11-23T16:56:27Z (2026-11-23 21:56:27 PKT)** — registration +72 h exactly; `min_required_version` stays 5.0.0 until then.
+- Signed download URL (the same `api.internal.android.app.download` link the update check hands out) fetched over HTTPS: **HTTP 200, 4,587,543 bytes, SHA-256 = `8ab5b9d1…`** — byte-identical to the built APK.
 - Device rows 1 and 2 read identically before and after (id 2's `updated_at` moved only by its own live sync); staging files removed from container and host.
 
 ## 7. Honest limits
 
-- **Live proof is still the owner's phone.** This lane never saw his carriers' actual replies (§ evidence note). After his phone takes 5.4.1, the first manual *Check balance* on each SIM card is the real test: Zong exercises the hardened parser against the true `*222#` wording; Ufone now dials `*124#` and should show a money figure with its expiry date. Anything still unreadable keeps the raw reply one tap away ("Carrier reply"), and one screenshot of that dialog would pin the exact wording for a 5.4.2.
+- **Live proof is still the owner's phone — one layer down.** The figureless-reply layer is now field-proven (§1: both real replies are known and handled by their own states). What remains unproven against a live carrier is a successful *money-figure* read: after his phone takes 5.4.1, a Zong check when the carrier actually answers exercises the hardened parser against the true `*222#` wording, and a Ufone check after a recharge (now dialling `*124#`) should show a money figure with its expiry date. Anything still unreadable keeps the raw reply one tap away ("Carrier reply"), and one screenshot of that dialog would pin the exact wording for a 5.4.2.
 - **Super Card caveat:** on a Ufone Super Card line, `*124#` shows the base rupee balance, which is usually near zero because value sits in bundle resources (beyourownboss.pk). The app will report that figure honestly; if the owner's Ufone is a Super Card line and he wants the bundle view instead, the per-SIM code in Settings → SIM balance can be set back to `*706#` — whose reply will (correctly) stay "Couldn't read balance", since it contains no money figure.
 - The balance check now holds a session up to ~15 s when a carrier drips multiple messages (4 s of silence ends it sooner); single-message replies — the normal case — pay only the grace window after the reply.
 - The panel still does not store or display balance (core drops the sync fields — unchanged, no core patch); the phone remains the working surface.
