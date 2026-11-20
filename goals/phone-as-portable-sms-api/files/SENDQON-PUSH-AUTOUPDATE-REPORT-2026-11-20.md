@@ -1,14 +1,16 @@
 # Sendqon — Push + Panel Auto-Update Report — 2026-11-20
 
 Owner's order (chat, 2026-11-20 13:26 PKT): "Ab Push + panel auto-update set kar do."
-This lane executed the auto-update half and re-verified the push half. Both halves end
-**blocked**, for two different, precisely identified reasons. No production data was
-changed by this lane: the only production write attempted was refused by Zender core
-itself before any write happened (details below), and device rows were never touched.
+The first lane executed the auto-update half as far as core allowed and re-verified
+the push half: production refused the registration under core's app-bundle rule
+(details below) and device rows were never touched. The owner then chose option 1
+(2026-11-20 13:43 PKT, "Vendor companions hata kar hamari app register kar do") and
+the ecosystem switch was carried out the same day — see "Part 1 — Execution" below.
+Push remains blocked on the owner-only Firebase console step.
 
 | Part | Result |
 | --- | --- |
-| Panel auto-update (register our gateway v5.3.0 in the production `android_gateway` slot) | **BLOCKED by core's app-bundle rule** — DEV rehearsal passed end-to-end; production refuses any gateway APK whose signing certificate differs from the installed vendor bundle's certificate |
+| Panel auto-update (register our gateway v5.3.0 in the production `android_gateway` slot) | **COMPLETE (2026-11-20 13:48 PKT)** — vendor Receiver/USSD companions removed, bundle record cleared, our v5.3.0 registered and verified; DEV rehearsal had passed end-to-end beforehand |
 | Push notifications (FCM wake for the gateway app) | **BLOCKED on an owner-only Firebase console step** — production Firebase settings for the Android gateway are empty; the missing file (google-services.json) can only be minted in the owner's Firebase console |
 
 ---
@@ -36,13 +38,19 @@ itself before any write happened (details below), and device rows were never tou
 ### Preservation (rollback kit)
 
 Before the registration attempt, the current slot contents were preserved byte-exact
-in the goal's `hidden_files/slot-preservation-2026-11-20/`:
+in the goal's `hidden_files/slot-preservation-2026-11-20/`. The kit was completed
+ahead of the switch (all hashes re-verified equal to the live slots by the
+completion lane before it acted):
 
-- `vendor-gateway-5.0.4.apk` — copy of the slot file; SHA-256 re-verified equal to
-  the live slot (`2b8af65b…f8f`).
-- `app_file_android_gateway-row.json` — the full `system_settings` row (id 94) with
-  its decoded value, the file's container path and mode (0664), the required-floor
-  value before change (null), and the rollback recipe.
+- `vendor-gateway-5.0.4.apk` — SHA-256 `2b8af65b…f8f`, equal to the live slot.
+- `vendor-receiver-5.0.4.apk` — SHA-256 `551f3209…58c2`, equal to the live slot.
+- `vendor-ussd-5.0.4.apk` — SHA-256 `da2f717a…f6a`, equal to the live slot.
+- `app_file_android_gateway-row.json` (settings id 94), `app_file_android_receiver-row.json`
+  (id 95), `app_file_android_ussd-row.json` (id 96), `rcs_bundle-row.json` (id 97) —
+  the full `system_settings` rows with decoded values, container paths and modes.
+- `ROLLBACK.md` — the full restore recipe (core writers only), including the list
+  of settings that were absent before the switch and must stay absent on rollback
+  (all four `app_file_*_required_floor` rows were null).
 
 ### DEV rehearsal — PASSED end-to-end (sendqon-dev, offbox-1)
 
@@ -112,7 +120,7 @@ then stops receiving new messages until it updates. Phones of a *different* fami
 and are held only to the compat minimum (currently 5.0.0). This was the caveat
 already given to the owner before this lane ran.
 
-### Decision the owner needs to make (nothing here was executed)
+### Decision put to the owner (decided 2026-11-20 13:43 PKT — option 1)
 
 1. **Switch the slot family to ours (ecosystem change).** Remove the vendor
    Receiver + USSD companions from their slots and clear the bundle record, after
@@ -130,15 +138,91 @@ already given to the owner before this lane ran.
 3. **A full own bundle** is not an available route (portal signature + version
    lock, above).
 
+The owner chose **option 1** in chat on 2026-11-20 at 13:43 PKT: "Vendor
+companions hata kar hamari app register kar do."
+
+---
+
+## Part 1 — Execution (2026-11-20, owner decision carried out)
+
+### Interruption note (how the starting state was re-established)
+
+A follow-up lane began the switch, completed the preservation kit and wrote
+`ROLLBACK.md` (13:45–13:46 PKT), then ended without a final report, leaving it
+unknown whether anything had been removed on production. The completion lane
+therefore assumed nothing: at **2026-11-20T08:47:45Z** it ran a read-only probe
+(as www-data, core services only) and established the starting state plainly —
+**(a) nothing removed yet**: all three vendor slots still populated (gateway /
+receiver / ussd at v5.0.4, file hashes identical to the preservation kit), the
+`rcs_bundle` record (id 97, cert `77f4e3df…`) still set, no required-floor rows,
+devices 1 and 2 exactly as recorded earlier. `ROLLBACK.md`'s past tense was
+prospective writing, not a record of fact.
+
+### Production steps (as www-data, core's own mechanisms only)
+
+Executed in one bootstrapped run at **2026-11-20T08:48:55Z (13:48:55 PKT)**:
+
+1. `AppFiles::remove()` on the `android_receiver` slot — returned the vendor
+   receiver meta (v5.0.4, `551f3209…`); row forgotten, stored file deleted.
+2. `AppFiles::remove()` on the `android_ussd` slot — returned the vendor USSD
+   meta (v5.0.4, `da2f717a…`); row forgotten, stored file deleted.
+3. Bundle record cleared via core's settings writer (`SystemSetting::remove('rcs_bundle')`,
+   the same writer `AppFiles::remove` uses for slot rows — core has no dedicated
+   bundle-uninstall service; `RcsBundles` exposes `install()` only), followed by
+   `RcsAvailability::forgetCurrent()` and the related settings-cache clears.
+   Read-back in the same run: `rcs_bundle` = null.
+4. `AppFiles::store()` on the `android_gateway` slot with our
+   `sendqon-gateway-own-v5.3.0.apk` (staged into the container at mode 0644,
+   SHA-256 verified inside before the run). With the companion slots empty, the
+   bundle-certificate guard no longer applies and the store was accepted.
+
+### Proof (all checks after the run)
+
+- **Slot state (fresh-process probe, not the writing process):**
+  `android_gateway` = **v5.3.0**, package `com.rektrs.sendqon`, SHA-256
+  `c433ec61cd8143dab12c240beaa77cccbfc7a84040ed3e66cd4531ee001b0f35`,
+  signer `eba2c40d377418385830b1228a6ea19c65593f837790e2971a5431a9fd7742ee`,
+  uploaded `2026-11-20T08:48:55Z`. Receiver, USSD and RCS slots all empty;
+  the only remaining app-file setting row is the gateway row; **no
+  required-floor rows were created** (the removals and the store all landed
+  inside the previous uploads' 72 h grace window, so `SlotRequirement::preserve`
+  correctly wrote nothing). Storage holds only the new gateway APK file; the
+  vendor files are deleted from the live tree (preserved copies: see the kit).
+- **Required-at:** `required_at` for the gateway slot =
+  **2026-11-23T08:48:55Z (2026-11-23 13:48:55 PKT)** — registration + 72 h,
+  exactly as the rule predicts. Until then v5.3.0 is offered, not required;
+  `min_required_version` remains 5.0.0.
+- **Update-offer checks (in-process, core's `GatewayAppVersions`):** a request
+  shaped like our phone on v5.2.2 (our package + signer) → `matches` = true,
+  update status **available** (v5.3.0 offered). A foreign-signer request (vendor
+  family cert) → `matches` = false, device flagged mismatched — the empty offer,
+  as designed; the paused vendor device id 1 is never offered our APK.
+- **Download check:** an in-process signed download URL (core's own
+  `URL::temporarySignedRoute`, 6 h validity) answered **HTTP 200** with
+  4,527,178 bytes, and the downloaded bytes hash to exactly `c433ec61…`.
+- **Devices untouched:** device id 1 row identical to the pre-switch probe
+  (same `updated_at`, still paused). Device id 2's `updated_at` advanced only
+  through its own live sync (it was mid-heartbeat during the run); the lane
+  issued no device writes.
+- **Panel smoke (guest):** `/` → 200; `/channels` → 302 to login (200 after
+  redirect — normal for an authenticated page); `/channels/android/ussd` →
+  302 to login (200). `/devices` → 404 because **no such route exists** in this
+  app (devices are managed inside Channels, e.g. `/channels/android/{device}`) —
+  pre-existing routing, unrelated to the switch.
+- **Log:** today's Laravel log (`laravel-2026-11-20.log`) has no entries at all
+  after 06:11 UTC — zero new errors in or after the switch window.
+- Temp scripts and the staged APK copy were removed from the container and the
+  host afterwards.
+
 ### Rollback
 
-No rollback is needed for this lane (nothing changed). When a registration is
-eventually performed under option 1, rollback = restore
-`hidden_files/slot-preservation-2026-11-20/vendor-gateway-5.0.4.apk` to its recorded
-container path (mode 0664), restore the `app_file_android_gateway` setting row from
-`app_file_android_gateway-row.json`, reset
-`app_file_android_gateway_required_floor` to null, and clear the app cache — or
-restore the 2026-11-20 backup set below.
+Rollback, if ever wanted, follows `hidden_files/slot-preservation-2026-11-20/ROLLBACK.md`
+(core writers only): remove our gateway upload, copy the three preserved vendor
+APKs back to their recorded container paths (mode 0664, hashes in the row
+JSONs), restore the four settings rows (gateway / receiver / ussd / rcs_bundle)
+from the preserved row JSONs, `RcsAvailability::forgetCurrent()` + cache clear,
+and verify `AppFiles::current()` reports the vendor 5.0.4 family again. The
+2026-11-20 backup set below also covers the pre-switch state.
 
 ---
 
@@ -193,9 +277,13 @@ attempt (all in `/var/backups/sendqon/`, created 2026-11-20 08:30 UTC):
 
 ## What did not happen
 
-- No production setting, file, or device row was changed (the single attempted
-  write was refused by core's own validation before any write).
+- In the first lane, no production setting, file, or device row was changed
+  (the single attempted write was refused by core's own validation before any
+  write). In the execution lane, the only production changes were the ones the
+  owner authorised in the 13:43 PKT decision: the two companion removals, the
+  bundle-record clear, and the gateway registration — nothing else.
+- No device row was modified by any lane.
 - No Firebase credential was copied, moved, or printed anywhere.
-- No companion slot was removed and no bundle was fabricated — the ecosystem
-  switch in "Decision the owner needs to make" was deliberately **not** executed
-  on the strength of the auto-update order alone.
+- No bundle was fabricated, and no vendor companion was removed before the
+  owner's explicit decision — the ecosystem switch was deliberately **not**
+  executed on the strength of the auto-update order alone.
