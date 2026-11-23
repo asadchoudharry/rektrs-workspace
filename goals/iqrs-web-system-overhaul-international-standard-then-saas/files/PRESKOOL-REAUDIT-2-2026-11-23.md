@@ -1,5 +1,11 @@
 # RE-AUDIT-2 — PreSkool Resemblance Re-Audit of the IQRS Staging Build
 
+> **SUPERSEDED IN PART (2026-11-23):** the verdict counts and the FAIL gate below are
+> superseded by [PRESKOOL-REAUDIT-2-ADDENDUM-2026-11-23.md](PRESKOOL-REAUDIT-2-ADDENDUM-2026-11-23.md)
+> — all 113 owed captures landed and were judged (final: RESEMBLES 9 · SHELL-ONLY 296 ·
+> DOES-NOT-RESEMBLE 7 · PENDING 0) and the gate is now **PASS-WITH-NAMED-REMAINDERS**.
+> This report's table and findings stand as the record of the audit's first pass.
+
 **Date:** 2026-11-23 · **Scope:** staging.iqrs.edu.pk ONLY — production untouched throughout.
 **Method:** RE-AUDIT-1's method, unchanged — whole rendered pages judged cold from paired
 full-page captures (staging vs vendor PreSkool reference), real governed school data in
