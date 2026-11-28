@@ -1,0 +1,1 @@
+{"client_id":"https://raw.githubusercontent.com/asadchoudharry/rektrs-workspace/main/goals/phone-as-portable-sms-api/files/cimd-fixtures/sendqon-cimd-test-client.json","client_name":"Sendqon CIMD Test Client","grant_types":["authorization_code","refresh_token"],"redirect_uris":["http://localhost:8787/callback"],"response_types":["code"],"token_endpoint_auth_method":"none"}
