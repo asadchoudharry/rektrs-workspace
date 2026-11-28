@@ -366,3 +366,264 @@ releases monthly, so version-specific facts expire — the licence facts
 (3) Legal characterisations are engineering readings of the licence texts
 for planning; a counsel pass is owed before any AGPL app is activated for
 paying tenants — the same standing note as the Frappe AGPL set.
+
+
+---
+
+# Part 2 — Medusa (appended 2026-11-28, owner study-queue entry ~23:00 PKT)
+
+**Owner study-queue entry (main chat, 2026-11-28 ~23:00 PKT):** full
+app-first study of Medusa as an Operqon online-store / e-commerce surface
+candidate. Same method as Part 1: the real upstream repo shallow-cloned
+(`~/workspace/app-census-20261128/standalone/medusa/`, `develop` HEAD
+`01f39c44`, 2026-11-27) and read at source — licences, the Enterprise
+licence file, module/API trees, in-tree docs; repo health via the GitHub
+API on 2026-11-28; the standing scan stack run read-only (Semgrep
+`p/security-audit --metrics=off`, Gitleaks; Bandit N/A — TypeScript).
+**Read-only research — nothing was installed anywhere, and nothing was
+sent to Cursor.** Licence archaeology across release tags was done by
+fetching individual files at tags v2.18.0–v2.21.0 (raw file reads, no
+second clone).
+
+## §S7 — Medusa — headless commerce platform
+
+- **Identity / health:** medusajs/medusa — **37,483 stars, 5,580 forks**;
+  tree version **2.23.1**; `develop` HEAD committed **2026-11-27** (repo
+  pushed the same day this study ran). Release cadence is fast and
+  steady: tag train v2.21.x → v2.22.x → v2.23.1, roughly monthly minors
+  with dense patch releases (v2.19.0 is dated 2026-08-13 — see §S7.1).
+  TypeScript monorepo, 35+ packages: commerce modules (product, cart,
+  order, payment, pricing, promotion, inventory, fulfilment, region,
+  sales-channel, tax, customer, store, stock-location, currency,
+  settings, translation, search) over infrastructure modules (auth,
+  user, api-key, file, notification, event bus, workflow engine,
+  locking, cache), a vendor **Admin dashboard** (`packages/admin`), and
+  three API surfaces counted in tree: **Admin API 257 route files**
+  across ~65 resource groups, **Store API 48**, **Auth 16**. Vendor:
+  MedusaJS, Inc.; their hosted arm (Medusa Cloud) is also the licensing
+  channel for the Enterprise Edition (§S7.1).
+- **What it adds:** the commerce edge no Operqon surface has at this
+  depth — a headless storefront API (no storefront ships in this repo;
+  the vendor's Next.js starter lives in a separate repo, or the
+  storefront is our own SPA), a **promotion engine** (promotions,
+  rules, campaigns with budgets), a **pricing engine** (price sets,
+  price lists, price rules, tiered pricing, multi-currency, contextual
+  price calculation), **multi-region markets** (each region = currency
+  + country set + tax region), **sales channels**, **draft orders**,
+  and order **edits / claims / exchanges / returns** as first-class
+  flows, plus inventory **reservations** across stock locations.
+  Tree-verified absences, equally decision-relevant: **no
+  accounting/GL module exists** (Medusa can never post an invoice's
+  financial life), **no tenant concept** (one store per instance —
+  multi-tenancy is instance-per-tenant), and **no multi-vendor /
+  marketplace module** (marketplace builds are custom modules on top,
+  not core).
+- **Fit vs what we already have (KB pass 1):**
+
+  | | ERPNext **Webshop** (USE, Wave 3) | **Ecommerce Integrations** (USE, Wave 2) | **Medusa** |
+  |---|---|---|---|
+  | Shape | Storefront rendered by ERPNext's website engine, inside the bench | Sync bridge to external platforms (Shopify/Amazon/Unicommerce/Zenoti) | Standalone headless commerce platform beside the platform |
+  | Catalogue / order / stock truth | ERPNext itself — one truth, zero sync | ERPNext ↔ external platform sync | Medusa holds its own product/order/inventory data — a second truth that must be synced |
+  | Storefront | Server-templated pages tied to ERPNext website theming | The external platform's | Any frontend: vendor starter or **our SPA on the Store API** — the only one of the three that can carry the full DreamsERP face natively |
+  | Promotions / pricing | Website Offer basics | The external platform's | Full engines: promotion rules + campaign budgets; price lists/rules, tiered + contextual pricing |
+  | Multi-region / multi-currency | ERPNext company-level | External platform's | Native region model (currency + countries + tax region per market) |
+  | Order aftercare | ERPNext Sales Order flows | Sync-dependent | Draft orders, edits, claims, exchanges, returns as designed flows |
+  | Cost to Operqon | An install wave (needs Payments) | An install wave | A second production stack (Node/PostgreSQL/Redis) per tenant + a permanent sync bridge |
+
+  Medusa's genuine edge over Webshop is the storefront class
+  (headless, promotion/pricing depth, multi-region, marketplace
+  patterns via custom modules). Webshop's edge is decisive for the
+  SMB-essential path: the truth never leaves ERPNext, and it rides
+  the existing wave train. Ecommerce Integrations is not a competitor
+  to either — it serves tenants who already sell on Shopify/Amazon.
+- **Where truth lives + the seam:** ERPNext must remain the system of
+  record — GL, stock ledger, invoicing and tax all live there and
+  Medusa has no GL at all. Medusa would be the **commerce edge**:
+  catalogue presentation, cart, checkout, promotions. The implied seam
+  is two-way sync: catalogue + price lists + stock *levels* flow
+  ERPNext → Medusa (Admin API); orders flow Medusa → ERPNext (Sales
+  Order → invoice), with Medusa's inventory reservations acting as an
+  allocation mirror mapped 1:1 to ERPNext warehouses — never a second
+  ledger. Integration mechanics in tree: an event bus (local/Redis)
+  with **subscribers as app code** (there is no generic outbound
+  webhook module in core — the bridge's Medusa side is subscribers/
+  workflows we write in our own app layer; payment-provider webhooks
+  land on Medusa's `/hooks` routes and are mirrored out by the same
+  bridge). Classification in pass-2 vocabulary: **WIRES-WITH-SEAM**
+  (server-workflow sync on both sides), surfacing **L1 in shape** —
+  vendor Admin re-themed + our own storefront — with the §S7.1
+  exception carved out of that L1.
+
+### §S7.1 — DECIDING CHECK: the August-2026 Enterprise move (verified in tree + across tags)
+
+The claim put to this study — *from Aug 2026, RBAC + SSO moved to an
+Enterprise (proprietary) licence while the core stayed MIT* — is
+**confirmed precisely**, from the repo itself:
+
+1. **What moved, and when.** The root `LICENSE` at v2.18.0 is plain
+   MIT and there is no `ENTERPRISE-LICENSE.md`; at **v2.19.0
+   (released 2026-08-13)** the root licence gains the carve-out —
+   *"Except for the Enterprise Edition materials identified in
+   ENTERPRISE-LICENSE.md, the repository is licensed under the MIT
+   License"* — and the Enterprise licence file appears (still present,
+   unchanged in substance, at v2.23.1). It names exactly three
+   **Enterprise Materials**, all present in this tree with their own
+   EE licence files (`Copyright (c) 2026 MedusaJS, Inc.`;
+   package.json: `SEE LICENSE IN LICENSE`):
+   - `packages/modules/rbac/` — **@medusajs/rbac** (RBAC)
+   - `packages/modules/providers/auth-oidc/` — **@medusajs/auth-oidc** (SSO)
+   - `packages/modules/audit/` — **@medusajs/audit** (audit logs)
+
+   *"RBAC (role-based access control), SSO (single sign-on), and audit
+   logs are Medusa Enterprise Edition features."* Use without a
+   commercial agreement is declared infringement, and *"circumventing,
+   disabling, or removing any license validation or feature-gating
+   mechanism… is itself a violation."* Everything outside those three
+   paths stays MIT — the file expressly includes the integration code
+   (HTTP middleware, the `/rbac/*` routes, workflows, SDK resources,
+   admin dashboard pages, licence validation) in the MIT remainder.
+2. **What the MIT core keeps.** The full commerce core, the Admin
+   dashboard, and authentication via **emailpass, Google and GitHub
+   providers — all MIT** (package licences verified). What it does
+   *not* keep: (a) **RBAC granularity** — the framework's `authorize`
+   middleware is, at source, *"a no-op when RBAC is disabled"* and
+   passes the request through when the rbac module is not installed;
+   without the EE module every authenticated admin user is effectively
+   full-access, with no roles or policies (the module itself seeds a
+   Super Admin wildcard role and `resource:operation` policies — all
+   EE); (b) **audit logs** — none in core; (c) **SSO** — the in-tree
+   docs' own Auth Providers list shows Emailpass / Google / GitHub
+   and badges **"OIDC (SSO)" as Enterprise**, linking to
+   `/enterprise/sso`; the Admin SSO guides carry the Enterprise
+   notice.
+3. **The SSO question, precisely.** `@medusajs/auth-oidc` is a generic
+   OIDC provider whose README names **Keycloak** explicitly among its
+   supported IdPs — it *is* the Rektrs ID bridge, and it is EE. Can
+   the MIT core reach Keycloak another way?
+   - **Technically, the door is open.** The auth-provider interface
+     (`AbstractAuthModuleProvider`, `packages/core/utils`) is MIT;
+     custom auth providers are a documented, ordinary app extension
+     (the auth-providers reference + a worked phone-auth tutorial ship
+     in-tree); and **no code gate was found**: no `enterprise`
+     references exist in the framework or medusa package sources, and
+     the licence check (`packages/medusa/src/commands/utils/
+     license-check.ts`) runs only when a licence key is configured —
+     it validates *that key* against Medusa Cloud at start-up and
+     exits if the key is invalid/revoked; with no key configured it
+     returns silently. Nothing inspects or blocks a custom provider.
+   - **Contractually, it is contested — and that is the answer that
+     matters.** The EE licence declares *SSO itself* an Enterprise
+     feature. A self-written OIDC provider uses none of Medusa's
+     Enterprise Materials (their code is never touched), yet delivers
+     exactly the feature they sell. This is the same class of question
+     as Formbricks' MIT renderer (§S4): technically unblocked,
+     vendor-intent against it. **The platform's identity strategy is
+     not built on a contested reading** — the route is recorded as
+     available only with written vendor confirmation, never assumed.
+   - **One asymmetry worth recording:** `@medusajs/rbac` **was MIT up
+     to v2.18.0** (package licence verified at the tag) and the EE
+     notice is expressly prospective — *"does not withdraw rights
+     already granted for earlier versions of any material under the
+     MIT License."* An MIT RBAC ancestor therefore exists legally;
+     auth-oidc and audit have **no MIT version** (both paths 404 at
+     v2.18.0 — they were born EE in v2.19.0). Pinning or forking the
+     2.18 RBAC module against a moving 2.x core is version-lock
+     engineering against a monthly release train — recorded as a
+     footnote, not a plan.
+4. **What this means for Rektrs ID.** On the free route, tenant staff
+   cannot sign in to the Medusa Admin through Keycloak, hold no role
+   granularity (every staff login is full-access), and leave no audit
+   trail — three standing platform rules (one identity across
+   console/portal/tenants, provisioning-time entitlement permissions,
+   operator audit) fail on this surface at once. **Shoppers are
+   unaffected**: customer auth (emailpass/Google/GitHub) is MIT, so a
+   customer-facing storefront is licence-clean end to end. Enterprise
+   pricing is **quote-only** (the licence file points to a contact
+   page; nothing public in repo or docs) — an owner spend decision if
+   it is ever taken, not a plannable line item.
+
+- **Licence position for commercial/SaaS use (summary):** the MIT
+  core is the cleanest licence in this whole study series — full
+  commercial/SaaS use, modification and white-labelling, **no
+  copyleft and no §13-style duty at all** (a real advantage over the
+  AGPL Frappe set). The three EE packages grant no rights without a
+  commercial agreement.
+- **Integration route (concrete, if ever adopted):** instance-per-
+  tenant (core has no tenant concept) → provisioning creates the
+  instance + sales channel per tenant → sync bridge (our code on both
+  sides): ERPNext → Medusa catalogue/prices/stock-levels via the
+  Admin API; Medusa → ERPNext orders via event subscribers in our
+  Medusa app layer calling ERPNext REST; payment status enters via
+  provider webhooks to Medusa and is mirrored out by the same bridge →
+  ERPNext issues the invoice and posts GL. Storefront = our SPA over
+  the Store API (L1); staff Admin = the named exception (emailpass
+  logins, no RBAC) unless/until EE terms are bought or the
+  custom-provider route gets written vendor confirmation.
+- **Effort estimate:** instance stand-up + provisioning automation
+  **3–5 days**; sync bridge (catalogue/stock/orders) **2–3 weeks**;
+  storefront on our SPA over the Store API **2–4 weeks** (re-theming
+  the vendor's separate Next.js starter is ~1–2 weeks but parks a
+  second frontend stack beside the SPA). EE/SSO, if ever bought, is
+  configuration — days.
+- **Risks:** (1) **the Aug-2026 direction itself** — the vendor has
+  shown it will move exactly the operator-critical features (SSO,
+  RBAC, audit) behind Enterprise; released MIT versions are
+  irrevocable, so today's core is safe, but the feature frontier will
+  keep landing EE-first and the platform would feel each move; (2)
+  **double truth** — catalogue/order/inventory in two systems makes
+  the sync seam a permanent failure surface (mitigated, not removed,
+  by ERPNext-as-record + reservations-as-mirror); (3)
+  **instance-per-tenant ops multiplication** (Node + PostgreSQL +
+  Redis per tenant class) beside the bench; (4) **upgrade cadence** —
+  roughly monthly minors is a fast train to track on a second stack;
+  (5) **no GL** — Medusa can never be the whole answer for an ERP
+  tenant; every order's financial life still crosses the bridge.
+- **Scans:** §S8.
+- **VERDICT: WATCHLIST.** The MIT commerce core is the strongest in
+  its class and licence-clean for SaaS, and it beats Webshop on
+  storefront, promotion/pricing and multi-region depth by a wide
+  margin — but the SMB-essential path is already covered bench-natively
+  by Webshop (USE, Wave 3) with the truth intact and zero new stack,
+  while Medusa's adoption price is a second platform, a permanent sync
+  seam, and the loss of Rektrs ID / RBAC / audit on that surface
+  unless an unpriced Enterprise agreement is bought. Not a NO-GO —
+  unlike Cal.diy the vendor stands behind production use and the
+  shopper-facing core is fully MIT; not a GO — unlike Documenso there
+  is no route that avoids the paywalled surface for staff. **Triggers
+  to reopen:** (a) a commerce-led tenant whose storefront/promotion
+  needs demonstrably exceed Webshop; (b) written Enterprise terms for
+  SSO/RBAC/audit at a sane per-instance price (owner decision); (c)
+  written vendor confirmation that a self-built OIDC auth provider on
+  the MIT framework is acceptable — which would flip the SSO blocker
+  without the EE purchase. Until a trigger fires, no lane is created
+  and the Webshop wave proceeds as planned.
+
+---
+
+## §S8 — Scan coverage record (Medusa) + caveats
+
+Standing stack, run read-only over the shallow clone on 2026-11-28
+(outputs in `~/workspace/app-census-20261128/scans-standalone/`).
+TypeScript stack — **Bandit (Python-only) is N/A**, Semgrep ran
+`p/security-audit` only. Medusa's is the cleanest scan result of the
+four standalone studies: **zero findings on any production server
+surface.**
+
+| App | Semgrep `p/security-audit` | Gitleaks | Assessment |
+|---|---|---|---|
+| Medusa 2.23.1 | **6 findings** (detect-child-process ×3, jwt-hardcoded-secret ×2, unknown-value-with-script-tag ×1); 8 parse errors | 21 findings | Child-process hits are all in the `create-medusa-app` CLI scaffolding tool (project generator spawning package managers — expected use, not a server surface). Both JWT hits and the script-tag hit are in **integration-test fixtures**. Gitleaks: clusters in integration tests (notification spec ×6, invite/totp/Adyen specs), documentation examples (the asymmetric-encryption doc's example private key + curl examples, `llms-full.txt`, cloud search docs), a Storybook story, and one commented **dummy scrypt hash constant** in `auth-emailpass` (a timing-attack mitigation, labelled as such in source) — **all assessed false positives; no live secret** |
+
+**Caveats (standing):** (1) OCR full review not run — no paid key /
+owner ChatGPT sign-in configured; the licence/API-surface manual
+review above is the documented substitute. (2) The batch scan script's
+gitleaks invocation failed on this environment's CLI (gitleaks 8.30.1
+`dir` has no `--no-git` flag); the gitleaks result above is from a
+corrected re-run (347.67 MB scanned) recorded in
+`scans-standalone/MEDUSA-SUMMARY.txt`. (3) This is a `develop`-branch
+snapshot at v2.23.1 (2026-11-27/28); Medusa releases roughly monthly,
+so version-specific facts expire — the licence facts (EE file, the
+three EE paths, the v2.18.0→v2.19.0 tag archaeology) are the durable
+part of this study. (4) Legal characterisations are engineering
+readings of the licence texts for planning; a counsel pass is owed
+before any EE-adjacent route (notably the self-built OIDC provider
+question in §S7.1) is relied on for paying tenants.
