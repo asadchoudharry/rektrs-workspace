@@ -29,7 +29,7 @@ Every study in this corner answers the same questions, in this order:
 | 8 | **Pipecat** | https://github.com/pipecat-ai/pipecat | done | **GO** — Phase 6 voice-pipeline orchestrator (companion; Asterisk keeps call control) | 2026-11-28 | [PIPECAT-STUDY-2026-11-28.md](PIPECAT-STUDY-2026-11-28.md) |
 | 9 | **faster-whisper** | https://github.com/SYSTRAN/faster-whisper | done | **GO** — local STT inside the Pipecat companion (small int8 live leg, medium int8 batch; Urdu assist-grade) | 2026-11-28 | [FASTER-WHISPER-STUDY-2026-11-28.md](FASTER-WHISPER-STUDY-2026-11-28.md) |
 | 10 | **Piper** | https://github.com/OHF-Voice/piper1-gpl (orig. https://github.com/rhasspy/piper) | done | **GO, with conditions** — local TTS (isolated/unmodified, GPL hygiene); Urdu voices exist but provisional until listening A/B + per-voice licence check | 2026-11-28 | [PIPER-STUDY-2026-11-28.md](PIPER-STUDY-2026-11-28.md) |
-| 11 | WAHA (WhatsApp HTTP API) | https://github.com/devlikeapro/waha | queued | — | — | — |
+| 11 | WAHA (WhatsApp HTTP API) | https://github.com/devlikeapro/waha | done | **WATCHLIST** — cleanest licence (stock Apache-2.0, no activation) + healthiest cadence of the WhatsApp engines, but NOWEB *is* Baileys (B8's own library), other engines change fingerprint not risk, and there is no Cloud API mode; triggers: fleet density (GOWS), Baileys faltering, a browser-class feature demanded | 2026-11-28 | [WAHA-STUDY-2026-11-28.md](WAHA-STUDY-2026-11-28.md) |
 | 12 | Novu | https://github.com/novuhq/novu | queued | — | — | — |
 | 13 | whatsapp-mcp | https://github.com/lharries/whatsapp-mcp | queued | — | — | — |
 | 14 | Postal | https://github.com/postalserver/postal | queued | — | — | — |
